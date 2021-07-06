@@ -1,6 +1,3 @@
-@import "../../index.scss";
-
-
 #partially-cloudy > .cloud-1 {
     
     width: 40%;
@@ -28,5 +25,20 @@
         position: absolute;
         top:-10%;
         left:40%;
+    }
+}
+
+#partially-cloudy > .sun-1 {
+    
+    width: 20%;
+    position: absolute;
+    top:5%;
+    left:15%;
+
+    @include breakpoints(mobile) {
+        width: 40%;
+        position: absolute;
+        top:5%;
+        left:15%;
     }
 }

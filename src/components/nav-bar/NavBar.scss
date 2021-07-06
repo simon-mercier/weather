@@ -1,5 +1,3 @@
-@import "../../index.scss";
-
 .container {
     position: fixed;
     width: 100%;
@@ -13,7 +11,7 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center; 
+    align-items:initial; 
 }
 
 header {
@@ -23,12 +21,12 @@ header {
 }
 
 h1 {
+    color: $beige;
     font-size: 1em; 
     margin : 0px $margin;
 }
 
 h2 {
-    color: $beige;
     font-size: .9em;
     margin : 0px $margin;
 }

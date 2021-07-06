@@ -1,4 +1,4 @@
-import './NavBar.scss';
+import './Navbar.scss';
 import { useState } from 'react';
 
 export const sections = [
@@ -21,7 +21,7 @@ export default function NavBar() {
                     <h1>{getSectionText(sectionNumber)}</h1>
                     <h2>{getSectionText(sectionNumber+1)}</h2>
                 </section>
-                <header><span className="color-dark-green">Simon's</span> <br /> <span className="color-dark-green">Weather</span></header>
+                <header><span className="color-dark-green">Beautiful Weather</span></header>
             </nav>
         </section>
     

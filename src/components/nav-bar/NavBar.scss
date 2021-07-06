@@ -1,0 +1,37 @@
+@import "../../index.scss";
+
+.container {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+}
+
+nav {
+    font-size: 3em;
+    margin : $margin;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+header {
+    font-size: .9em; 
+    font-weight: bold;
+    margin : 0px $margin;
+}
+
+h1 {
+    font-size: 1em; 
+    margin : 0px $margin;
+}
+
+h2 {
+    color: $beige;
+    font-size: .9em;
+    margin : 0px $margin;
+}
+
+
+

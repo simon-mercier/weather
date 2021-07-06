@@ -1,0 +1,32 @@
+@import "../../index.scss";
+
+
+#partially-cloudy > .cloud-1 {
+    
+    width: 40%;
+    position: absolute;
+    bottom:5%;
+    left:5%;
+
+    @include breakpoints(mobile) {
+        width: 80%;
+        position: absolute;
+        bottom:5%;
+        top: 20%;
+    }
+}
+
+#partially-cloudy > .cloud-2 {
+    
+    width: 40%;
+    position: absolute;
+    top:-10%;
+    right:-10%;
+
+    @include breakpoints(mobile) {
+        width: 80%;
+        position: absolute;
+        top:-10%;
+        left:40%;
+    }
+}

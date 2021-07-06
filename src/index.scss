@@ -1,44 +1,3 @@
-
-$background_color : #FAEAD6;
-
-$dark_green : #84ADA4;
-$light_green: #CAFAF0;
-
-$dark_purple: #848AAD;
-$light_purple: #CAD1FA;
-
-$light_beige: #ffe9ce;
-$beige: #FBC98C;
-
-$small_margin : 4px;
-$margin: 8px;
-$big_margin: 16px;
-
-$size_site_content_width: 1024px;
-
-$media_queries : (
-    'mobile'    : "only screen and (max-width: 667px)",
-    'tablet'    : "only screen and (min-width: 668px) and (max-width: $size__site_content_width)",
-    'desktop'   : "only screen and (min-width: ($size_site_content_width + 1))",
-    'landscape' : "screen and (orientation:landscape) ",    
-    'portrait'  : "screen and (orientation:portrait) "
-);
-
-@mixin breakpoints($breakpoints) {
-    $conditions : ();
-    @each $breakpoint in $breakpoints {
-        $conditions: append(
-            $conditions,
-            #{inspect(map-get($media_queries, $breakpoint))},
-            comma
-        );
-    }
-
-    @media #{$conditions} {
-        @content;
-    }
-}
-
 body {
   margin: 0;
   background-color: background_color;
@@ -53,10 +12,3 @@ code {
     monospace;
 }
 
-.color-dark-green {
-    color: $dark_green;
-}
-
-.color-light-green {
-    color: $light_green;
-}

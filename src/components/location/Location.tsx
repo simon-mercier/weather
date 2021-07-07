@@ -7,18 +7,6 @@ const getGeolocation = () : GeolocationPosition | undefined => {
 }
 
 const Location = () => {
-    const [localLocation, setLocalLocation] = useState({
-        localLocation: GeolocationPosition,
-    });
-
-    const [searchedLocation, setSearchedLocation] = useState({
-        localLocation: GeolocationPosition,
-    });
-
-    // useEffect(() => {
-    //     setLocation
-    // }, [])
-    
     return (
         <></>
     )

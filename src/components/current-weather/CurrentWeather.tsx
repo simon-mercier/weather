@@ -15,11 +15,14 @@ import './CurrentWeather.scss';
 
 export const PartiallyCloudy =
     <div id="partially-cloudy">
-        
         <img className="sun-1" src={Sun1} alt="sun" />
+        <img className="large-cloud-1" src={LargeCloud1} alt="cloud" />
+        <img className="large-cloud-2" src={LargeCloud2} alt="cloud" />
+        <img className="large-cloud-3" src={LargeCloud3} alt="cloud" />
+        <img className="large-cloud-4" src={LargeCloud4} alt="cloud" /> 
         <img className="cloud-1" src={Cloud1} alt="cloud" />
-        <img className="cloud-2" src={Cloud2} alt="cloud" />           
-                 
+        <img className="cloud-2" src={Cloud2} alt="cloud" />
+        
     </div>
 
 

@@ -1,0 +1,62 @@
+@mixin translate-left($name, $width) {
+  @keyframes #{$name} {
+    0% {left : - $width }
+    100% {left : 100%}
+  }
+}
+
+@mixin translate-right($name, $width) {
+  @keyframes #{$name} {
+    0% {left : 100%}
+    100% {left : -$width}
+  }
+}
+
+@mixin translate-left-animation($name, $width, $duration, $delay) {
+    position: absolute;
+    width: $width;
+    left: -100%;
+    @include translate-left($name, $width);
+    @include animation($name, $duration, $delay);
+}
+
+
+
+@mixin translate-right-animation($name, $width, $duration, $delay) {
+    position: absolute;
+    width: $width;
+    left: 100%;
+    @include translate-right($name, $width);
+    @include animation($name, $duration, $delay);
+}
+
+@mixin animation($name, $duration, $delay) {
+    
+    -webkit-animation-delay: $delay;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $name;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    -moz-animation-delay: $delay;
+    -moz-animation-duration: $duration;
+    -moz-animation-name: $name;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    -o-animation-delay: $delay;
+    -o-animation-duration: $duration;
+    -o-animation-name: $name;
+    -o-animation-timing-function: linear;
+    -o-animation-iteration-count: infinite;
+    -o-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $name;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+}

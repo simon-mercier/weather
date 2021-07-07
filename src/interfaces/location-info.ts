@@ -3,7 +3,7 @@ import Coordinates from "./coordinates";
 export default interface LocationInfo {
     coordinates: Coordinates,
     
-    country?: string,
+    countryName?: string,
     countryCode?: string,
 
     principalSubdivision?: string,

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import Coordinates from '../../interfaces/coordinates'
-import LocationInfo from '../../interfaces/location-info'
+import ICoordinates from '../../interfaces/coordinates'
+import ILocationInfo from '../../interfaces/locationInfo'
 
 export const locationSlice = createSlice({
   name: 'location',
   initialState: {
-        value: {coordinates : { longitude: -73.561668, latitude: 45.508888 } as Coordinates,  } as LocationInfo,
+        value: {coordinates : { longitude: -73.561668, latitude: 45.508888 } as ICoordinates,  } as ILocationInfo,
   },
   reducers: {
     setLongitude: (state, longitude : PayloadAction<number>) => {
@@ -14,7 +14,7 @@ export const locationSlice = createSlice({
     setLatitude: (state, latitude : PayloadAction<number>) => {
       state.value.coordinates.latitude = latitude.payload
     },
-    setLocation: (state, location: PayloadAction<LocationInfo>) => {
+    setLocation: (state, location: PayloadAction<ILocationInfo>) => {
       state.value = location.payload
     },
   },

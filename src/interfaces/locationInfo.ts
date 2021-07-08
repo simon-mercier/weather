@@ -1,7 +1,7 @@
-import Coordinates from "./coordinates";
+import ICoordinates from "./coordinates";
 
-export default interface LocationInfo {
-    coordinates: Coordinates,
+export default interface ILocationInfo {
+    coordinates: ICoordinates,
     
     countryName?: string,
     countryCode?: string,

@@ -1,81 +1,25 @@
 #partially-cloudy > .cloud-1 {
-    opacity: 80%;
-    bottom:5%;
-
-    @include translate-left-animation(c1, 20%, 400s, 0s);
-
-    @include breakpoints(mobile) {
-        animation : none;
-        width: 80%;
-        bottom:5%;
-        top: 20%;
-    }
+    @include translate-left-animation(c1, 20%);
 }
 
 #partially-cloudy > .cloud-2 {
-    opacity: 90%;
-    top:-10%;
-
-    @include translate-right-animation(c2, 35%, 500s, 0s);
-
-    @include breakpoints(mobile) {
-        width: 80%;
-        
-        top:-10%;
-        left:40%;
-    }
+    @include translate-right-animation(c2, 35%);
 }
 
 #partially-cloudy > .large-cloud-1 {
-    opacity: 70%;
-    top:30%;
-
-    @include translate-left-animation(c4, 10%, 700s, 0s);
-
-    @include breakpoints(mobile) {
-        width: 80%;
-        top:-10%;
-        left:40%;
-    }
+    @include translate-left-animation(c4, 10%);
 }
 
 #partially-cloudy > .large-cloud-2 {
-    opacity: 60%;
-    top:20%;
-
-    @include translate-left-animation(c3, 15%, 800s, 25s);
-
-    @include breakpoints(mobile) {
-        width: 80%;
-        top:-10%;
-        left:40%;
-    }
+    @include translate-left-animation(c3, 15%);
 }
 
 #partially-cloudy > .large-cloud-3 {
-    opacity: 55%;
-    top:10%;
-
-    @include translate-left-animation(c4, 20%, 600s, 15s);
-
-    @include breakpoints(mobile) {
-        width: 80%;
-        top:-10%;
-        left:40%;
-    }
+    @include translate-left-animation(c4, 20%);
 }
 
 #partially-cloudy > .large-cloud-4 {
-    opacity: 55%;
-    top:20%;
-
-    @include translate-left-animation(c5, 10%, 550s, 5s);
-
-    @include breakpoints(mobile) {
-        width: 80%;
-        top:-10%;
-        left:40%;
-    }
+    @include translate-left-animation(c5, 10%);
 }
 
 #partially-cloudy > .sun-1 {
@@ -84,11 +28,4 @@
     top:5%;
     transform: translateX(-50%);
     left: 50%;
-
-    @include breakpoints(mobile) {
-        width: 40%;
-        position: absolute;
-        top:5%;
-        left:15%;
-    }
 }

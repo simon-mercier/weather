@@ -12,49 +12,35 @@
   }
 }
 
-@mixin translate-left-animation($name, $width, $duration, $delay) {
-    position: absolute;
-    width: $width;
-    left: -100%;
+@mixin translate-left-animation($name, $width) {
     @include translate-left($name, $width);
-    @include animation($name, $duration, $delay);
+    @include animation($name);
 }
 
 
 
-@mixin translate-right-animation($name, $width, $duration, $delay) {
-    position: absolute;
-    width: $width;
-    left: 100%;
+@mixin translate-right-animation($name, $width) {
     @include translate-right($name, $width);
-    @include animation($name, $duration, $delay);
+    @include animation($name);
 }
 
-@mixin animation($name, $duration, $delay) {
+@mixin animation($name) {
     
-    -webkit-animation-delay: $delay;
-    -webkit-animation-duration: $duration;
     -webkit-animation-name: $name;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
 
-    -moz-animation-delay: $delay;
-    -moz-animation-duration: $duration;
     -moz-animation-name: $name;
     -moz-animation-timing-function: linear;
     -moz-animation-iteration-count: infinite;
     -moz-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
 
-    -o-animation-delay: $delay;
-    -o-animation-duration: $duration;
     -o-animation-name: $name;
     -o-animation-timing-function: linear;
     -o-animation-iteration-count: infinite;
     -o-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
 
-    animation-delay: $delay;
-    animation-duration: $duration;
     animation-name: $name;
     animation-timing-function: linear;
     animation-iteration-count: infinite;

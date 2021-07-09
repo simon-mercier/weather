@@ -1,6 +1,6 @@
 
 export enum WeatherType {
-    SUNNY,
+    CLEAR,
     PARTIALLY_CLOUDY,
     CLOUDY,
     OVERCAST,
@@ -8,7 +8,4 @@ export enum WeatherType {
     DRIZZLE,
     SNOW,
     TUNDERSTORM,
-    FOG,
-    HURRICANE,
-    SANDSTORM,
 }

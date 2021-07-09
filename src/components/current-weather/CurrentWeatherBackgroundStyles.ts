@@ -2,7 +2,7 @@ import SCSS from 'csstype';
 import { random, randomMinMax } from '../../utils/code-utils';
 
 
-const MAX_ANIMATION_TIME = 1000;
+const MAX_ANIMATION_TIME = 100;
 
 export const randomStartPosition: SCSS.Properties = {
     animationDelay : `-${random(MAX_ANIMATION_TIME)}s`,

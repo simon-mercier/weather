@@ -1,5 +1,6 @@
 import { random, randomMinMax } from "../../utils/code-utils";
 import styled, { keyframes } from "styled-components";
+import Sun1 from "../../assets/svg/sun-1.svg";
 
 const MAX_ANIMATION_TIME = 1000;
 interface CloudProps {
@@ -29,7 +30,7 @@ const distance2Range = new Map<Distance, any>([
             [350, 500],
             [25, 35],
             [90, 97],
-            [-15, 60],
+            [-15, 10],
         ],
     ],
     [
@@ -38,7 +39,7 @@ const distance2Range = new Map<Distance, any>([
             [750, 1250],
             [20, 15],
             [70, 80],
-            [0, 30],
+            [-5, 10],
         ],
     ],
     [
@@ -47,7 +48,7 @@ const distance2Range = new Map<Distance, any>([
             [2000, 3000],
             [15, 7],
             [50, 60],
-            [10, 20],
+            [-10, 10],
         ],
     ],
 ]);
@@ -74,6 +75,7 @@ export const Cloud = styled.img`
         ${(props: CloudProps) =>
             randomRange(RangeProperty.DURATION, props.distance)}s
         linear -${() => randomDelay()}s infinite;
+    transform: scaleX(${() => (Math.random() < 0.5 ? -1 : 1)});
 `;
 
 const randomRange = (prop: RangeProperty, distance: Distance) => {
@@ -82,3 +84,12 @@ const randomRange = (prop: RangeProperty, distance: Distance) => {
 };
 
 const randomDelay = () => random(MAX_ANIMATION_TIME);
+
+export const Sun = styled.img`
+    content: url(${() => Sun1});
+    position: absolute;
+    width: 25%;
+    top: 5%;
+    transform: translateX(-50%);
+    left: 50%;
+`;

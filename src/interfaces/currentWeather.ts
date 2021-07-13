@@ -5,7 +5,7 @@ export default interface ICurrentWeather {
     temperature: ITemperature;
 
     weatherDescription: string;
-    weatherType?: WeatherType;
+    weatherId: number;
 
     pressure: number;
 

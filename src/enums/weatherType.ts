@@ -6,5 +6,5 @@ export enum WeatherType {
     RAIN,
     DRIZZLE,
     SNOW,
-    TUNDERSTORM,
+    THUNDERSTORM,
 }

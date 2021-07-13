@@ -1,5 +1,3 @@
-import "./CurrentWeatherBackground.scss";
-
 import Cloud1 from "../../assets/svg/cloud-1.svg";
 import Cloud2 from "../../assets/svg/cloud-2.svg";
 import Cloud3 from "../../assets/svg/cloud-3.svg";
@@ -20,9 +18,15 @@ import DarkLargeCloud4 from "../../assets/svg/large-dark-cloud-4.svg";
 
 import { Cloud, Distance, Sun } from "./CurrentWeatherBackgroundStyles";
 import { WeatherType } from "../../enums/weatherType";
+import { id2Type } from "../../utils/weather-utils";
+import ICurrentWeather from "../../interfaces/currentWeather";
+import { TimesOfDay } from "../../enums/timesOfDay";
 
-const CurrentWeatherBackground = () => {
-    return watherConditionMap.get(WeatherType.CLOUDY) as JSX.Element;
+export type WeatherId = {
+    id: number;
+};
+const CurrentWeatherBackground = ({ id }: WeatherId) => {
+    return watherConditionMap.get(id2Type(id)) as JSX.Element;
 };
 
 export default CurrentWeatherBackground;
@@ -106,6 +110,7 @@ const overcast: JSX.Element = (
 const clear = (
     <div className="clear">
         <Sun />
+
         <Cloud source={LargeCloud1} distance={Distance.FAR} />
         <Cloud source={LargeCloud2} distance={Distance.FAR} />
     </div>
@@ -260,5 +265,5 @@ const watherConditionMap: Map<WeatherType, JSX.Element> = new Map<
     [WeatherType.DRIZZLE, drizzle],
     [WeatherType.OVERCAST, overcast],
     [WeatherType.SNOW, snow],
-    [WeatherType.TUNDERSTORM, thunderstorm],
+    [WeatherType.THUNDERSTORM, thunderstorm],
 ]);

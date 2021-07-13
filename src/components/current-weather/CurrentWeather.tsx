@@ -10,7 +10,16 @@ import {
 } from "../../utils/weather-utils";
 import { useEffect, useState, useCallback } from "react";
 import { capitalizeFirstLetter } from "../../utils/code-utils";
+import styled from "styled-components";
 
+const Widget = styled.div`
+    width: 150px;
+    height: 150px;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.4);
+`;
 const CurrentWeather = () => {
     const locationInfo: ILocationInfo = useLocationInfoContext();
 
@@ -31,34 +40,37 @@ const CurrentWeather = () => {
 
     return (
         <>
-            <CurrentWeatherBackground />
             {currentWeather.weatherDescription && locationInfo && (
                 <section className="current-weather">
                     <section className="weather">
                         <div className="city">
                             <i className="fas fa-location-arrow fa-xs"> </i>
-                            {" " + locationInfo.city}
+                            <span className="city-text">
+                                {" " + locationInfo.city}
+                            </span>
                         </div>
-                        <br />
                         <div className="temperature">
                             <div className="high-low">
                                 <div className="high">
-                                    <i className="fas fa-sort-up"></i>
-                                    {" " +
-                                        k2c(currentWeather.temperature.tempMax)}
+                                    <span className="high-text">high</span>
+                                    {k2c(currentWeather.temperature.tempMax)}
                                 </div>
                                 <div className="low">
-                                    <i className="fas fa-sort-down"></i>
-                                    {" " +
-                                        k2c(currentWeather.temperature.tempMin)}
+                                    <span className="low-text">low</span>
+                                    {k2c(currentWeather.temperature.tempMin)}
                                 </div>
                             </div>
                             <div className="temp">
-                                {k2cString(currentWeather.temperature.temp)}
+                                <span>
+                                    {k2c(currentWeather.temperature.temp)}
+                                </span>
+                                <span className="c">°C</span>
                             </div>
                             <div className="feels-like">
                                 <span className="feels-like-text">
-                                    Feels like
+                                    feels
+                                    <br />
+                                    like
                                 </span>
                                 <span>
                                     {" " +
@@ -68,7 +80,6 @@ const CurrentWeather = () => {
                                 </span>
                             </div>
                         </div>
-                        <br />
                         <div className="weather-description">
                             {capitalizeFirstLetter(
                                 currentWeather.weatherDescription
@@ -76,15 +87,15 @@ const CurrentWeather = () => {
                             currently
                         </div>
                     </section>
-
-                    <div className="feels-like"></div>
                     <section className="widgets">
-                        <div className="widget humidity"></div>
-                        <div className="widget sun-rise-set"></div>
-                        <div className="widget wind"></div>
+                        <Widget />
+                        <Widget />
+                        <Widget />
                     </section>
                 </section>
             )}
+
+            <CurrentWeatherBackground id={currentWeather.weatherId} />
         </>
     );
 };

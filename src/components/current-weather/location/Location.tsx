@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import ICoordinates from "../../interfaces/coordinates";
-import { coordinates2LocationInfo } from "../../utils/location-utils";
-import CurrentWeather from "../current-weather/CurrentWeather";
-import NavBar from "../navbar/Navbar";
-import LocationInfo from "../../contexts/location-info/LocationInfo";
-import ILocationInfo from "../../interfaces/locationInfo";
+import ICoordinates from "../../../interfaces/coordinates";
+import { coordinates2LocationInfo } from "../../../utils/location-utils";
+import CurrentWeather from "../CurrentWeather";
+import NavBar from "../../navbar/Navbar";
+import LocationInfo from "../../../contexts/location-info/LocationInfo";
+import ILocationInfo from "../../../interfaces/locationInfo";
 
 const Location = (props: any) => {
     const [locationInfo, setLocationInfo] = useState({

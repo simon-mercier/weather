@@ -1,52 +1,80 @@
 .current-weather {
     font-size: 4em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30vh;
+    z-index: 1;
 
     .city {
-        .btn-location:focus {
-            outline: none;
-            box-shadow: none;
+        padding: 8px;
+        margin: 8px;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.4);
+        z-index: 1;
+
+        > i,
+        > .city-text {
+            color: $beige;
         }
     }
 
     .temperature {
+        z-index: 1;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        align-self: center;
+        align-items: center;
         justify-content: center;
 
         .temp {
-            grid-column: 2;
             margin: $big-margin;
-            font-size: 2em;
+            font-size: 3em;
             color: $beige;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: baseline;
+            margin-left: 0.4em;
+            .c {
+                font-size: 0.4em;
+                opacity: 0.75;
+            }
         }
 
         .feels-like {
-            grid-column: 3;
             margin: $big-margin;
             display: flex;
+            flex-wrap: wrap;
             flex-direction: column;
 
             .feels-like-text {
-                font-size: 0.5em;
+                opacity: 0.75;
+                font-size: 0.4em;
             }
         }
 
         .high-low {
-            grid-column: 1;
             margin: $big-margin;
             display: flex;
+            flex-wrap: wrap;
             flex-direction: column;
+            .high,
+            .low {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                .high-text,
+                .low-text {
+                    opacity: 0.75;
+                    font-size: 0.4em;
+                }
+            }
         }
     }
 
     .weather {
+        font-size: 0.75em;
         display: flex;
         flex-direction: column;
         align-items: center;

@@ -1,6 +1,7 @@
 import { random, randomMinMax } from "../../utils/code-utils";
 import styled, { keyframes } from "styled-components";
 import Sun1 from "../../assets/svg/sun-1.svg";
+import { TimesOfDay } from "../../enums/timesOfDay";
 
 const MAX_ANIMATION_TIME = 1000;
 interface CloudProps {

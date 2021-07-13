@@ -1,16 +1,16 @@
 import ICoordinates from "./coordinates";
 
 export default interface ILocationInfo {
-    coordinates: ICoordinates,
-    
-    countryName?: string,
-    countryCode?: string,
+    coordinates: ICoordinates;
 
-    principalSubdivision?: string,
-    principalSubdivisionCode?: string,
+    countryName?: string;
+    countryCode?: string;
 
-    city?: string,
+    principalSubdivision?: string;
+    principalSubdivisionCode?: string;
 
-    timezone?: string,
-    language?: string,
+    city?: string;
+
+    timezone?: string;
+    language?: string;
 }

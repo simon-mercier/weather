@@ -1,31 +1,36 @@
-@mixin translate-left($name, $width) {
-  @keyframes #{$name} {
-    0% {left : - $width }
-    100% {left : 100%}
-  }
+@mixin translate-left($name) {
+    @keyframes #{$name} {
+        0% {
+            left: -35%;
+        }
+        100% {
+            left: 100%;
+        }
+    }
 }
 
-@mixin translate-right($name, $width) {
-  @keyframes #{$name} {
-    0% {left : 100%}
-    100% {left : -$width}
-  }
+@mixin translate-right($name) {
+    @keyframes #{$name} {
+        0% {
+            left: 100%;
+        }
+        100% {
+            left: -35%;
+        }
+    }
 }
 
-@mixin translate-left-animation($name, $width) {
-    @include translate-left($name, $width);
+@mixin translate-left-animation($name) {
+    @include translate-left($name);
     @include animation($name);
 }
 
-
-
-@mixin translate-right-animation($name, $width) {
-    @include translate-right($name, $width);
+@mixin translate-right-animation($name) {
+    @include translate-right($name);
     @include animation($name);
 }
 
 @mixin animation($name) {
-    
     -webkit-animation-name: $name;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;

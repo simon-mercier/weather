@@ -1,31 +1,7 @@
-#partially-cloudy > .cloud-1 {
-    @include translate-left-animation(c1, 20%);
-}
-
-#partially-cloudy > .cloud-2 {
-    @include translate-right-animation(c2, 35%);
-}
-
-#partially-cloudy > .large-cloud-1 {
-    @include translate-left-animation(c4, 10%);
-}
-
-#partially-cloudy > .large-cloud-2 {
-    @include translate-left-animation(c3, 15%);
-}
-
-#partially-cloudy > .large-cloud-3 {
-    @include translate-left-animation(c4, 20%);
-}
-
-#partially-cloudy > .large-cloud-4 {
-    @include translate-left-animation(c5, 10%);
-}
-
 .sun-1 {
     position: absolute;
     width: 25%;
-    top:5%;
+    top: 5%;
     transform: translateX(-50%);
     left: 50%;
 }

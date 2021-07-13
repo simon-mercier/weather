@@ -1,4 +1,3 @@
-
 export enum WeatherType {
     CLEAR,
     PARTIALLY_CLOUDY,

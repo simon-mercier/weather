@@ -1,0 +1,54 @@
+.current-weather {
+    font-size: 4em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    .city {
+        .btn-location:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .temperature {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-self: center;
+        justify-content: center;
+
+        .temp {
+            grid-column: 2;
+            margin: $big-margin;
+            font-size: 2em;
+            color: $beige;
+        }
+
+        .feels-like {
+            grid-column: 3;
+            margin: $big-margin;
+            display: flex;
+            flex-direction: column;
+
+            .feels-like-text {
+                font-size: 0.5em;
+            }
+        }
+
+        .high-low {
+            grid-column: 1;
+            margin: $big-margin;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .weather {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

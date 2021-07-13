@@ -2,14 +2,14 @@ import { WeatherType } from "../enums/weatherType";
 import ITemperature from "./temperature";
 
 export default interface ICurrentWeather {
-    temperature: ITemperature,
+    temperature: ITemperature;
 
-    weatherDescription: string,
-    weatherType?: WeatherType,
+    weatherDescription: string;
+    weatherType?: WeatherType;
 
-    pressure: number,
+    pressure: number;
 
-    humidity: number,
+    humidity: number;
 
-    windSpeed: number,
+    windSpeed: number;
 }

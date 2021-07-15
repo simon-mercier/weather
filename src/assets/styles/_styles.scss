@@ -1,0 +1,8 @@
+@mixin frosted {
+    border: none;
+    outline: none;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.7);
+}

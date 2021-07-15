@@ -17,10 +17,10 @@ import DarkLargeCloud3 from "../../assets/svg/large-dark-cloud-3.svg";
 import DarkLargeCloud4 from "../../assets/svg/large-dark-cloud-4.svg";
 
 import { Cloud, Distance, Sun } from "./CurrentWeatherBackgroundStyles";
-import { WeatherType } from "../../enums/weatherType";
+import WeatherType from "../../enums/weatherType";
 import { id2Type } from "../../utils/weather-utils";
 import ICurrentWeather from "../../interfaces/currentWeather";
-import { TimesOfDay } from "../../enums/timesOfDay";
+import TimesOfDay from "../../enums/timesOfDay";
 
 export type WeatherId = {
     id: number;
@@ -31,8 +31,8 @@ const CurrentWeatherBackground = ({ id }: WeatherId) => {
 
 export default CurrentWeatherBackground;
 
-const partiallyCloudy: JSX.Element = (
-    <div className="partially-cloudy">
+const partlyCloudy: JSX.Element = (
+    <div className="partly-cloudy">
         <Sun />
         <Cloud source={LargeCloud1} distance={Distance.FAR} />
         <Cloud source={LargeCloud2} distance={Distance.FAR} />
@@ -47,6 +47,19 @@ const partiallyCloudy: JSX.Element = (
 
 const cloudy: JSX.Element = (
     <div className="cloudy">
+        <svg
+            className="filter"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 100 61.98"
+        >
+            <title>cloud-1</title>
+            <path
+                id="cloud"
+                d="M9.42,47.21C8.36,46.44.18,40.35,0,30.36-.2,18.79,10.44,9.17,18.84,9.3c7.76.12,8.75,8.49,16.75,9.47C47,20.18,50.92,3.86,65.94.87c11.22-2.23,25.66,3.6,31.4,14.75,6.22,12.09.47,27.11-6.28,34.75C76.83,66.44,43.57,66.24,9.42,47.21Z"
+            />
+        </svg>
         <Cloud source={LargeCloud1} distance={Distance.FAR} />
         <Cloud source={LargeCloud2} distance={Distance.FAR} />
         <Cloud source={LargeCloud3} distance={Distance.FAR} />
@@ -259,7 +272,7 @@ const watherConditionMap: Map<WeatherType, JSX.Element> = new Map<
     JSX.Element
 >([
     [WeatherType.CLEAR, clear],
-    [WeatherType.PARTIALLY_CLOUDY, partiallyCloudy],
+    [WeatherType.PARTLY_CLOUDY, partlyCloudy],
     [WeatherType.RAIN, rain],
     [WeatherType.CLOUDY, cloudy],
     [WeatherType.DRIZZLE, drizzle],

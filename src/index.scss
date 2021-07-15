@@ -1,21 +1,22 @@
-@font-face {
-    font-family: "Comfortaa";
-    font-style: normal;
-    font-weight: normal;
-    src: url(./assets/fonts/Comfortaa-Regular.ttf) format("truetype");
-}
-@font-face {
-    font-family: "Comfortaa";
-    font-style: light;
-    font-weight: normal;
-    src: url(./assets/fonts/Comfortaa-Bold.ttf) format("truetype");
-}
-@font-face {
-    font-family: "Comfortaa";
-    font-style: normal;
-    font-weight: bold;
-    src: url(./assets/fonts/Comfortaa-Light.ttf) format("truetype");
-}
+// @font-face {
+//     font-family: "Comfortaa";
+//     font-style: normal;
+//     font-weight: normal;
+//     src: url(./assets/fonts/Comfortaa-Regular.ttf) format("truetype");
+// }
+// @font-face {
+//     font-family: "Comfortaa";
+//     font-style: light;
+//     font-weight: normal;
+//     src: url(./assets/fonts/Comfortaa-Bold.ttf) format("truetype");
+// }
+// @font-face {
+//     font-family: "Comfortaa";
+//     font-style: normal;
+//     font-weight: bold;
+//     src: url(./assets/fonts/Comfortaa-Light.ttf) format("truetype");
+// }
+@import url("http://fonts.cdnfonts.com/css/avenir-next-lt-pro");
 @font-face {
     font-family: "Dillan";
     font-style: normal;
@@ -26,11 +27,13 @@
 body {
     margin: 0;
     background-color: background_color;
-    // font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-    font-family: Dillan;
+    // font-family: -apple-system, BlinkMacSystemFont, "Avenir Next LT Pro",
+    //     sans-serif;
+    font-family: "Avenir Next LT Pro", sans-serif;
+    font-weight: 500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 code {

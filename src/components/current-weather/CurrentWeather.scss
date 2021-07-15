@@ -1,82 +1,112 @@
 .current-weather {
-    font-size: 4em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 30vh;
-    z-index: 1;
-
-    .city {
-        padding: 8px;
-        margin: 8px;
-        border-radius: 8px;
-        background-color: rgba(255, 255, 255, 0.4);
-        z-index: 1;
-
-        > i,
-        > .city-text {
-            color: $beige;
-        }
-    }
-
-    .temperature {
-        z-index: 1;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-
-        .temp {
-            margin: $big-margin;
-            font-size: 3em;
-            color: $beige;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: baseline;
-            margin-left: 0.4em;
-            .c {
-                font-size: 0.4em;
-                opacity: 0.75;
-            }
-        }
-
-        .feels-like {
-            margin: $big-margin;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-
-            .feels-like-text {
-                opacity: 0.75;
-                font-size: 0.4em;
-            }
-        }
-
-        .high-low {
-            margin: $big-margin;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            .high,
-            .low {
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: column;
-                .high-text,
-                .low-text {
-                    opacity: 0.75;
-                    font-size: 0.4em;
-                }
-            }
-        }
-    }
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 
     .weather {
-        font-size: 0.75em;
+        z-index: 1;
+        font-size: 4rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        .city {
+            font-family: "Avenir Next LT Pro", sans-serif;
+            font-weight: bold;
+            margin-left: -54px;
+        }
+
+        .temperature {
+            font-family: Dillan;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+
+            @include breakpoints("mobile") {
+                align-items: flex-start;
+            }
+
+            .temp {
+                order: 2;
+                margin: $big-margin;
+                font-size: 3em;
+                color: $beige;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                margin-left: 0.2em;
+                font-family: Dillan;
+
+                @include breakpoints("mobile") {
+                    order: 1;
+                }
+            }
+            .feels-like-humidity {
+                order: 3;
+                @include breakpoints("mobile") {
+                    order: 3;
+                    padding: 0px 32px;
+                }
+                margin: $big-margin;
+
+                .feels-like,
+                .humidity {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    .feels-like-text,
+                    .humidity-text {
+                        font-family: "Avenir Next LT Pro";
+                        opacity: 0.75;
+                        font-size: 0.4em;
+                    }
+                }
+            }
+
+            .high-low {
+                order: 1;
+                margin: $big-margin;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+
+                @include breakpoints("mobile") {
+                    order: 2;
+                    padding: 0px 32px;
+                }
+                .high,
+                .low {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    .high-text,
+                    .low-text {
+                        font-family: "Avenir Next LT Pro";
+                        opacity: 0.75;
+                        font-size: 0.4em;
+                    }
+                }
+            }
+        }
+
+        .weather-description {
+        }
+    }
+    .unit {
+        margin-top: 1em;
+        font-size: 2rem;
+        opacity: 0.75;
+    }
+    .widgets {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-shrink: initial;
     }
 }

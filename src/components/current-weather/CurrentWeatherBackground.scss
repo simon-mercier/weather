@@ -1,0 +1,35 @@
+#Layer_1,
+#cloud {
+    fill: red;
+}
+
+.filter {
+    position: relative;
+    -webkit-filter: contrast(82%) brightness(130%) saturate(110%);
+    filter: contrast(82%) brightness(130%) saturate(110%);
+    width: 20vw;
+}
+.filter::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+    background: -webkit-radial-gradient(
+        50% 50%,
+        circle closest-corner,
+        rgba(255, 177, 166, 1) 50,
+        rgba(52, 33, 52, 1)
+    );
+    background: radial-gradient(
+        50% 50%,
+        circle closest-corner,
+        rgba(255, 177, 166, 1) 50,
+        rgba(52, 33, 52, 1)
+    );
+}

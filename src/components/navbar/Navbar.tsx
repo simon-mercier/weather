@@ -1,33 +1,16 @@
 import "./Navbar.scss";
 import { useState } from "react";
 
-export const sections = [
-    "Current Weather",
-    "Daily Weather",
-    "Weekly Weather",
-    "About",
-];
+import Search from "../search/Search";
 
 export default function NavBar() {
-    const [sectionNumber, setSection]: [number, any] = useState(0);
-
     return (
-        <section>
-            <div className="container">
-                <nav>
-                    <div>
-                        <h2>{getSectionText(sectionNumber - 1)}</h2>
-                        <h1>{getSectionText(sectionNumber)}</h1>
-                        <h2>{getSectionText(sectionNumber + 1)}</h2>
-                    </div>
-                    <div className="title color-dark-green">
-                        Beautiful Weather
-                    </div>
-                </nav>
+        <nav className="container">
+            <div className="title">Beautiful Weather 🍂</div>
+
+            <div className="search-bar">
+                <Search />
             </div>
-        </section>
+        </nav>
     );
 }
-
-const getSectionText = (sectionNumber: number): string =>
-    sections[sectionNumber % sections.length];

@@ -1,0 +1,67 @@
+.input-with-icon {
+    @include frosted;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    color: $beige;
+    width: fit-content;
+
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 0 1rem rgba(58, 57, 57, 0.2);
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.2);
+    }
+    &:active {
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.3);
+        border: none;
+    }
+    &:focus {
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.3);
+        border: none;
+    }
+
+    i {
+        margin: $margin;
+        width: fit-content;
+    }
+
+    input {
+        font-size: 1em;
+        cursor: text;
+        width: fit-content;
+        height: 1rem;
+        margin: $margin;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+    }
+}
+
+ul {
+    @include frosted;
+    padding: $small-margin;
+    color: $beige;
+    li {
+        @include frosted;
+        margin: $small-margin;
+        list-style-type: none;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.2);
+        }
+        &:active {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.3);
+            border: none;
+        }
+    }
+}

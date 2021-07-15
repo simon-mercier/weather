@@ -1,11 +1,8 @@
-export enum TimesOfDay {
+enum TimesOfDay {
     MORNING,
-    AFTERNOON,
+    DAY,
     EVENING,
     NIGHT,
-    DAWN,
-    DUSK,
-    SUNRISE,
-    SUNSET,
-    DAY,
 }
+
+export default TimesOfDay;

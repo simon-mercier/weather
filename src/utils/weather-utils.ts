@@ -1,4 +1,4 @@
-import { WeatherType } from "../enums/weatherType";
+import WeatherType from "../enums/weatherType";
 import ICoordinates from "../interfaces/coordinates";
 import ICurrentWeather from "../interfaces/currentWeather";
 import ITemperature from "../interfaces/temperature";
@@ -89,7 +89,7 @@ const id2WeatherType = new Map<number, WeatherType>([
     [621, WeatherType.SNOW],
     [622, WeatherType.SNOW],
 
-    [701, WeatherType.CLEAR],
+    [701, WeatherType.DRIZZLE],
     [711, WeatherType.CLEAR],
     [721, WeatherType.CLEAR],
     [731, WeatherType.CLEAR],
@@ -97,13 +97,13 @@ const id2WeatherType = new Map<number, WeatherType>([
     [751, WeatherType.CLEAR],
     [761, WeatherType.CLEAR],
     [762, WeatherType.CLEAR],
-    [771, WeatherType.CLEAR],
-    [781, WeatherType.CLEAR],
+    [771, WeatherType.RAIN],
+    [781, WeatherType.THUNDERSTORM],
 
     [800, WeatherType.CLEAR],
 
-    [801, WeatherType.PARTIALLY_CLOUDY],
-    [802, WeatherType.CLOUDY],
+    [801, WeatherType.PARTLY_CLOUDY],
+    [802, WeatherType.PARTLY_CLOUDY],
     [803, WeatherType.CLOUDY],
     [804, WeatherType.OVERCAST],
 ]);

@@ -3,14 +3,13 @@ import ILocationInfo from "../../interfaces/locationInfo";
 import CurrentWeatherBackground from "./CurrentWeatherBackground";
 import { useLocationInfoContext } from "../../contexts/location-info/LocationInfo";
 import ICurrentWeather from "../../interfaces/currentWeather";
-import {
-    coordinates2CurrentWeather,
-    k2c,
-    k2cString,
-} from "../../utils/weather-utils";
+import { coordinates2CurrentWeather, k2c } from "../../utils/weather-utils";
 import { useEffect, useState, useCallback } from "react";
 import { capitalizeFirstLetter } from "../../utils/code-utils";
 import styled from "styled-components";
+import TimesOfDay from "../../enums/timesOfDay";
+import WeatherType from "../../enums/weatherType";
+import TimeOfDay from "./CurrentWeatherAtmosphere";
 
 const Widget = styled.div`
     width: 150px;
@@ -19,6 +18,7 @@ const Widget = styled.div`
     margin: 8px;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 1rem rgba(58, 57, 57, 0.2);
 `;
 const CurrentWeather = () => {
     const locationInfo: ILocationInfo = useLocationInfoContext();
@@ -40,6 +40,11 @@ const CurrentWeather = () => {
 
     return (
         <>
+            <TimeOfDay
+                timeOfDay={TimesOfDay.DAY}
+                weatherType={WeatherType.CLEAR}
+            />
+            <CurrentWeatherBackground id={currentWeather.weatherId} />
             {currentWeather.weatherDescription && locationInfo && (
                 <section className="current-weather">
                     <section className="weather">
@@ -64,27 +69,36 @@ const CurrentWeather = () => {
                                 <span>
                                     {k2c(currentWeather.temperature.temp)}
                                 </span>
-                                <span className="c">°C</span>
+                                <span className="unit">°C</span>
                             </div>
-                            <div className="feels-like">
-                                <span className="feels-like-text">
-                                    feels
-                                    <br />
-                                    like
-                                </span>
-                                <span>
-                                    {" " +
-                                        k2c(
-                                            currentWeather.temperature.feelsLike
-                                        )}
-                                </span>
+                            <div className="feels-like-humidity">
+                                <div className="feels-like">
+                                    <span className="feels-like-text">
+                                        feels like
+                                    </span>
+                                    <span>
+                                        {" " +
+                                            k2c(
+                                                currentWeather.temperature
+                                                    .feelsLike
+                                            )}
+                                    </span>
+                                </div>
+                                <div className="humidity">
+                                    <span className="humidity-text">
+                                        humidity
+                                    </span>
+                                    <span>
+                                        {currentWeather.humidity}
+                                        <span className="unit">%</span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div className="weather-description">
                             {capitalizeFirstLetter(
                                 currentWeather.weatherDescription
-                            ) + " "}
-                            currently
+                            )}
                         </div>
                     </section>
                     <section className="widgets">
@@ -94,8 +108,6 @@ const CurrentWeather = () => {
                     </section>
                 </section>
             )}
-
-            <CurrentWeatherBackground id={currentWeather.weatherId} />
         </>
     );
 };

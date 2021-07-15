@@ -36,6 +36,24 @@ export const coordinates2LocationInfo = async (
         );
 };
 
+export const cityAutocomplete = async (
+    input: string
+): Promise<[] | undefined> => {
+    return await fetch(
+        `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&types=(cities)&language=en&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
+    )
+        .then((res) => res.json())
+        .then(
+            (result) => {
+                return result.prediction;
+            },
+            (error) => {
+                console.error(error);
+                return undefined;
+            }
+        );
+};
+
 const getGeolocation = async (): Promise<ILocationInfo | undefined> => {
     return new Promise(function (resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);

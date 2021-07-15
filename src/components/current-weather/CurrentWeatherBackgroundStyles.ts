@@ -1,7 +1,7 @@
 import { random, randomMinMax } from "../../utils/code-utils";
 import styled, { keyframes } from "styled-components";
 import Sun1 from "../../assets/svg/sun-1.svg";
-import { TimesOfDay } from "../../enums/timesOfDay";
+import TimesOfDay from "../../enums/timesOfDay";
 
 const MAX_ANIMATION_TIME = 1000;
 interface CloudProps {
@@ -31,7 +31,7 @@ const distance2Range = new Map<Distance, any>([
             [350, 500],
             [25, 35],
             [90, 97],
-            [-15, 10],
+            [-15, 5],
         ],
     ],
     [
@@ -39,8 +39,8 @@ const distance2Range = new Map<Distance, any>([
         [
             [750, 1250],
             [20, 15],
-            [70, 80],
-            [-5, 10],
+            [75, 80],
+            [-5, 5],
         ],
     ],
     [
@@ -48,8 +48,8 @@ const distance2Range = new Map<Distance, any>([
         [
             [2000, 3000],
             [15, 7],
-            [50, 60],
-            [-10, 10],
+            [70, 75],
+            [-10, 5],
         ],
     ],
 ]);
@@ -89,7 +89,7 @@ const randomDelay = () => random(MAX_ANIMATION_TIME);
 export const Sun = styled.img`
     content: url(${() => Sun1});
     position: absolute;
-    width: 25%;
+    width: 10vw;
     top: 5%;
     transform: translateX(-50%);
     left: 50%;

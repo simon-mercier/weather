@@ -1,4 +1,3 @@
-import { WeatherType } from "../enums/weatherType";
 import ITemperature from "./temperature";
 
 export default interface ICurrentWeather {

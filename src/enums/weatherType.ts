@@ -1,6 +1,6 @@
-export enum WeatherType {
+enum WeatherType {
     CLEAR,
-    PARTIALLY_CLOUDY,
+    PARTLY_CLOUDY,
     CLOUDY,
     OVERCAST,
     RAIN,
@@ -8,3 +8,5 @@ export enum WeatherType {
     SNOW,
     THUNDERSTORM,
 }
+
+export default WeatherType;

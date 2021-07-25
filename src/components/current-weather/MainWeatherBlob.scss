@@ -1,0 +1,35 @@
+.container {
+    position: absolute;
+
+    .weather {
+        position: inherit;
+        z-index: 1;
+        font-size: 4rem;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -60%);
+
+        .temperature {
+            font-size: 2em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            .unit {
+                margin-top: 1em;
+                font-size: 2rem;
+                opacity: 0.75;
+            }
+        }
+
+        .weather-description {
+            font-size: 0.75em;
+            opacity: 80%;
+        }
+    }
+
+    .blob {
+        width: 60rem;
+        z-index: -1;
+        margin: -3rem;
+    }
+}

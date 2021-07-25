@@ -1,9 +1,9 @@
 import "./App.scss";
-import Location from "./components/location/Location";
+import LocationManager from "./components/location/LocationManager";
 import "./components/navbar/Navbar.tsx";
 
 function App() {
-    return <Location></Location>;
+    return <LocationManager></LocationManager>;
 }
 
 export default App;

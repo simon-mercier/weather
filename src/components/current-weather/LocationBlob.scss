@@ -1,0 +1,32 @@
+.location-container {
+    position: absolute;
+    left: 60rem;
+    top: 1rem;
+
+    .location-blob {
+        position: inherit;
+        z-index: -1;
+        width: 50rem;
+    }
+
+    .city {
+        position: relative;
+        margin-left: 10rem;
+        margin-top: 10rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        font-size: 4rem;
+        i {
+            font-size: 2rem !important;
+            margin-right: 1rem;
+        }
+    }
+    .search-bar {
+        position: relative;
+        margin-left: 10rem;
+        margin-top: 2rem;
+        width: 100%;
+    }
+}

@@ -1,11 +1,15 @@
 import ICoordinates from "./interfaces/coordinates";
-import ILocationInfo from "./interfaces/locationInfo";
+import ILocation from "./interfaces/location";
 
-export const DEFAULT_LOCATION = {
-    coordinates: {
-        longitude: -73.561668,
-        latitude: 45.508888,
-    } as ICoordinates,
+export const DEFAULT_LOCATION_COORDINATES = {
+    longitude: -73.561668,
+    latitude: 45.508888,
+} as ICoordinates;
 
-    city: "Montreal",
-} as ILocationInfo;
+export const DEFAULT_LOCATION_CITY = "Montreal";
+
+export const DEFAULT_LOCATION: ILocation = {
+    locationFormatted: "Montreal, QC, Canada",
+    location: ["Montreal", "QC", "Canada"],
+    placeId: "",
+};

@@ -1,51 +1,48 @@
+import ILocation from "../interfaces/location";
 import ICoordinates from "../interfaces/coordinates";
-import ILocationInfo from "../interfaces/locationInfo";
 
-export const coordinates2LocationInfo = async (
-    coordinates: ICoordinates
-): Promise<ILocationInfo | undefined> => {
-    return await fetch(
-        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&localityLanguage=en`
-    )
-        .then((res) => res.json())
-        .then(
-            (result) => {
-                return {
-                    coordinates: {
-                        longitude: result.longitude,
-                        latitude: result.latitude,
-                    } as ICoordinates,
+// export const coordinates2LocationInfo = async (
+//     coordinates: ICoordinates
+// ): Promise<ILocation | undefined> => {
+//     return await fetch(
+//         `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&localityLanguage=en`
+//     )
+//         .then((res) => res.json())
+//         .then(
+//             (result) => {
+//                 return {
+//                     coordinates: coordinates,
 
-                    country: result.countryName ?? undefined,
-                    countryCode: result.countryCode ?? undefined,
+//                     country: result.countryName ?? undefined,
 
-                    principalSubdivision:
-                        result.principalSubdivision ?? undefined,
-                    principalSubdivisionCode:
-                        result.principalSubdivisionCode ?? undefined,
+//                     city: result.city ?? undefined,
+//                 } as ILocation;
+//             },
+//             (error) => {
+//                 console.error(error);
+//                 return undefined;
+//             }
+//         );
+// };
 
-                    city: result.city ?? undefined,
-
-                    language: "en",
-                } as ILocationInfo;
-            },
-            (error) => {
-                console.error(error);
-                return undefined;
-            }
-        );
-};
-
-export const cityAutocomplete = async (
+export const cityPredictions = async (
     input: string
-): Promise<[] | undefined> => {
+): Promise<[ILocation] | undefined> => {
     return await fetch(
         `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&types=(cities)&language=en&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
     )
         .then((res) => res.json())
         .then(
             (result) => {
-                return result.prediction;
+                return result.predictions.map((prediction: any) => {
+                    return {
+                        location: prediction.terms.map((term: any) => {
+                            return term.value;
+                        }),
+                        placeId: prediction.place_id,
+                        locationFormatted: prediction.description,
+                    } as ILocation;
+                });
             },
             (error) => {
                 console.error(error);
@@ -54,7 +51,29 @@ export const cityAutocomplete = async (
         );
 };
 
-const getGeolocation = async (): Promise<ILocationInfo | undefined> => {
+export const placeId2Coordinates = async (
+    placeId: string
+): Promise<ICoordinates | undefined> => {
+    if (!placeId) return undefined;
+    return await fetch(
+        `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
+    )
+        .then((res) => res.json())
+        .then(
+            (result) => {
+                return {
+                    longitude: result.result.geometry.location.lng,
+                    latitude: result.result.geometry.location.lat,
+                } as ICoordinates;
+            },
+            (error) => {
+                console.error(error);
+                return undefined;
+            }
+        );
+};
+
+const getGeolocation = async (): Promise<ICoordinates | undefined> => {
     return new Promise(function (resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
     })
@@ -63,11 +82,9 @@ const getGeolocation = async (): Promise<ILocationInfo | undefined> => {
             let latitude = coords.coords.latitude;
             let longitude = coords.coords.longitude;
             return {
-                coordinates: {
-                    longitude: longitude,
-                    latitude: latitude,
-                } as ICoordinates,
-            } as ILocationInfo;
+                longitude: longitude,
+                latitude: latitude,
+            } as ICoordinates;
         })
         .catch((error) => {
             console.error(error);

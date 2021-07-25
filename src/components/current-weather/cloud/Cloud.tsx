@@ -4,7 +4,7 @@ import Gradients from "./Gradients";
 import "./Cloud.scss";
 import WeatherType from "../../../enums/weatherType";
 import ICurrentWeather from "../../../interfaces/currentWeather";
-import { useCurrentWeatherInfoContext } from "../../../contexts/location-info/CurrentWeatherInfo";
+import { useCurrentWeatherInfoContext } from "../../../contexts/CurrentWeatherInfo";
 import { id2Type } from "../../../utils/weather-utils";
 
 export const CLOUD_1 =

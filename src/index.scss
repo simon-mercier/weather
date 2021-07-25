@@ -16,20 +16,25 @@
 //     font-weight: bold;
 //     src: url(./assets/fonts/Comfortaa-Light.ttf) format("truetype");
 // }
-@import url("http://fonts.cdnfonts.com/css/avenir-next-lt-pro");
+
 @font-face {
-    font-family: "Dillan";
-    font-style: normal;
-    font-weight: normal;
-    src: url(./assets/fonts/Dillan.otf);
+    font-family: gotham;
+    font-style: book;
+    src: url(../src/assets/fonts/Gotham-Book.otf) format("opentype");
+}
+
+@font-face {
+    font-family: gotham;
+    font-style: light;
+    src: url(../src/assets/fonts/Gotham-Light.otf) format("opentype");
 }
 
 body {
     margin: 0;
     background-color: background_color;
-    font-family: -apple-system, BlinkMacSystemFont, "Avenir Next LT Pro",
-        sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "gotham", sans-serif;
     font-weight: 500;
+    font-style: book;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;

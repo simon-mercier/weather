@@ -1,7 +1,4 @@
 import "./Navbar.scss";
-import { useState } from "react";
-
-import Search from "../search/Search";
 
 export default function NavBar() {
     return (

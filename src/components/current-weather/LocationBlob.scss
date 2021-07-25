@@ -1,12 +1,11 @@
 .location-container {
-    position: absolute;
-    left: 60rem;
-    top: 1rem;
+    position: inherit;
+    width: 30rem;
 
     .location-blob {
-        position: inherit;
-        z-index: -1;
         width: 50rem;
+        left: 0;
+        z-index: -1;
     }
 
     .city {

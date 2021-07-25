@@ -13,15 +13,31 @@ const MainWeatherBlob = () => {
         <section className="container">
             <img className="blob" src={CurrentWeatherBlob} />
 
-            {/* <section className="weather">
-                <div className="temperature">
-                    <span>{k2c(currentWeather?.temperature?.temp)}</span>
-                    <span className="unit">°C</span>
-                </div>
-                <div className="weather-description">
-                    {capitalizeFirstLetter(currentWeather?.weatherDescription)}
-                </div>
-            </section> */}
+            {currentWeather && (
+                <section className="weather">
+                    <div className="temperature">
+                        <span>{k2c(currentWeather.temperature.temp)}</span>
+                        <span className="unit">°C</span>
+                    </div>
+                    <br />
+                    <div className="feels-like">
+                        feels like {k2c(currentWeather.temperature.feelsLike)}
+                    </div>
+                    <br />
+                    <div className="high-low">
+                        with a high of {k2c(currentWeather.temperature.tempMax)}{" "}
+                        <br /> and a low of{" "}
+                        {k2c(currentWeather.temperature.tempMin)}
+                    </div>
+                    <br />
+                    <br />
+                    <div className="weather-description">
+                        {capitalizeFirstLetter(
+                            currentWeather.weatherDescription
+                        )}
+                    </div>
+                </section>
+            )}
         </section>
     );
 };

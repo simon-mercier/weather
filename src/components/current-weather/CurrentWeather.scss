@@ -1,65 +1,11 @@
-.current-weather {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: flex-start;
-    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+.location-blob {
+    position: absolute;
+    left: 60rem;
+    top: 1rem;
+}
 
-    .weather-other {
-        .feels-like-humidity {
-            margin: $big-margin;
-            margin-left: 0;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            .feels-like,
-            .humidity {
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: column;
-                width: calc(1.5 * fit-content);
-
-                .feels-like-text,
-                .humidity-text {
-                    opacity: 0.75;
-                    font-size: 0.4em;
-                }
-            }
-        }
-
-        .high-low {
-            order: 1;
-            margin: $big-margin;
-
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-
-            @include breakpoints("mobile") {
-                order: 2;
-                padding: 0px 32px;
-            }
-            .high,
-            .low {
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: column;
-                width: calc(1.5 * fit-content);
-
-                .high-text,
-                .low-text {
-                    opacity: 0.75;
-                    font-size: 0.4em;
-                }
-            }
-        }
-    }
-
-    .widgets {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        flex-shrink: initial;
-    }
+.main-weather-blob {
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
 }

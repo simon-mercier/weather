@@ -13,7 +13,7 @@ import {
 
 import currentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
-import MainWeatherBlob from "./MainWeatherBlob";
+import MainWeather from "./MainWeather";
 import LocationBlob from "./LocationBlob";
 import LocationContext from "../../contexts/Location";
 import Location from "../../classes/Location";
@@ -45,11 +45,11 @@ const CurrentWeather = () => {
         <currentWeatherInfo.Provider value={currentWeather}>
             {currentWeather.weatherDescription && location && (
                 <div>
-                    <div className="location-blob">
+                    {/* <div className="location-blob">
                         <LocationBlob />
-                    </div>
-                    <div className="main-weather-blob">
-                        <MainWeatherBlob />
+                    </div> */}
+                    <div className="main-weather">
+                        <MainWeather />
                     </div>
                 </div>
             )}

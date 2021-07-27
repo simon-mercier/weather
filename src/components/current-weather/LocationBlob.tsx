@@ -14,15 +14,17 @@ const LocationBlob = () => {
     return (
         <section className="location-container">
             <img className="location-blob" src={LocationWeatherBlob} />
-            <div className="city">
-                <i className="fas fa-location-arrow"> </i>
-                <span className="city-text">
-                    {" " + location.location.location[0]}
-                </span>
-            </div>
+            <div className="location-search">
+                <div className="city">
+                    <i className="fas fa-location-arrow"> </i>
+                    <span className="city-text">
+                        {" " + location.location.location[0]}
+                    </span>
+                </div>
 
-            <div className="search-bar">
-                <Search />
+                <div className="search-bar">
+                    <Search />
+                </div>
             </div>
         </section>
     );

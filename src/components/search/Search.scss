@@ -4,6 +4,7 @@
     align-items: start;
     flex-direction: column;
     width: 100%;
+    color: white;
 
     .input-with-icon {
         @include frosted;
@@ -11,7 +12,7 @@
         justify-content: space-between;
         flex-direction: row;
         align-items: center;
-        color: white;
+
         width: 100%;
         padding: $small-margin;
         margin: $small-margin;
@@ -57,12 +58,14 @@
 
     ul {
         @include frosted;
+
         padding: $small-margin;
         margin: $small-margin;
-        color: white;
+
         width: 100%;
         li {
             @include frosted;
+            background-color: transparent;
             margin: $small-margin;
             list-style-type: none;
             &:hover {

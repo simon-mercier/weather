@@ -1,0 +1,40 @@
+.main-weather-container {
+    @include frosted;
+    @include morph-from-bottom(100vh);
+    width: min-content;
+    height: min-content;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    margin: $big-margin;
+
+    .temperature {
+        z-index: 1;
+        margin: $big-margin;
+
+        .temp {
+            @include morph-from-bottom(100vh);
+            font-size: 12.5rem;
+        }
+
+        .feels-like {
+            @include morph-from-bottom(200vh);
+            margin-top: 0;
+            font-size: 3rem;
+            opacity: 0.9;
+        }
+
+        .high-low {
+            @include morph-from-bottom(300vh);
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+    }
+    .weather {
+        margin: $big-margin;
+        .weather-description {
+            font-size: 5rem;
+            opacity: 80%;
+        }
+    }
+}

@@ -1,3 +1,19 @@
+@mixin morph-from-bottom($from) {
+    $name: inline-#{unique-id()};
+    @keyframes #{$name} {
+        from {
+            transform: translateY($from);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+    }
+    animation-timing-function: ease-in-out;
+    animation-duration: 2s;
+    animation-name: $name;
+}
+
 @mixin translate-left($name) {
     @keyframes #{$name} {
         0% {

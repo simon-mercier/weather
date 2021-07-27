@@ -4,8 +4,9 @@
     top: 1rem;
 }
 
-.main-weather-blob {
+.main-weather {
     position: absolute;
-    left: 0rem;
-    top: 0rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }

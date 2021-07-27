@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from "../../utils/code-utils";
 import { k2c } from "../../utils/weather-utils";
 import "./MainWeather.scss";
 
-const MainWeatherBlob = () => {
+const MainWeather = () => {
     const currentWeather: ICurrentWeather = useCurrentWeatherInfoContext();
     return (
         <section className="main-weather-container">
@@ -41,4 +41,4 @@ const MainWeatherBlob = () => {
     );
 };
 
-export default MainWeatherBlob;
+export default MainWeather;

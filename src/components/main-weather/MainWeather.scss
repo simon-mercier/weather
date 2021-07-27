@@ -2,11 +2,11 @@
     @include frosted;
     @include morph-from-bottom(100vh);
     width: min-content;
-    height: min-content;
-    color: black;
     display: flex;
     flex-direction: row;
-    margin: $big-margin;
+
+    padding: $big-margin;
+    border-radius: $big-margin;
 
     .temperature {
         z-index: 1;
@@ -33,6 +33,7 @@
     .weather {
         margin: $big-margin;
         .weather-description {
+            @include morph-from-bottom(100vh, 2s);
             font-size: 5rem;
             opacity: 80%;
         }

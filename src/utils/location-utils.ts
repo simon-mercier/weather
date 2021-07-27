@@ -1,30 +1,6 @@
 import ILocation from "../interfaces/location";
 import ICoordinates from "../interfaces/coordinates";
 
-// export const coordinates2LocationInfo = async (
-//     coordinates: ICoordinates
-// ): Promise<ILocation | undefined> => {
-//     return await fetch(
-//         `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&localityLanguage=en`
-//     )
-//         .then((res) => res.json())
-//         .then(
-//             (result) => {
-//                 return {
-//                     coordinates: coordinates,
-
-//                     country: result.countryName ?? undefined,
-
-//                     city: result.city ?? undefined,
-//                 } as ILocation;
-//             },
-//             (error) => {
-//                 console.error(error);
-//                 return undefined;
-//             }
-//         );
-// };
-
 export const cityPredictions = async (
     input: string
 ): Promise<[ILocation] | undefined> => {
@@ -56,7 +32,7 @@ export const placeId2Coordinates = async (
 ): Promise<ICoordinates | undefined> => {
     if (!placeId) return undefined;
     return await fetch(
-        `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
+        `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=geometry&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
     )
         .then((res) => res.json())
         .then(

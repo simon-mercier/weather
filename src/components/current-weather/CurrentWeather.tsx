@@ -1,7 +1,7 @@
 import "./CurrentWeather.scss";
 
 import ICurrentWeather from "../../interfaces/currentWeather";
-import { coordinates2CurrentWeather } from "../../utils/weather-utils";
+import { coordinates2CurrentWeather, id2Type } from "../../utils/weather-utils";
 import {
     useEffect,
     useState,
@@ -13,11 +13,14 @@ import {
 
 import currentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
-import MainWeather from "./MainWeather";
-import LocationBlob from "./LocationBlob";
+import MainWeather from "../main-weather/MainWeather";
+
 import LocationContext from "../../contexts/Location";
 import Location from "../../classes/Location";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
+import TimesOfDay from "../../enums/timesOfDay";
+import Atmosphere from "../../assets/styles/atmosphere";
+import WeatherType from "../../enums/weatherType";
 
 const CurrentWeather = () => {
     const [location, setLocation]: [
@@ -26,7 +29,7 @@ const CurrentWeather = () => {
     ] = useContext(LocationContext);
 
     const [currentWeather, setCurrentWeather] = useState({} as ICurrentWeather);
-
+    location.getTime();
     const fetchCurrentWeather = useCallback(async () => {
         setCurrentWeather(
             (await coordinates2CurrentWeather(
@@ -45,12 +48,14 @@ const CurrentWeather = () => {
         <currentWeatherInfo.Provider value={currentWeather}>
             {currentWeather.weatherDescription && location && (
                 <div>
-                    {/* <div className="location-blob">
-                        <LocationBlob />
-                    </div> */}
-                    <div className="main-weather">
-                        <MainWeather />
-                    </div>
+                    <Atmosphere
+                        timeOfDay={{} as TimesOfDay}
+                        weatherType={id2Type(currentWeather.weatherId)}
+                    >
+                        <div className="main-weather">
+                            <MainWeather />
+                        </div>
+                    </Atmosphere>
                 </div>
             )}
         </currentWeatherInfo.Provider>

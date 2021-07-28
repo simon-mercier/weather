@@ -32,6 +32,23 @@
     }
     .weather {
         margin: $big-margin;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50%;
+        height: 500px;
+        .weather-icons {
+            position: relative;
+            .cloud1 {
+                position: absolute;
+                width: 500px;
+                top: 50px;
+                left: 50%;
+            }
+            .cloud2 {
+                position: absolute;
+            }
+        }
         .weather-description {
             @include morph-from-bottom(100vh, 2s);
             font-size: 5rem;

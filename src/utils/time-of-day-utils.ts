@@ -25,22 +25,22 @@ export const coordinates2TimeOfDay = async (
 ): Promise<TimesOfDay | undefined> => {
     if (!coordinates) return undefined;
 
-    const timesOfDay = await coordinates2TimesOfDay(coordinates);
     const localeTime = new Date();
+    const timesOfDay = await coordinates2TimesOfDay(coordinates, localeTime);
 
     if (!timesOfDay || !localeTime) return undefined;
 
-    let currentTimeOfDay: TimesOfDay = TimesOfDay.DAY;
+    let currentTimeOfDay: TimesOfDay | undefined = undefined;
     for (let i = 0; i < timesOfDay.length - 1; i++) {
         if (
             localeTime > timesOfDay[i][1] &&
             localeTime < timesOfDay[i + 1][1]
         ) {
-            currentTimeOfDay = timesOfDay[i + 1][0];
+            currentTimeOfDay = timesOfDay[i][0];
         }
     }
 
-    return timeOfDay2DayCycle.get(currentTimeOfDay);
+    return timeOfDay2DayCycle.get(currentTimeOfDay ?? TimesOfDay.NIGHT);
 };
 
 const timeOfDay2DayCycle = new Map<TimesOfDay, TimesOfDay>([
@@ -64,11 +64,14 @@ const timeOfDay2DayCycle = new Map<TimesOfDay, TimesOfDay>([
 ]);
 
 const coordinates2TimesOfDay = async (
-    coordinates: ICoordinates
+    coordinates: ICoordinates,
+    date: Date
 ): Promise<Array<[TimesOfDay, Date]> | undefined> => {
     if (!coordinates) return undefined;
     return await fetch(
-        `https://api.sunrise-sunset.org/json?lat=${coordinates.latitude}&lng=${coordinates.longitude}&formatted=0&date=2021-07-27`
+        `https://api.sunrise-sunset.org/json?lat=${coordinates.latitude}&lng=${
+            coordinates.longitude
+        }&formatted=0&date=${date.toDateString()}`
     )
         .then((res) => res.json())
         .then(

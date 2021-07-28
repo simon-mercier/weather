@@ -9,7 +9,7 @@ export const DEFAULT_LOCATION_COORDINATES = {
 export const DEFAULT_LOCATION_CITY = "Montreal";
 
 export const DEFAULT_LOCATION: ILocation = {
-    locationFormatted: "Montreal, QC, Canada",
     location: ["Montreal", "QC", "Canada"],
-    placeId: "",
+    placeId: "ChIJDbdkHFQayUwR7-8fITgxTmU",
+    locationFormatted: "Montreal, QC, Canada",
 };

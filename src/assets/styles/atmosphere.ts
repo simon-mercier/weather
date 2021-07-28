@@ -34,7 +34,35 @@ const timeOfDay2Atmosphere = new Map<TimesOfDay, Map<WeatherType, string>>([
         ]),
     ],
     [
-        TimesOfDay.EVENING,
+        TimesOfDay.EVENING_CIVIL_TWILIGHT,
+
+        new Map<WeatherType, string>([
+            [WeatherType.CLEAR, clearEvening],
+            [WeatherType.PARTLY_CLOUDY, clearEvening],
+            [WeatherType.CLOUDY, darkDay],
+            [WeatherType.OVERCAST, darkDay],
+            [WeatherType.DRIZZLE, darkDay],
+            [WeatherType.RAIN, darkDay],
+            [WeatherType.THUNDERSTORM, thunderstorm],
+            [WeatherType.SNOW, darkDay],
+        ]),
+    ],
+    [
+        TimesOfDay.EVENING_NAUTICAL_TWILIGHT,
+
+        new Map<WeatherType, string>([
+            [WeatherType.CLEAR, clearEvening],
+            [WeatherType.PARTLY_CLOUDY, clearEvening],
+            [WeatherType.CLOUDY, darkDay],
+            [WeatherType.OVERCAST, darkDay],
+            [WeatherType.DRIZZLE, darkDay],
+            [WeatherType.RAIN, darkDay],
+            [WeatherType.THUNDERSTORM, thunderstorm],
+            [WeatherType.SNOW, darkDay],
+        ]),
+    ],
+    [
+        TimesOfDay.EVENING_ASTRONOMICAL_TWILIGHT,
 
         new Map<WeatherType, string>([
             [WeatherType.CLEAR, clearEvening],
@@ -61,7 +89,35 @@ const timeOfDay2Atmosphere = new Map<TimesOfDay, Map<WeatherType, string>>([
         ]),
     ],
     [
-        TimesOfDay.MORNING,
+        TimesOfDay.MORNING_CIVIL_TWILIGHT,
+
+        new Map<WeatherType, string>([
+            [WeatherType.CLEAR, clearMorning],
+            [WeatherType.PARTLY_CLOUDY, clearMorning],
+            [WeatherType.CLOUDY, grayDay],
+            [WeatherType.OVERCAST, grayDay],
+            [WeatherType.DRIZZLE, grayDay],
+            [WeatherType.RAIN, grayDay],
+            [WeatherType.THUNDERSTORM, thunderstorm],
+            [WeatherType.SNOW, grayDay],
+        ]),
+    ],
+    [
+        TimesOfDay.MORNING_NAUTICAL_TWILIGHT,
+
+        new Map<WeatherType, string>([
+            [WeatherType.CLEAR, clearMorning],
+            [WeatherType.PARTLY_CLOUDY, clearMorning],
+            [WeatherType.CLOUDY, grayDay],
+            [WeatherType.OVERCAST, grayDay],
+            [WeatherType.DRIZZLE, grayDay],
+            [WeatherType.RAIN, grayDay],
+            [WeatherType.THUNDERSTORM, thunderstorm],
+            [WeatherType.SNOW, grayDay],
+        ]),
+    ],
+    [
+        TimesOfDay.MORNING_ASTRONOMICAL_TWILIGHT,
 
         new Map<WeatherType, string>([
             [WeatherType.CLEAR, clearMorning],

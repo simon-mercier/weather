@@ -20,7 +20,6 @@ import Location from "../../classes/Location";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import TimesOfDay from "../../enums/timesOfDay";
 import Atmosphere from "../../assets/styles/atmosphere";
-import WeatherType from "../../enums/weatherType";
 
 const CurrentWeather = () => {
     const [location, setLocation]: [
@@ -29,7 +28,8 @@ const CurrentWeather = () => {
     ] = useContext(LocationContext);
 
     const [currentWeather, setCurrentWeather] = useState({} as ICurrentWeather);
-    location.getTime();
+    const [timeOfDay, setTimeOfDay] = useState(TimesOfDay.DAY);
+
     const fetchCurrentWeather = useCallback(async () => {
         setCurrentWeather(
             (await coordinates2CurrentWeather(
@@ -40,16 +40,23 @@ const CurrentWeather = () => {
         console.log("fetched weather");
     }, [location]);
 
+    const fetchCurrentTimeOfDay = useCallback(async () => {
+        setTimeOfDay((await location.getTimeOfDay()) ?? TimesOfDay.DAY);
+    }, [location]);
+
     useEffect(() => {
         fetchCurrentWeather();
     }, [fetchCurrentWeather]);
 
+    useEffect(() => {
+        fetchCurrentTimeOfDay();
+    }, [fetchCurrentTimeOfDay]);
     return (
         <currentWeatherInfo.Provider value={currentWeather}>
             {currentWeather.weatherDescription && location && (
                 <div>
                     <Atmosphere
-                        timeOfDay={{} as TimesOfDay}
+                        timeOfDay={timeOfDay}
                         weatherType={id2Type(currentWeather.weatherId)}
                     >
                         <div className="main-weather">

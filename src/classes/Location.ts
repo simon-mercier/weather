@@ -1,13 +1,16 @@
+import TimesOfDay from "../enums/timesOfDay";
 import ICoordinates from "../interfaces/coordinates";
 import ILocation from "../interfaces/location";
 import { placeId2Coordinates } from "../utils/location-utils";
-import { coordinates2Time } from "../utils/time-of-day-utils";
+import {
+    coordinates2Time,
+    coordinates2TimeOfDay,
+} from "../utils/time-of-day-utils";
 
 class Location {
     location: ILocation;
 
     private coordinates: ICoordinates | undefined;
-    private time: Date | undefined;
 
     constructor(location: ILocation) {
         this.location = location;
@@ -22,13 +25,10 @@ class Location {
         return this.coordinates as ICoordinates;
     };
 
-    getTime = async (): Promise<Date> => {
-        if (!this.time)
-            this.time = (await coordinates2Time(
-                this.coordinates as ICoordinates
-            )) as Date;
-        return this.time as Date;
-    };
+    getTimeOfDay = async (): Promise<TimesOfDay> =>
+        (await coordinates2TimeOfDay(
+            await this.getCoordinates()
+        )) as TimesOfDay;
 }
 
 export default Location;

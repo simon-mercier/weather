@@ -13,13 +13,14 @@ import {
 
 import currentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
-import MainWeather from "../main-weather/MainWeather";
+import MainWeather from "./main-weather/MainWeather";
 
 import LocationContext from "../../contexts/Location";
 import Location from "../../classes/Location";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import TimesOfDay from "../../enums/timesOfDay";
 import Atmosphere from "../../assets/styles/atmosphere";
+import CloudAnimation from "./weather-animations/cloud-animation/CloudAnimation";
 
 const CurrentWeather = () => {
     const [location, setLocation]: [
@@ -58,11 +59,13 @@ const CurrentWeather = () => {
                     <Atmosphere
                         timeOfDay={timeOfDay}
                         weatherType={id2Type(currentWeather.weatherId)}
-                    >
-                        <div className="main-weather">
-                            <MainWeather />
-                        </div>
-                    </Atmosphere>
+                    ></Atmosphere>
+                    <CloudAnimation
+                        weatherType={id2Type(currentWeather.weatherId)}
+                    ></CloudAnimation>
+                    <div className="main-weather">
+                        <MainWeather />
+                    </div>
                 </div>
             )}
         </currentWeatherInfo.Provider>

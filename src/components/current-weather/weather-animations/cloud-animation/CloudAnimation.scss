@@ -1,0 +1,39 @@
+@mixin translate-left-animation($duration, $delay) {
+    $name: inline-#{unique-id()};
+
+    @keyframes #{$name} {
+        0% {
+            left: -100%;
+        }
+        100% {
+            left: 100%;
+        }
+    }
+    @include animation($name, $duration, $delay);
+}
+
+.cloud1 {
+    $duration: random(400) + 200 + s;
+    $delay: -1 * random(400) + s;
+    @include translate-left-animation($duration, $delay);
+}
+.cloud2 {
+    $duration: random(400) + 200 + s;
+    $delay: -1 * random(400) + s;
+    @include translate-left-animation($duration, $delay);
+}
+.cloud3 {
+    $duration: random(400) + 200 + s;
+    $delay: -1 * random(400) + s;
+    @include translate-left-animation($duration, $delay);
+}
+.cloud4 {
+    $duration: random(400) + 200 + s;
+    $delay: -1 * random(400) + s;
+    @include translate-left-animation($duration, $delay);
+}
+.cloud5 {
+    $duration: random(400) + 200 + s;
+    $delay: -1 * random(400) + s;
+    @include translate-left-animation($duration, $delay);
+}

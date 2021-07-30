@@ -17,8 +17,6 @@ import { DEFAULT_LOCATION_CITY } from "../../const";
 
 import Location from "../../classes/Location";
 
-export const Input = styled.div``;
-
 const Search = () => {
     const [predictions, setPredictions] = useState({} as [ILocation]);
     const [dropDownActive, setDropDownActive] = useState(false);

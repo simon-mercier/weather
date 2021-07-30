@@ -1,10 +1,10 @@
-import { useCurrentWeatherInfoContext } from "../../contexts/CurrentWeatherInfo";
-import ICurrentWeather from "../../interfaces/currentWeather";
-import { capitalizeFirstLetter } from "../../utils/code-utils";
-import { k2c } from "../../utils/weather-utils";
+import { useCurrentWeatherInfoContext } from "../../../contexts/CurrentWeatherInfo";
+import ICurrentWeather from "../../../interfaces/currentWeather";
+import { capitalizeFirstLetter } from "../../../utils/code-utils";
+import { k2c } from "../../../utils/weather-utils";
 import "./MainWeather.scss";
-import Cloud1 from "../../assets/icons/Cloud1";
-import Cloud2 from "../../assets/icons/Cloud2";
+
+import Cloudy from "../weather-icons/Cloudy";
 const MainWeather = () => {
     const currentWeather: ICurrentWeather = useCurrentWeatherInfoContext();
     return (
@@ -31,13 +31,7 @@ const MainWeather = () => {
                     </section>
                     <section className="weather">
                         <div className="weather-icons">
-                            <div className="cloud1">
-                                <Cloud1 />
-                            </div>
-
-                            <div className="cloud2">
-                                <Cloud2 />
-                            </div>
+                            <Cloudy />
                         </div>
 
                         <div className="weather-description">

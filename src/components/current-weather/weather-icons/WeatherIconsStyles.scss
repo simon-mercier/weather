@@ -1,0 +1,18 @@
+.cloudy {
+    position: relative;
+    > .icon-sun {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    > .icon-cloud1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    > .icon-cloud2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}

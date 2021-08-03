@@ -1,0 +1,12 @@
+.icon-sun {
+    image-rendering: auto;
+    @include morph(left, 300, 1s);
+}
+.icon-cloud1 {
+    image-rendering: auto;
+    @include morph(left, 200, 1s);
+}
+.icon-cloud2 {
+    image-rendering: auto;
+    @include morph(right, 100, 1s);
+}

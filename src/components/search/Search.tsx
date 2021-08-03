@@ -1,13 +1,11 @@
 import {
     Dispatch,
-    MouseEvent,
     SetStateAction,
     useContext,
     useEffect,
     useRef,
     useState,
 } from "react";
-import styled from "styled-components";
 import "./Search.scss";
 
 import { cityPredictions } from "../../utils/location-utils";

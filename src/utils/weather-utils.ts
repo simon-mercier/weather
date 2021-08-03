@@ -13,22 +13,24 @@ export const coordinates2CurrentWeather = async (
         .then((res) => res.json())
         .then(
             (result) => {
-                return {
-                    temperature: {
-                        temp: result.main.temp,
-                        feelsLike: result.main.feels_like ?? undefined,
-                        tempMin: result.main.temp_min ?? undefined,
-                        tempMax: result.main.temp_max ?? undefined,
-                    } as ITemperature,
+                return result.main
+                    ? ({
+                          temperature: {
+                              temp: result.main.temp ?? undefined,
+                              feelsLike: result.main.feels_like ?? undefined,
+                              tempMin: result.main.temp_min ?? undefined,
+                              tempMax: result.main.temp_max ?? undefined,
+                          } as ITemperature,
 
-                    humidity: result.main.humidity,
-                    pressure: result.main.pressure,
+                          humidity: result.main.humidity,
+                          pressure: result.main.pressure,
 
-                    weatherId: result.weather[0].id,
-                    weatherDescription: result.weather[0].description,
+                          weatherId: result.weather[0].id,
+                          weatherDescription: result.weather[0].description,
 
-                    windSpeed: result.wind.speed,
-                } as ICurrentWeather;
+                          windSpeed: result.wind.speed,
+                      } as ICurrentWeather)
+                    : undefined;
             },
             (error) => {
                 console.error(error);

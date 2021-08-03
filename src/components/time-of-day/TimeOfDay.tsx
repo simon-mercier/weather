@@ -21,6 +21,7 @@ const TimeOfDay = () => {
 
     const fetchCurrentTimeOfDay = useCallback(async () => {
         setTimeOfDay((await location.getTimeOfDay()) ?? TimesOfDay.DAY);
+        console.log("Fetched");
     }, [location]);
 
     useEffect(() => {
@@ -29,8 +30,12 @@ const TimeOfDay = () => {
 
     return (
         <TimeOfDayContext.Provider value={timeOfDay}>
-            <NavBar />
-            <CurrentWeather />
+            {timeOfDay && (
+                <>
+                    <NavBar />
+                    <CurrentWeather />
+                </>
+            )}
         </TimeOfDayContext.Provider>
     );
 };

@@ -25,7 +25,7 @@ const weatherType2Icon = new Map<WeatherType, any>([
 const WeatherIcon = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
     return (
-        <div style={{ width: "20rem", height: "20rem" }}>
+        <div style={{ width: "12.5rem", height: "12.5rem" }}>
             {weatherType2Icon.get(id2Type(currentWeather.weatherId))}
         </div>
     );

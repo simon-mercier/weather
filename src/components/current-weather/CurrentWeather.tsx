@@ -1,12 +1,12 @@
 import ICurrentWeather from "../../interfaces/currentWeather";
-import { coordinates2CurrentWeather, id2Type } from "../../utils/weather-utils";
+import { coordinates2CurrentWeather } from "../../utils/weather-utils";
 import {
-    useEffect,
-    useState,
-    useCallback,
-    useContext,
     Dispatch,
     SetStateAction,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
 
 import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
@@ -59,7 +59,7 @@ const CurrentWeather = () => {
 
     return (
         <CurrentWeatherInfo.Provider value={currentWeather}>
-            {currentWeather.weatherDescription && location && (
+            {currentWeather && (
                 <div>
                     <Atmosphere></Atmosphere>
                     <CloudAnimation></CloudAnimation>

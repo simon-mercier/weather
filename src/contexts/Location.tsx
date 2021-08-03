@@ -1,4 +1,4 @@
-import { createContext, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, createContext } from "react";
 import Location from "../classes/Location";
 
 const LocationContext = createContext<

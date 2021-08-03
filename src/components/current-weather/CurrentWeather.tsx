@@ -1,5 +1,3 @@
-import "./CurrentWeather.scss";
-
 import ICurrentWeather from "../../interfaces/currentWeather";
 import { coordinates2CurrentWeather, id2Type } from "../../utils/weather-utils";
 import {
@@ -11,25 +9,21 @@ import {
     SetStateAction,
 } from "react";
 
-import currentWeatherInfo from "../../contexts/CurrentWeatherInfo";
+import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
 import MainWeather from "./main-weather/MainWeather";
 
 import LocationContext from "../../contexts/Location";
 import Location from "../../classes/Location";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
-import TimesOfDay from "../../enums/timesOfDay";
-import Atmosphere from "../../assets/styles/atmosphere";
+import Atmosphere from "./atmosphere/Atmosphere";
 import CloudAnimation from "./weather-animations/cloud-animation/CloudAnimation";
 
 const CurrentWeather = () => {
-    const [location, setLocation]: [
-        Location,
-        Dispatch<SetStateAction<Location>>
-    ] = useContext(LocationContext);
+    const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
+        useContext(LocationContext);
 
     const [currentWeather, setCurrentWeather] = useState({} as ICurrentWeather);
-    const [timeOfDay, setTimeOfDay] = useState(TimesOfDay.DAY);
 
     const fetchCurrentWeather = useCallback(async () => {
         setCurrentWeather(
@@ -38,37 +32,50 @@ const CurrentWeather = () => {
                     DEFAULT_LOCATION_COORDINATES
             )) as ICurrentWeather
         );
-        console.log("fetched weather");
     }, [location]);
+    // const fetchCurrentWeather = useCallback(async () => {
+    //     setCurrentWeather({
+    //         temperature: {
+    //             temp: 293,
+    //             feelsLike: 293,
+    //             tempMin: 293,
+    //             tempMax: 293,
+    //         },
 
-    const fetchCurrentTimeOfDay = useCallback(async () => {
-        setTimeOfDay((await location.getTimeOfDay()) ?? TimesOfDay.DAY);
-    }, [location]);
+    //         weatherDescription: "clear",
+    //         weatherId: 804,
+
+    //         pressure: 80,
+
+    //         humidity: 80,
+
+    //         windSpeed: 50,
+    //     });
+    // }, [location]);
 
     useEffect(() => {
         fetchCurrentWeather();
     }, [fetchCurrentWeather]);
 
-    useEffect(() => {
-        fetchCurrentTimeOfDay();
-    }, [fetchCurrentTimeOfDay]);
     return (
-        <currentWeatherInfo.Provider value={currentWeather}>
+        <CurrentWeatherInfo.Provider value={currentWeather}>
             {currentWeather.weatherDescription && location && (
                 <div>
-                    <Atmosphere
-                        timeOfDay={timeOfDay}
-                        weatherType={id2Type(currentWeather.weatherId)}
-                    ></Atmosphere>
-                    <CloudAnimation
-                        weatherType={id2Type(currentWeather.weatherId)}
-                    ></CloudAnimation>
-                    <div className="main-weather">
+                    <Atmosphere></Atmosphere>
+                    <CloudAnimation></CloudAnimation>
+                    <div
+                        style={{
+                            position: "absolute",
+                            left: "50%",
+                            top: "50%",
+                            transform: "translate(-50%, -50%)",
+                        }}
+                    >
                         <MainWeather />
                     </div>
                 </div>
             )}
-        </currentWeatherInfo.Provider>
+        </CurrentWeatherInfo.Provider>
     );
 };
 

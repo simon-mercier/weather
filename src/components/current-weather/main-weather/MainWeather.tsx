@@ -1,12 +1,13 @@
-import { useCurrentWeatherInfoContext } from "../../../contexts/CurrentWeatherInfo";
+import { useContext } from "react";
+import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
 import ICurrentWeather from "../../../interfaces/currentWeather";
 import { capitalizeFirstLetter } from "../../../utils/code-utils";
 import { k2c } from "../../../utils/weather-utils";
+import WeatherIcon from "../weather-icons/WeatherIcon";
 import "./MainWeather.scss";
 
-import Cloudy from "../weather-icons/Cloudy";
 const MainWeather = () => {
-    const currentWeather: ICurrentWeather = useCurrentWeatherInfoContext();
+    const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
     return (
         <section className="main-weather-container">
             {currentWeather && (
@@ -30,9 +31,7 @@ const MainWeather = () => {
                         </div>
                     </section>
                     <section className="weather">
-                        <div className="weather-icons">
-                            <Cloudy />
-                        </div>
+                        <WeatherIcon />
 
                         <div className="weather-description">
                             {capitalizeFirstLetter(

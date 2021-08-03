@@ -2,41 +2,41 @@ import WeatherType from "../enums/weatherType";
 import ICoordinates from "../interfaces/coordinates";
 import ICurrentWeather from "../interfaces/currentWeather";
 import ITemperature from "../interfaces/temperature";
+import { fetchApi } from "./api-utils";
 
 const openWeatherApiKey = "17f10aab8d22d756ce0cbdbfbaef5eb4";
 export const coordinates2CurrentWeather = async (
     coordinates: ICoordinates
 ): Promise<ICurrentWeather | undefined> => {
-    return await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${openWeatherApiKey}`
-    )
-        .then((res) => res.json())
-        .then(
-            (result) => {
-                return result.main
-                    ? ({
-                          temperature: {
-                              temp: result.main.temp ?? undefined,
-                              feelsLike: result.main.feels_like ?? undefined,
-                              tempMin: result.main.temp_min ?? undefined,
-                              tempMax: result.main.temp_max ?? undefined,
-                          } as ITemperature,
+    return await fetchApi<ICoordinates>(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${openWeatherApiKey}`,
+        coordinates
+    ).then(
+        (result) => {
+            return result
+                ? ({
+                      temperature: {
+                          temp: result.main.temp ?? undefined,
+                          feelsLike: result.main.feels_like ?? undefined,
+                          tempMin: result.main.temp_min ?? undefined,
+                          tempMax: result.main.temp_max ?? undefined,
+                      } as ITemperature,
 
-                          humidity: result.main.humidity,
-                          pressure: result.main.pressure,
+                      humidity: result.main.humidity,
+                      pressure: result.main.pressure,
 
-                          weatherId: result.weather[0].id,
-                          weatherDescription: result.weather[0].description,
+                      weatherId: result.weather[0].id,
+                      weatherDescription: result.weather[0].description,
 
-                          windSpeed: result.wind.speed,
-                      } as ICurrentWeather)
-                    : undefined;
-            },
-            (error) => {
-                console.error(error);
-                return undefined;
-            }
-        );
+                      windSpeed: result.wind.speed,
+                  } as ICurrentWeather)
+                : undefined;
+        },
+        (error) => {
+            console.error(error);
+            return undefined;
+        }
+    );
 };
 
 export const k2c = (kelvin: number) => Math.round(kelvin - 273.15);

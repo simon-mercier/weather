@@ -1,23 +1,23 @@
 import TimesOfDay from "../enums/timesOfDay";
 import ICoordinates from "../interfaces/coordinates";
+import { fetchApi } from "./api-utils";
 
 export const coordinates2Time = async (
     coordinates: ICoordinates
 ): Promise<Date | undefined> => {
     if (!coordinates) return undefined;
-    return await fetch(
-        `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/timezone/json?location=${coordinates.latitude},${coordinates.longitude}&timestamp=0&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
-    )
-        .then((res) => res.json())
-        .then(
-            (result) => {
-                return getLocaleTime(result.rawOffset);
-            },
-            (error) => {
-                console.error(error);
-                return undefined;
-            }
-        );
+    return await fetchApi<ICoordinates>(
+        `https://maps.googleapis.com/maps/api/timezone/json?location=${coordinates.latitude},${coordinates.longitude}&timestamp=0&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`,
+        coordinates
+    ).then(
+        (result) => {
+            return result ? getLocaleTime(result.rawOffset) : undefined;
+        },
+        (error) => {
+            console.error(error);
+            return undefined;
+        }
+    );
 };
 export const coordinates2TimeOfDay = async (
     coordinates: ICoordinates
@@ -54,36 +54,36 @@ const coordinates2TimesOfDay = async (
     date: Date
 ): Promise<Array<[TimesOfDay, Date]> | undefined> => {
     if (!coordinates) return undefined;
-    return await fetch(
+    return await fetchApi<ICoordinates>(
         `https://api.sunrise-sunset.org/json?lat=${coordinates.latitude}&lng=${
             coordinates.longitude
-        }&formatted=0&date=${date.toDateString()}`
-    )
-        .then((res) => res.json())
-        .then(
-            (result) => {
-                if (!result) return undefined;
-                return [
-                    [
-                        TimesOfDay.MORNING,
-                        new Date(result.results.astronomical_twilight_begin),
-                    ],
+        }&formatted=0&date=${date.toDateString()}`,
+        coordinates
+    ).then(
+        (result) => {
+            return result
+                ? [
+                      [
+                          TimesOfDay.MORNING,
+                          new Date(result.results.astronomical_twilight_begin),
+                      ],
 
-                    [TimesOfDay.SUNRISE, new Date(result.results.sunrise)],
+                      [TimesOfDay.SUNRISE, new Date(result.results.sunrise)],
 
-                    [TimesOfDay.SUNSET, new Date(result.results.sunset)],
+                      [TimesOfDay.SUNSET, new Date(result.results.sunset)],
 
-                    [
-                        TimesOfDay.EVENING,
-                        new Date(result.results.astronomical_twilight_end),
-                    ],
-                ];
-            },
-            (error) => {
-                console.error(error);
-                return undefined;
-            }
-        );
+                      [
+                          TimesOfDay.EVENING,
+                          new Date(result.results.astronomical_twilight_end),
+                      ],
+                  ]
+                : undefined;
+        },
+        (error) => {
+            console.error(error);
+            return undefined;
+        }
+    );
 };
 
 const getLocaleTime = (rawOffset: number) => {

@@ -10,8 +10,11 @@ class Location {
 
     private coordinates: ICoordinates | undefined;
 
-    constructor(location: ILocation) {
+    private timeOfDay: TimesOfDay | undefined;
+
+    constructor(location: ILocation, coordinates?: ICoordinates) {
         this.location = location;
+        if (coordinates) this.coordinates = coordinates;
     }
 
     getCoordinates = async (): Promise<ICoordinates> => {
@@ -20,12 +23,21 @@ class Location {
                 (await placeId2Coordinates(this.location.placeId)) ??
                 DEFAULT_LOCATION_COORDINATES;
 
-        return this.coordinates as ICoordinates;
+        return this.coordinates;
     };
 
-    getTimeOfDay = async (): Promise<TimesOfDay> =>
-        (await coordinates2TimeOfDay(await this.getCoordinates())) ??
-        TimesOfDay.DAY;
+    getTimeOfDay = async (): Promise<TimesOfDay> => {
+        if (!this.timeOfDay)
+            this.timeOfDay =
+                (await coordinates2TimeOfDay(await this.getCoordinates())) ??
+                TimesOfDay.DAY;
+
+        return this.timeOfDay;
+    };
+
+    getClone = (): Location => {
+        return new Location(this.location, this.coordinates);
+    };
 }
 
 export default Location;

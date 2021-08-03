@@ -1,18 +1,21 @@
 import { useState } from "react";
 
-import CurrentWeather from "../current-weather/CurrentWeather";
-import NavBar from "../navbar/Navbar";
 import { DEFAULT_LOCATION } from "../../const";
 import LocationContext from "../../contexts/Location";
 
 import Location from "../../classes/Location";
 import TimeOfDay from "../time-of-day/TimeOfDay";
+import { setInterval } from "timers";
 
 const LocationManager = ({}) => {
     const [location, setLocation] = useState(new Location(DEFAULT_LOCATION));
+    const TEN_MINUTES = 100000;
+    setInterval(() => {
+        setLocation(location.getClone());
+    }, TEN_MINUTES);
     return (
         <LocationContext.Provider value={[location, setLocation]}>
-            <TimeOfDay></TimeOfDay>
+            {location && <TimeOfDay />}
         </LocationContext.Provider>
     );
 };

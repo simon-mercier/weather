@@ -1,8 +1,30 @@
-@mixin morph-from-bottom($from, $delay: 0s) {
+@mixin morph($direction, $from, $delay: 0s) {
     $name: inline-#{unique-id()};
+
+    visibility: hidden;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-delay: $delay;
+    animation-duration: 2s;
+    animation-name: $name;
+
+    @if $direction == bottom {
+        @include morph-bottom($name, $from);
+    }
+
+    @if $direction == left {
+        @include morph-left($name, $from);
+    }
+
+    @if $direction == right {
+        @include morph-right($name, $from);
+    }
+}
+
+@mixin morph-bottom($name, $from) {
     @keyframes #{$name} {
         from {
-            transform: translateY($from);
+            transform: translateY($from + vh);
             visibility: hidden;
         }
 
@@ -11,12 +33,48 @@
             visibility: visible;
         }
     }
-    visibility: hidden;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    animation-delay: $delay;
-    animation-duration: 2s;
-    animation-name: $name;
+}
+@mixin morph-left($name, $from) {
+    @keyframes #{$name} {
+        from {
+            transform: translateX(-1 * $from + vw);
+            visibility: hidden;
+        }
+
+        to {
+            transform: translateX(0);
+            visibility: visible;
+        }
+    }
+}
+
+@mixin morph-right($name, $from) {
+    @keyframes #{$name} {
+        from {
+            transform: translateX($from + vw);
+            visibility: hidden;
+        }
+
+        to {
+            transform: translateX(0);
+            visibility: visible;
+        }
+    }
+}
+
+@keyframes creep-anim {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(10%);
+    }
+    75% {
+        transform: translateX(-10%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 @mixin animation($name, $duration, $delay) {

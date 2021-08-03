@@ -6,13 +6,13 @@ import { DEFAULT_LOCATION } from "../../const";
 import LocationContext from "../../contexts/Location";
 
 import Location from "../../classes/Location";
+import TimeOfDay from "../time-of-day/TimeOfDay";
 
 const LocationManager = ({}) => {
     const [location, setLocation] = useState(new Location(DEFAULT_LOCATION));
     return (
         <LocationContext.Provider value={[location, setLocation]}>
-            <NavBar />
-            <CurrentWeather />
+            <TimeOfDay></TimeOfDay>
         </LocationContext.Provider>
     );
 };

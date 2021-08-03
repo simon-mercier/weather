@@ -1,6 +1,5 @@
 import TimesOfDay from "../enums/timesOfDay";
 import ICoordinates from "../interfaces/coordinates";
-import { k2c } from "./weather-utils";
 
 export const coordinates2Time = async (
     coordinates: ICoordinates
@@ -44,23 +43,10 @@ export const coordinates2TimeOfDay = async (
 };
 
 const timeOfDay2DayCycle = new Map<TimesOfDay, TimesOfDay>([
-    [
-        TimesOfDay.MORNING_ASTRONOMICAL_TWILIGHT,
-        TimesOfDay.MORNING_ASTRONOMICAL_TWILIGHT,
-    ],
-    [
-        TimesOfDay.MORNING_NAUTICAL_TWILIGHT,
-        TimesOfDay.MORNING_NAUTICAL_TWILIGHT,
-    ],
-    [TimesOfDay.MORNING_CIVIL_TWILIGHT, TimesOfDay.MORNING_CIVIL_TWILIGHT],
+    [TimesOfDay.MORNING, TimesOfDay.MORNING],
     [TimesOfDay.SUNRISE, TimesOfDay.DAY],
-    [TimesOfDay.SUNSET, TimesOfDay.EVENING_CIVIL_TWILIGHT],
-    [TimesOfDay.EVENING_CIVIL_TWILIGHT, TimesOfDay.EVENING_NAUTICAL_TWILIGHT],
-    [
-        TimesOfDay.EVENING_NAUTICAL_TWILIGHT,
-        TimesOfDay.EVENING_ASTRONOMICAL_TWILIGHT,
-    ],
-    [TimesOfDay.EVENING_ASTRONOMICAL_TWILIGHT, TimesOfDay.NIGHT],
+    [TimesOfDay.SUNSET, TimesOfDay.EVENING],
+    [TimesOfDay.EVENING, TimesOfDay.NIGHT],
 ]);
 
 const coordinates2TimesOfDay = async (
@@ -79,31 +65,16 @@ const coordinates2TimesOfDay = async (
                 if (!result) return undefined;
                 return [
                     [
-                        TimesOfDay.MORNING_ASTRONOMICAL_TWILIGHT,
+                        TimesOfDay.MORNING,
                         new Date(result.results.astronomical_twilight_begin),
-                    ],
-                    [
-                        TimesOfDay.MORNING_NAUTICAL_TWILIGHT,
-                        new Date(result.results.nautical_twilight_begin),
-                    ],
-                    [
-                        TimesOfDay.MORNING_CIVIL_TWILIGHT,
-                        new Date(result.results.civil_twilight_begin),
                     ],
 
                     [TimesOfDay.SUNRISE, new Date(result.results.sunrise)],
 
                     [TimesOfDay.SUNSET, new Date(result.results.sunset)],
+
                     [
-                        TimesOfDay.EVENING_CIVIL_TWILIGHT,
-                        new Date(result.results.civil_twilight_end),
-                    ],
-                    [
-                        TimesOfDay.EVENING_NAUTICAL_TWILIGHT,
-                        new Date(result.results.nautical_twilight_end),
-                    ],
-                    [
-                        TimesOfDay.EVENING_ASTRONOMICAL_TWILIGHT,
+                        TimesOfDay.EVENING,
                         new Date(result.results.astronomical_twilight_end),
                     ],
                 ];

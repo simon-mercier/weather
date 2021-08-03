@@ -1,4 +1,3 @@
-import "./App.scss";
 import LocationManager from "./components/location/LocationManager";
 import "./components/navbar/Navbar.tsx";
 

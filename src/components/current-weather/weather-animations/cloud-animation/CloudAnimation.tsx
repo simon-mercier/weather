@@ -1,16 +1,16 @@
+import { useContext } from "react";
 import Cloud1 from "../../../../assets/png/cloud1.png";
 import Cloud2 from "../../../../assets/png/cloud2.png";
 import Cloud3 from "../../../../assets/png/cloud3.png";
 import Cloud4 from "../../../../assets/png/cloud4.png";
 import Cloud5 from "../../../../assets/png/cloud5.png";
+import CurrentWeatherInfo from "../../../../contexts/CurrentWeatherInfo";
 import WeatherType from "../../../../enums/weatherType";
-import { css, jsx } from "@emotion/react";
+import ICurrentWeather from "../../../../interfaces/currentWeather";
+import { id2Type } from "../../../../utils/weather-utils";
 
 import "./CloudAnimation.scss";
 
-interface CloudAnimationProps {
-    weatherType: WeatherType;
-}
 const NO_CLOUDS = 0;
 const weatherType2NumberOfClouds = new Map<WeatherType, number>([
     [WeatherType.PARTLY_CLOUDY, 2],
@@ -32,15 +32,27 @@ const weatherType2WidthOfClouds = new Map<WeatherType, string>([
     [WeatherType.THUNDERSTORM, "90%"],
 ]);
 
-const CloudAnimation = (props: CloudAnimationProps) => {
+const weatherType2CloudInvertedShade = new Map<WeatherType, string>([
+    [WeatherType.PARTLY_CLOUDY, "0%"],
+    [WeatherType.CLOUDY, "10%"],
+    [WeatherType.OVERCAST, "20%"],
+    [WeatherType.DRIZZLE, "30%"],
+    [WeatherType.RAIN, "40%"],
+    [WeatherType.SNOW, "30%"],
+    [WeatherType.THUNDERSTORM, "70%"],
+]);
+
+const CloudAnimation = () => {
     const clouds = [Cloud1, Cloud2, Cloud3, Cloud4, Cloud5];
+    const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
     return (
         <div className="clouds">
             {clouds
                 .slice(
                     0,
-                    weatherType2NumberOfClouds.get(props.weatherType) ??
-                        NO_CLOUDS
+                    weatherType2NumberOfClouds.get(
+                        id2Type(currentWeather.weatherId)
+                    ) ?? NO_CLOUDS
                 )
                 .map((cloud, i) => (
                     <img
@@ -49,9 +61,13 @@ const CloudAnimation = (props: CloudAnimationProps) => {
                             transform: "scaleY(-1)",
                             width:
                                 weatherType2WidthOfClouds.get(
-                                    props.weatherType
+                                    id2Type(currentWeather.weatherId)
                                 ) ?? NO_CLOUDS,
-                            
+                            filter:
+                                "invert(" +
+                                    weatherType2CloudInvertedShade.get(
+                                        id2Type(currentWeather.weatherId)
+                                    ) ?? NO_CLOUDS + ")",
                         }}
                         className={"cloud" + i}
                         key={i}

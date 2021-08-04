@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Cloud1 from "../../../../assets/icons/cloud1.svg";
 import Sun from "../../../../assets/icons/sun.svg";
+import Moon from "../../../../assets/icons/moon.svg";
+import TimeOfDayContext from "../../../../contexts/TimeOfDay";
+import TimesOfDay from "../../../../enums/timesOfDay";
 import "./WeatherIconsStyles.scss";
 const Clear = () => {
+    const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
     return (
         <div style={{ position: "absolute" }} className="clear">
             <img
@@ -14,7 +18,12 @@ const Clear = () => {
                     left: "50%",
                     transform: "translate(50%, 50%)",
                 }}
-                src={Sun}
+                src={
+                    timeOfDay === TimesOfDay.MORNING ||
+                    timeOfDay === TimesOfDay.DAY
+                        ? Sun
+                        : Moon
+                }
             />
             <img
                 className="icon-cloud1"

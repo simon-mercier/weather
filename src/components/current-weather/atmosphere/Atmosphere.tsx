@@ -43,9 +43,9 @@ const timeOfDay2Atmosphere = new Map<TimesOfDay, Map<WeatherType, string>>([
         new Map<WeatherType, string>([
             [WeatherType.CLEAR, clearEvening],
             [WeatherType.PARTLY_CLOUDY, clearEvening],
-            [WeatherType.CLOUDY, darkDay],
+            [WeatherType.CLOUDY, clearEvening],
             [WeatherType.OVERCAST, darkDay],
-            [WeatherType.DRIZZLE, darkDay],
+            [WeatherType.DRIZZLE, clearEvening],
             [WeatherType.RAIN, darkDay],
             [WeatherType.THUNDERSTORM, thunderstorm],
             [WeatherType.SNOW, darkDay],

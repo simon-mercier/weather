@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Cloud1 from "../../../../assets/icons/cloud1.svg";
 import Cloud2 from "../../../../assets/icons/cloud2.svg";
 import Sun from "../../../../assets/icons/sun.svg";
+import Moon from "../../../../assets/icons/moon.svg";
+import TimeOfDayContext from "../../../../contexts/TimeOfDay";
+import TimesOfDay from "../../../../enums/timesOfDay";
 import "./WeatherIconsStyles.scss";
 
 const Cloudy = () => {
+    const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
     return (
         <div style={{ position: "absolute" }} className="cloudy">
             <img
@@ -16,7 +20,12 @@ const Cloudy = () => {
                     top: "-3rem",
                     left: "5rem",
                 }}
-                src={Sun}
+                src={
+                    timeOfDay === TimesOfDay.MORNING ||
+                    timeOfDay === TimesOfDay.DAY
+                        ? Sun
+                        : Moon
+                }
             />
             <img
                 className="icon-cloud2"

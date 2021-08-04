@@ -34,10 +34,6 @@ class Location {
 
         return this.timeOfDay;
     };
-
-    getClone = (): Location => {
-        return new Location(this.location, this.coordinates);
-    };
 }
 
 export default Location;

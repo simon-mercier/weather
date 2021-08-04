@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
 import ICurrentWeather from "../../../interfaces/currentWeather";
-import { capitalizeFirstLetter } from "../../../utils/code-utils";
 import { k2c } from "../../../utils/weather-utils";
 import WeatherIcon from "../weather-icons/WeatherIcon";
 import "./MainWeather.scss";
@@ -37,17 +36,14 @@ const MainWeather = () => {
                             <WeatherIcon />
                             <div>
                                 <div className="weather-description">
-                                    {capitalizeFirstLetter(
-                                        currentWeather.weatherDescription
-                                    )}
+                                    {currentWeather.weatherDescription}
                                 </div>
 
-                                <div className="high-low">
-                                    with a high of{" "}
-                                    {k2c(currentWeather.temperature.tempMax)}
-                                    °
-                                    <br /> and a low of{" "}
-                                    {k2c(currentWeather.temperature.tempMin)}°
+                                <div className="humidity-wind">
+                                    {currentWeather.humidity}
+                                    % humidity
+                                    <br />
+                                    {currentWeather.pressure} hPa
                                 </div>
                             </div>
                         </section>

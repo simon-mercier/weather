@@ -45,11 +45,11 @@
             font-size: 3rem;
             opacity: 90%;
         }
-    }
-}
 
-.high-low {
-    @include morph(bottom, 300);
-    font-size: 1.5rem;
-    opacity: 0.8;
+        .humidity-wind {
+            @include morph(bottom, 300);
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+    }
 }

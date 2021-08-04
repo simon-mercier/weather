@@ -14,9 +14,8 @@ const Clear = () => {
                 style={{
                     position: "absolute",
                     width: "15rem",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(50%, 50%)",
+                    top: "4rem",
+                    left: "4rem",
                 }}
                 src={
                     timeOfDay === TimesOfDay.MORNING ||
@@ -30,7 +29,7 @@ const Clear = () => {
                 style={{
                     position: "absolute",
                     width: "10rem",
-                    top: "0rem",
+                    top: "10rem",
                     left: "0rem",
                 }}
                 src={Cloud1}

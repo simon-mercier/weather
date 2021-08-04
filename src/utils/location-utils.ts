@@ -33,20 +33,22 @@ export const coordinates2ILocation = async (
     coordinates: ICoordinates
 ): Promise<ILocation | undefined> => {
     return await fetchApi<ICoordinates>(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.latitude},${coordinates.longitude}&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.latitude},${coordinates.longitude}&types=(locality)&language=en&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
     ).then(
         (result) => {
-            return result
-                ? result.predictions.map((prediction: any) => {
-                      return {
-                          location: prediction.terms.map((term: any) => {
-                              return term.value;
-                          }),
-                          placeId: prediction.place_id,
-                          locationFormatted: prediction.description,
-                      } as ILocation;
-                  })
-                : undefined;
+            if (!result) return undefined;
+
+            const locality = result.results.find(
+                (r: any) => r.types[0] === "locality"
+            );
+
+            return {
+                location: locality.address_components.map((term: any) => {
+                    return term.long_name;
+                }),
+                placeId: locality.place_id,
+                locationFormatted: locality.description,
+            } as ILocation;
         },
         (error) => {
             console.error(error);

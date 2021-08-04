@@ -1,22 +1,14 @@
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: fixed;
-    width: 100%;
-    z-index: 99;
-}
-
 .title {
     font-size: 2rem;
     margin: $margin;
     height: fit-content;
 }
 
-.search-bar {
-    max-width: 50rem;
-    margin: $margin;
-    margin: 1rem 2rem;
+.user-location-search-bar {
+    .search-bar {
+        max-width: 50rem;
+    }
+
+    .user-location {
+    }
 }

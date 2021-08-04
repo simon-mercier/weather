@@ -9,11 +9,11 @@ import {
     getUserCoordinates,
 } from "../../utils/location-utils";
 
+import "./UserLocation.scss";
+
 const UserLocation = () => {
-    const [location, setLocation]: [
-        Location,
-        Dispatch<SetStateAction<Location>>
-    ] = useContext(LocationContext);
+    const [_, setLocation]: [Location, Dispatch<SetStateAction<Location>>] =
+        useContext(LocationContext);
 
     const handleClick = async () => {
         setLocation(
@@ -25,7 +25,11 @@ const UserLocation = () => {
         );
     };
 
-    return <div></div>;
+    return (
+        <div className="user-location" onClick={handleClick}>
+            <i className="fas fa-location-arrow"> </i>
+        </div>
+    );
 };
 
 export default UserLocation;

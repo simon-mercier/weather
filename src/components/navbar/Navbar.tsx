@@ -1,21 +1,42 @@
-import { SetStateAction } from "react";
-import { Dispatch, useContext } from "react";
-import Location from "../../classes/Location";
-import LocationContext from "../../contexts/Location";
 import Search from "../search/Search";
+import UserLocation from "../user-location/UserLocation";
 import "./Navbar.scss";
 
 export default function NavBar() {
-    const [location, setLocation]: [
-        Location,
-        Dispatch<SetStateAction<Location>>
-    ] = useContext(LocationContext);
     return (
-        <nav className="container">
-            <div className="title">Beautiful Weather 🍂</div>
-
-            <div className="search-bar">
-                <Search />
+        <nav
+            style={{
+                display: "flex",
+                flexWrap: "wrap",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                position: "fixed",
+                width: "100%",
+                zIndex: 99,
+            }}
+        >
+            <div
+                style={{
+                    fontSize: "2rem",
+                    margin: "8px",
+                    height: "fit-content",
+                }}
+            >
+                Beautiful Weather 🍂
+            </div>
+            <div
+                style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    flexDirection: "row",
+                }}
+            >
+                <div style={{ margin: "8px", maxWidth: "50rem" }}>
+                    <Search />
+                </div>
+                <div style={{ margin: "8px" }}>
+                    <UserLocation />
+                </div>
             </div>
         </nav>
     );

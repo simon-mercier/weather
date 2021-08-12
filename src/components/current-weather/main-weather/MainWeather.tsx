@@ -43,7 +43,7 @@ const MainWeather = () => {
                                     {currentWeather.humidity}
                                     % humidity
                                     <br />
-                                    {currentWeather.pressure} hPa
+                                    pressure of {currentWeather.pressure} hPa
                                 </div>
                             </div>
                         </section>

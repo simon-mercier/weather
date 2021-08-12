@@ -13,6 +13,7 @@ export const coordinates2CurrentWeather = async (
         coordinates
     ).then(
         (result) => {
+            console.log("Fetched weather");
             return result
                 ? ({
                       temperature: {

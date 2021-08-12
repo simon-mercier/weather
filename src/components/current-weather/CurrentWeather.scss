@@ -1,0 +1,6 @@
+.main-weather {
+    margin-top: 10%;
+    @include breakpoints(mobile) {
+        margin-top: 30%;
+    }
+}

@@ -30,7 +30,6 @@ const WeatherIcon = () => {
                 width: "12.5rem",
                 height: "12.5rem",
                 position: "relative",
-                top: "-4rem",
             }}
         >
             {weatherType2Icon.get(id2Type(currentWeather.weatherId))}

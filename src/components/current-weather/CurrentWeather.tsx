@@ -18,6 +18,7 @@ import Location from "../../classes/Location";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import Atmosphere from "./atmosphere/Atmosphere";
 import CloudAnimation from "./weather-animations/cloud-animation/CloudAnimation";
+import "./CurrentWeather.scss";
 
 const CurrentWeather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
@@ -60,16 +61,21 @@ const CurrentWeather = () => {
     return (
         <CurrentWeatherInfo.Provider value={currentWeather}>
             {currentWeather && (
-                <div>
+                <div
+                    style={{
+                        position: "absolute",
+                        width: "100%",
+                        height: "100%",
+                    }}
+                >
                     <Atmosphere></Atmosphere>
                     <CloudAnimation></CloudAnimation>
                     <div
                         style={{
-                            position: "absolute",
-                            left: "50%",
-                            top: "50%",
-                            transform: "translate(-50%, -50%)",
+                            display: "flex",
+                            justifyContent: "center",
                         }}
+                        className="main-weather"
                     >
                         <MainWeather />
                     </div>

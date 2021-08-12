@@ -1,9 +1,10 @@
 .main-weather-container {
     @include frosted;
     @include morph(bottom, 100);
-    width: min-content;
+    width: fit-content;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
     padding: $big-margin;
     border-radius: $big-margin;
@@ -40,14 +41,18 @@
         justify-content: space-between;
         width: max-content;
 
+        @include breakpoints(mobile) {
+            margin-top: 30%;
+        }
+
         .weather-description {
-            @include morph(bottom, 200, 1s);
+            @include morph(bottom, 200, 0.5s);
             font-size: 3rem;
             opacity: 90%;
         }
 
         .humidity-wind {
-            @include morph(bottom, 300);
+            @include morph(bottom, 300, 0.5s);
             font-size: 1.5rem;
             opacity: 0.8;
         }

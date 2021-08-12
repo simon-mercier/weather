@@ -1,6 +1,5 @@
 import Search from "../search/Search";
 import UserLocation from "../user-location/UserLocation";
-import "./Navbar.scss";
 
 export default function NavBar() {
     return (
@@ -11,6 +10,7 @@ export default function NavBar() {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 position: "fixed",
+                top: 0,
                 width: "100%",
                 zIndex: 99,
             }}

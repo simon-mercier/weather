@@ -7,6 +7,7 @@ import { Morph, MorphDirection } from "../../../assets/styles/animations";
 import WeatherIcon from "../weather-icons/WeatherIcon";
 import { k2c } from "../../../utils/weather-utils";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
+
 const MainWeather = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
     return (

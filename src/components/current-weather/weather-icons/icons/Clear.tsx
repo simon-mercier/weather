@@ -1,41 +1,33 @@
 import React, { useContext } from "react";
-import Cloud1 from "../../../../assets/icons/cloud1.svg";
-import Sun from "../../../../assets/icons/sun.svg";
-import Moon from "../../../../assets/icons/moon.svg";
+
 import TimeOfDayContext from "../../../../contexts/TimeOfDay";
 import TimesOfDay from "../../../../enums/timesOfDay";
-import "./WeatherIconsStyles.scss";
-const Clear = () => {
+
+import { Cloud1, Container, Sun } from "./AtomicIcons";
+import { MorphDirection } from "../../../../assets/styles/animations";
+import styled from "styled-components";
+const ClearJSX = () => {
     const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
     return (
-        <div style={{ position: "absolute" }} className="clear">
-            <img
-                className="icon-sun"
-                style={{
-                    position: "absolute",
-                    width: "15rem",
-                    top: "4rem",
-                    left: "4rem",
-                }}
-                src={
-                    timeOfDay === TimesOfDay.MORNING ||
-                    timeOfDay === TimesOfDay.DAY
-                        ? Sun
-                        : Moon
-                }
+        <Container>
+            <Sun
+                width={15}
+                top={4}
+                left={4}
+                morphDirection={MorphDirection.LEFT}
+                morphTime={200}
             />
-            <img
-                className="icon-cloud1"
-                style={{
-                    position: "absolute",
-                    width: "10rem",
-                    top: "10rem",
-                    left: "0rem",
-                }}
-                src={Cloud1}
+            <Cloud1
+                width={10}
+                top={10}
+                left={0}
+                morphDirection={MorphDirection.RIGHT}
+                morphTime={100}
             />
-        </div>
+        </Container>
     );
 };
+
+const Clear = styled(ClearJSX)``;
 
 export default Clear;

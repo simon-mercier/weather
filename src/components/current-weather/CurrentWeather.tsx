@@ -1,5 +1,4 @@
 import ICurrentWeather from "../../interfaces/currentWeather";
-import { coordinates2CurrentWeather } from "../../utils/weather-utils";
 import {
     Dispatch,
     SetStateAction,
@@ -15,13 +14,14 @@ import MainWeather from "./main-weather/MainWeather";
 
 import LocationContext from "../../contexts/Location";
 import Location from "../../classes/Location";
-import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import Atmosphere from "./atmosphere/Atmosphere";
 import CloudAnimation from "./weather-animations/cloud-animation/CloudAnimation";
 
 import TimesOfDay from "../../enums/timesOfDay";
 import TimeOfDayContext from "../../contexts/TimeOfDay";
 import styled from "styled-components";
+import { DEFAULT_LOCATION_COORDINATES } from "../../const";
+import { coordinates2CurrentWeather } from "../../utils/weather-utils";
 
 const CurrentWeather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
@@ -39,25 +39,6 @@ const CurrentWeather = () => {
             )) as ICurrentWeather
         );
     }, [location]);
-    // const fetchCurrentWeather = useCallback(async () => {
-    //     setCurrentWeather({
-    //         temperature: {
-    //             temp: 293,
-    //             feelsLike: 293,
-    //             tempMin: 293,
-    //             tempMax: 293,
-    //         },
-
-    //         weatherDescription: "clear",
-    //         weatherId: 804,
-
-    //         pressure: 80,
-
-    //         humidity: 80,
-
-    //         windSpeed: 50,
-    //     });
-    // }, [location]);
 
     useEffect(() => {
         fetchCurrentWeather();
@@ -94,3 +75,23 @@ const MainWeatherComponent = styled.div`
     justify-content: center;
     margin-top: 10%;
 `;
+
+// const fetchCurrentWeather = useCallback(async () => {
+//     setCurrentWeather({
+//         temperature: {
+//             temp: 293,
+//             feelsLike: 293,
+//             tempMin: 293,
+//             tempMax: 293,
+//         },
+
+//         weatherDescription: "clear",
+//         weatherId: 804,
+
+//         pressure: 80,
+
+//         humidity: 80,
+
+//         windSpeed: 50,
+//     });
+// }, [location]);

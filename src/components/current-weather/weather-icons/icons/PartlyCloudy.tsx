@@ -1,52 +1,37 @@
-import Cloud1 from "../../../../assets/icons/cloud1.svg";
-import Cloud2 from "../../../../assets/icons/cloud2.svg";
-import Sun from "../../../../assets/icons/sun.svg";
-import Moon from "../../../../assets/icons/moon.svg";
 import TimeOfDayContext from "../../../../contexts/TimeOfDay";
 import TimesOfDay from "../../../../enums/timesOfDay";
-import "./WeatherIconsStyles.scss";
+
 import { useContext } from "react";
-const PartlyCloudy = () => {
+import styled from "styled-components";
+import { Cloud1, Cloud2, Container, Sun } from "./AtomicIcons";
+import { MorphDirection } from "../../../../assets/styles/animations";
+const PartlyCloudyJSX = () => {
     const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
     return (
-        <div style={{ position: "absolute" }} className="partly-cloudy">
-            <img
-                className="icon-sun"
-                style={{
-                    position: "absolute",
-                    width: "15rem",
-                    top: "-5rem",
-                    left: "5rem",
-                }}
-                src={
-                    timeOfDay === TimesOfDay.MORNING ||
-                    timeOfDay === TimesOfDay.DAY
-                        ? Sun
-                        : Moon
-                }
+        <Container>
+            <Sun
+                width={15}
+                top={-5}
+                left={5}
+                morphDirection={MorphDirection.RIGHT}
+                morphTime={300}
             />
-            <img
-                className="icon-cloud1"
-                style={{
-                    position: "absolute",
-                    width: "20rem",
-                    top: "0rem",
-                    left: "0rem",
-                }}
-                src={Cloud1}
+            <Cloud1
+                width={20}
+                top={0}
+                left={0}
+                morphDirection={MorphDirection.LEFT}
+                morphTime={200}
             />
-            <img
-                className="icon-cloud2"
-                style={{
-                    position: "absolute",
-                    width: "30rem",
-                    top: "5rem",
-                    left: "5rem",
-                }}
-                src={Cloud2}
+            <Cloud2
+                width={30}
+                top={5}
+                left={5}
+                morphDirection={MorphDirection.RIGHT}
+                morphTime={100}
             />
-        </div>
+        </Container>
     );
 };
-
+const PartlyCloudy = styled(PartlyCloudyJSX)``;
 export default PartlyCloudy;

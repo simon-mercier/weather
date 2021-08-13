@@ -1,74 +1,54 @@
 import React, { useContext } from "react";
 
-import Cloud1 from "../../../../assets/icons/cloud1.svg";
-import Cloud2 from "../../../../assets/icons/cloud2.svg";
-import Sun from "../../../../assets/icons/sun.svg";
-import Moon from "../../../../assets/icons/moon.svg";
 import TimeOfDayContext from "../../../../contexts/TimeOfDay";
 import TimesOfDay from "../../../../enums/timesOfDay";
-import "./WeatherIconsStyles.scss";
 
-const Cloudy = () => {
+import { Cloud1, Cloud2, Container, Sun } from "./AtomicIcons";
+import { MorphDirection } from "../../../../assets/styles/animations";
+import styled from "styled-components";
+
+const CloudyJSX = () => {
     const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
     return (
-        <div style={{ position: "absolute" }} className="cloudy">
-            <img
-                className="icon-sun"
-                style={{
-                    position: "absolute",
-                    width: "15rem",
-                    top: "-3rem",
-                    left: "5rem",
-                }}
-                src={
-                    timeOfDay === TimesOfDay.MORNING ||
-                    timeOfDay === TimesOfDay.DAY
-                        ? Sun
-                        : Moon
-                }
+        <Container>
+            <Sun
+                width={15}
+                top={-3}
+                left={5}
+                morphDirection={MorphDirection.LEFT}
+                morphTime={500}
             />
-            <img
-                className="icon-cloud2"
-                style={{
-                    position: "absolute",
-                    width: "10rem",
-                    top: "7rem",
-                    left: "-3rem",
-                }}
-                src={Cloud2}
+            <Cloud2
+                width={10}
+                top={10}
+                left={0}
+                morphDirection={MorphDirection.RIGHT}
+                morphTime={400}
             />
-            <img
-                className="icon-cloud2"
-                style={{
-                    position: "absolute",
-                    width: "10rem",
-                    top: "2rem",
-                    left: "13rem",
-                }}
-                src={Cloud2}
+            <Cloud2
+                width={10}
+                top={2}
+                left={13}
+                morphDirection={MorphDirection.LEFT}
+                morphTime={100}
             />
-            <img
-                className="icon-cloud1"
-                style={{
-                    position: "absolute",
-                    width: "20rem",
-                    top: "0rem",
-                    left: "0rem",
-                }}
-                src={Cloud1}
+            <Cloud1
+                width={20}
+                top={0}
+                left={0}
+                morphDirection={MorphDirection.RIGHT}
+                morphTime={300}
             />
-            <img
-                className="icon-cloud2"
-                style={{
-                    position: "absolute",
-                    width: "30rem",
-                    top: "5rem",
-                    left: "5rem",
-                }}
-                src={Cloud2}
+            <Cloud1
+                width={30}
+                top={5}
+                left={5}
+                morphDirection={MorphDirection.LEFT}
+                morphTime={200}
             />
-        </div>
+        </Container>
     );
 };
 
+const Cloudy = styled(CloudyJSX)``;
 export default Cloudy;

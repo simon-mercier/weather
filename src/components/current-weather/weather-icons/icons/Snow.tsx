@@ -1,61 +1,46 @@
-import Cloud1 from "../../../../assets/icons/cloud1.svg";
-import Cloud2 from "../../../../assets/icons/cloud2.svg";
-import "./WeatherIconsStyles.scss";
-const Snow = () => {
+import styled from "styled-components";
+import { MorphDirection } from "../../../../assets/styles/animations";
+import { Cloud1, Cloud2, Container } from "./AtomicIcons";
+const SnowJSX = () => {
     return (
-        <div style={{ position: "absolute" }} className="overcast">
-            <img
-                className="icon-cloud2"
-                style={{
-                    position: "absolute",
-                    width: "10rem",
-                    top: "7rem",
-                    left: "-3rem",
-                }}
-                src={Cloud2}
+        <Container>
+            <Cloud2
+                width={10}
+                top={7}
+                left={-3}
+                morphDirection={MorphDirection.LEFT}
+                morphTime={500}
             />
-            <img
-                className="icon-cloud2"
-                style={{
-                    position: "absolute",
-                    width: "10rem",
-                    top: "2rem",
-                    left: "13rem",
-                }}
-                src={Cloud2}
+            <Cloud2
+                width={10}
+                top={2}
+                left={13}
+                morphDirection={MorphDirection.RIGHT}
+                morphTime={400}
             />
-            <img
-                className="icon-cloud1"
-                style={{
-                    position: "absolute",
-                    width: "15rem",
-                    top: "5rem",
-                    left: "5rem",
-                }}
-                src={Cloud1}
+            <Cloud1
+                width={15}
+                top={5}
+                left={5}
+                morphDirection={MorphDirection.LEFT}
+                morphTime={300}
             />
-            <img
-                className="icon-cloud1"
-                style={{
-                    position: "absolute",
-                    width: "20rem",
-                    top: "0rem",
-                    left: "0rem",
-                }}
-                src={Cloud1}
+            <Cloud1
+                width={20}
+                top={0}
+                left={0}
+                morphDirection={MorphDirection.RIGHT}
+                morphTime={200}
             />
-            <img
-                className="icon-cloud2"
-                style={{
-                    position: "absolute",
-                    width: "30rem",
-                    top: "5rem",
-                    left: "5rem",
-                }}
-                src={Cloud2}
+            <Cloud2
+                width={30}
+                top={5}
+                left={5}
+                morphDirection={MorphDirection.LEFT}
+                morphTime={100}
             />
-        </div>
+        </Container>
     );
 };
-
+const Snow = styled(SnowJSX)``;
 export default Snow;

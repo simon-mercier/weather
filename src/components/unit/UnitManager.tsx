@@ -12,7 +12,7 @@ import {
     getUserCoordinates,
 } from "../../utils/location-utils";
 
-const UserLocation = () => {
+const UnitManager = () => {
     const [_, setLocation]: [Location, Dispatch<SetStateAction<Location>>] =
         useContext(LocationContext);
 
@@ -35,7 +35,7 @@ const UserLocation = () => {
     );
 };
 
-export default UserLocation;
+export default UnitManager;
 
 const Container = styled.div`
     ${Frosted}

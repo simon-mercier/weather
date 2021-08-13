@@ -6,7 +6,6 @@ import {
     useRef,
     useState,
 } from "react";
-import "./Search.scss";
 
 import { cityPredictions } from "../../utils/location-utils";
 import ILocation from "../../interfaces/location";
@@ -14,6 +13,9 @@ import LocationContext from "../../contexts/Location";
 import { DEFAULT_LOCATION_CITY } from "../../const";
 
 import Location from "../../classes/Location";
+import styled from "styled-components";
+import { Frosted } from "../../assets/styles/styles";
+import { SMALL_MARGIN } from "../../assets/styles/constants";
 
 const Search = () => {
     const [predictions, setPredictions] = useState({} as [ILocation]);
@@ -46,10 +48,14 @@ const Search = () => {
     };
 
     return (
-        <section className="search-with-dropdown">
-            <div className="input-with-icon">
-                <i className="fas fa-location-arrow"> </i>
-                <input
+        <Container>
+            <InputContainer>
+                <i
+                    style={{ padding: "4px", margin: "4px" }}
+                    className="fas fa-map-marker-alt"
+                />
+
+                <Input
                     ref={inputRef}
                     type="text"
                     onFocus={() => {
@@ -61,21 +67,100 @@ const Search = () => {
                     }}
                     onChange={fetchPredictions}
                 />
-            </div>
+            </InputContainer>
             {dropDownActive && predictions && predictions.length > 0 && (
-                <ul>
+                <PredictionList>
                     {predictions.map((location: ILocation) => (
-                        <li
+                        <Prediction
                             key={location.locationFormatted}
                             onMouseDown={() => handleClickPrediction(location)}
                         >
                             {location.locationFormatted}
-                        </li>
+                        </Prediction>
                     ))}
-                </ul>
+                </PredictionList>
             )}
-        </section>
+        </Container>
     );
 };
 
 export default Search;
+
+const Container = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    flex-direction: column;
+    width: 100%;
+`;
+
+const InputContainer = styled.div`
+    ${Frosted}
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    height: 2rem;
+
+    width: 100%;
+    padding: ${SMALL_MARGIN};
+    margin: ${SMALL_MARGIN};
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 0 1rem rgba(58, 57, 57, 0.2);
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.2);
+    }
+    &:active {
+        background-color: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.3);
+        border: none;
+    }
+    &:focus {
+        background-color: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.3);
+        border: none;
+    }
+`;
+
+const Input = styled.input`
+    font-size: 1em;
+    cursor: text;
+    width: 100%;
+    padding: ${SMALL_MARGIN};
+    margin: ${SMALL_MARGIN};
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+`;
+
+const PredictionList = styled.ul`
+    ${Frosted}
+
+    padding: ${SMALL_MARGIN};
+    margin: ${SMALL_MARGIN};
+
+    width: 100%;
+`;
+
+const Prediction = styled.li`
+    ${Frosted}
+
+    background-color: transparent;
+    margin: ${SMALL_MARGIN};
+    list-style-type: none;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.2);
+    }
+    &:active {
+        background-color: rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 1.5rem rgba(58, 57, 57, 0.3);
+        border: none;
+    }
+`;

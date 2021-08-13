@@ -92,4 +92,5 @@ const Cloud = styled.img<CloudProps>`
     animation-name: ${CloudAnim};
     animation-duration: ${() => randomMinMax(400, 600)}s;
     animation-delay: ${() => -1 * random(400)}s;
+    animation-iteration-count: infinite;
 `;

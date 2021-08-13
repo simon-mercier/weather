@@ -18,11 +18,16 @@ import Location from "../../classes/Location";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import Atmosphere from "./atmosphere/Atmosphere";
 import CloudAnimation from "./weather-animations/cloud-animation/CloudAnimation";
-import "./CurrentWeather.scss";
+
+import TimesOfDay from "../../enums/timesOfDay";
+import TimeOfDayContext from "../../contexts/TimeOfDay";
+import styled from "styled-components";
 
 const CurrentWeather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
         useContext(LocationContext);
+
+    const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
 
     const [currentWeather, setCurrentWeather] = useState({} as ICurrentWeather);
 
@@ -61,28 +66,31 @@ const CurrentWeather = () => {
     return (
         <CurrentWeatherInfo.Provider value={currentWeather}>
             {currentWeather && (
-                <div
-                    style={{
-                        position: "absolute",
-                        width: "100%",
-                        height: "100%",
-                    }}
-                >
-                    <Atmosphere></Atmosphere>
-                    <CloudAnimation></CloudAnimation>
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                        className="main-weather"
-                    >
+                <Container>
+                    <Atmosphere
+                        timeOfDay={timeOfDay}
+                        currentWeather={currentWeather}
+                    />
+                    <CloudAnimation />
+                    <MainWeatherComponent>
                         <MainWeather />
-                    </div>
-                </div>
+                    </MainWeatherComponent>
+                </Container>
             )}
         </CurrentWeatherInfo.Provider>
     );
 };
 
 export default CurrentWeather;
+
+const Container = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+`;
+
+const MainWeatherComponent = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+`;

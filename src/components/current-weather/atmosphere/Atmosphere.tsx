@@ -1,6 +1,4 @@
-import { useContext } from "react";
-import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
-import TimeOfDayContext from "../../../contexts/TimeOfDay";
+import styled from "styled-components";
 import TimesOfDay from "../../../enums/timesOfDay";
 import WeatherType from "../../../enums/weatherType";
 import ICurrentWeather from "../../../interfaces/currentWeather";
@@ -80,25 +78,21 @@ const timeOfDay2Atmosphere = new Map<TimesOfDay, Map<WeatherType, string>>([
     ],
 ]);
 
-const Atmosphere = () => {
-    const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
-    const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
+interface AtmosphereProps {
+    timeOfDay: TimesOfDay;
+    currentWeather: ICurrentWeather;
+}
 
-    return (
-        <div
-            style={{
-                backgroundImage:
-                    timeOfDay2Atmosphere
-                        .get(timeOfDay)
-                        ?.get(id2Type(currentWeather.weatherId)) ?? clearDay,
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                top: "0",
-                left: "0",
-            }}
-        ></div>
-    );
-};
+const Atmosphere = styled.div<AtmosphereProps>`
+    background-image: ${(p: AtmosphereProps) =>
+        timeOfDay2Atmosphere
+            .get(p.timeOfDay)
+            ?.get(id2Type(p.currentWeather.weatherId)) ?? clearDay};
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+`;
 
 export default Atmosphere;

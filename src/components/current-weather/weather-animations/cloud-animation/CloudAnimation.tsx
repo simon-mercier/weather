@@ -1,17 +1,18 @@
 import { useContext } from "react";
+import styled from "styled-components";
 import Cloud1 from "../../../../assets/png/cloud1.png";
 import Cloud2 from "../../../../assets/png/cloud2.png";
 import Cloud3 from "../../../../assets/png/cloud3.png";
 import Cloud4 from "../../../../assets/png/cloud4.png";
 import Cloud5 from "../../../../assets/png/cloud5.png";
+import { CloudAnim } from "../../../../assets/styles/animations";
 import CurrentWeatherInfo from "../../../../contexts/CurrentWeatherInfo";
 import TimeOfDayContext from "../../../../contexts/TimeOfDay";
 import TimesOfDay from "../../../../enums/timesOfDay";
 import WeatherType from "../../../../enums/weatherType";
 import ICurrentWeather from "../../../../interfaces/currentWeather";
+import { random, randomMinMax } from "../../../../utils/code-utils";
 import { id2Type } from "../../../../utils/weather-utils";
-
-import "./CloudAnimation.scss";
 
 const NO_CLOUDS = 0;
 const weatherType2NumberOfClouds = new Map<WeatherType, number>([
@@ -49,7 +50,7 @@ const CloudAnimation = () => {
     const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
     return (
-        <div className="clouds">
+        <>
             {clouds
                 .slice(
                     0,
@@ -57,31 +58,38 @@ const CloudAnimation = () => {
                         id2Type(currentWeather.weatherId)
                     ) ?? NO_CLOUDS
                 )
-                .map((cloud, i) => (
-                    <img
-                        style={{
-                            position: "absolute",
-                            transform: "scaleY(-1)",
-                            width:
-                                weatherType2WidthOfClouds.get(
-                                    id2Type(currentWeather.weatherId)
-                                ) ?? NO_CLOUDS,
-                            filter:
-                                "invert(" +
-                                (timeOfDay === TimesOfDay.DAY
-                                    ? weatherType2CloudInvertedShade.get(
-                                          id2Type(currentWeather.weatherId)
-                                      ) ?? NO_CLOUDS
-                                    : "50%") +
-                                ")",
-                        }}
-                        className={"cloud" + i}
-                        key={i}
+                .map((cloud) => (
+                    <Cloud
+                        timeOfDay={timeOfDay}
+                        currentWeather={currentWeather}
                         src={cloud}
-                    ></img>
+                    />
                 ))}
-        </div>
+        </>
     );
 };
 
 export default CloudAnimation;
+
+interface CloudProps {
+    timeOfDay: TimesOfDay;
+    currentWeather: ICurrentWeather;
+}
+const Cloud = styled.img<CloudProps>`
+    position: absolute;
+    transform: scaleY(-1);
+    width: ${(p) =>
+        weatherType2WidthOfClouds.get(id2Type(p.currentWeather.weatherId)) ??
+        NO_CLOUDS};
+    filter: invert(
+        ${(p) =>
+            p.timeOfDay === TimesOfDay.DAY
+                ? weatherType2CloudInvertedShade.get(
+                      id2Type(p.currentWeather.weatherId)
+                  ) ?? NO_CLOUDS
+                : "50%"}
+    );
+    animation-name: ${CloudAnim};
+    animation-duration: ${() => randomMinMax(400, 600)}s;
+    animation-delay: ${() => -1 * random(400)}s;
+`;

@@ -65,3 +65,12 @@ const MorphDirection2Keyframe = new Map<MorphDirection, Function>([
     [MorphDirection.RIGHT, MorphRight],
     [MorphDirection.LEFT, MorphLeft],
 ]);
+
+export const CloudAnim = keyframes`
+        0% {
+            left: -100%;
+        }
+        100% {
+            left: 100%;
+        }
+    `;

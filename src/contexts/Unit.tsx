@@ -1,6 +1,8 @@
-import { createContext } from "react";
-import ICurrentWeather from "../interfaces/currentWeather";
+import { Dispatch, SetStateAction, createContext } from "react";
+import UnitType from "../enums/unit";
 
-const UnitContext = createContext<ICurrentWeather>({} as ICurrentWeather);
+const UnitContext = createContext<
+    [UnitType, Dispatch<SetStateAction<UnitType>>]
+>([{} as UnitType, () => null]);
 
 export default UnitContext;

@@ -1,3 +1,4 @@
+import UnitType from "../enums/unit";
 import WeatherType from "../enums/weatherType";
 import ICoordinates from "../interfaces/coordinates";
 import ICurrentWeather from "../interfaces/currentWeather";
@@ -45,6 +46,9 @@ export const k2cString = (kelvin: number) => `${k2c(kelvin)}°C`;
 
 export const k2f = (kelvin: number) => Math.round(kelvin * (9 / 5) - 459.67);
 export const k2fString = (kelvin: number) => `${k2f(kelvin)}°F`;
+
+export const k2unit = (kelvin: number, unit: UnitType) =>
+    unit === UnitType.C ? k2c(kelvin) : k2f(kelvin);
 
 const id2WeatherType = new Map<number, WeatherType>([
     [200, WeatherType.THUNDERSTORM],

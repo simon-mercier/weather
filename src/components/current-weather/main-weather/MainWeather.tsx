@@ -5,11 +5,13 @@ import styled from "styled-components";
 import { Frosted } from "../../../assets/styles/styles";
 import { Morph, MorphDirection } from "../../../assets/styles/animations";
 import WeatherIcon from "../weather-icons/WeatherIcon";
-import { k2c } from "../../../utils/weather-utils";
+import { k2unit } from "../../../utils/weather-utils";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
+import UnitContext from "../../../contexts/Unit";
 
 const MainWeather = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
+    const [unit, _] = useContext(UnitContext);
     return (
         <>
             {currentWeather &&
@@ -17,21 +19,34 @@ const MainWeather = () => {
                 currentWeather.weatherDescription && (
                     <Container>
                         <Temperature>
+                            <Title>weather 🌡️</Title>
+
                             <Degrees>
-                                {k2c(currentWeather.temperature.temp)}°
+                                {k2unit(currentWeather.temperature.temp, unit)}°
                             </Degrees>
                             <div>
                                 <FeelsLike>
                                     feels like{" "}
-                                    {k2c(currentWeather.temperature.feelsLike)}°
+                                    {k2unit(
+                                        currentWeather.temperature.feelsLike,
+                                        unit
+                                    )}
+                                    °
                                 </FeelsLike>
 
                                 <HighLow>
                                     with a high of{" "}
-                                    {k2c(currentWeather.temperature.tempMax)}
+                                    {k2unit(
+                                        currentWeather.temperature.tempMax,
+                                        unit
+                                    )}
                                     °
                                     <br /> and a low of{" "}
-                                    {k2c(currentWeather.temperature.tempMin)}°
+                                    {k2unit(
+                                        currentWeather.temperature.tempMin,
+                                        unit
+                                    )}
+                                    °
                                 </HighLow>
                             </div>
                         </Temperature>
@@ -70,6 +85,12 @@ const Container = styled.div`
     z-index: 1;
     ${Morph(MorphDirection.BOTTOM, 100)}
     ${Frosted}
+`;
+
+const Title = styled.div`
+    font-size: 2rem;
+    /* margin-top: -3rem; */
+    font-weight: bold;
 `;
 
 const Temperature = styled.div`

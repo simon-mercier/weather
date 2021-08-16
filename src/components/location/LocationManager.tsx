@@ -4,8 +4,9 @@ import { DEFAULT_LOCATION } from "../../const";
 import LocationContext from "../../contexts/Location";
 
 import Location from "../../classes/Location";
-import TimeOfDay from "../time-of-day/TimeOfDay";
+
 import { setInterval } from "timers";
+import UnitManager from "../unit/UnitManager";
 
 const LocationManager = ({}) => {
     const [location, setLocation] = useState(new Location(DEFAULT_LOCATION));
@@ -18,7 +19,7 @@ const LocationManager = ({}) => {
 
     return (
         <LocationContext.Provider value={[location, setLocation]}>
-            {location && <TimeOfDay />}
+            {location && <UnitManager />}
         </LocationContext.Provider>
     );
 };

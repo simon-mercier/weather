@@ -53,9 +53,9 @@ const CurrentWeather = () => {
                         currentWeather={currentWeather}
                     />
                     <CloudAnimation />
-                    <MainWeatherComponent>
+                    <MainWeatherContainer>
                         <MainWeather />
-                    </MainWeatherComponent>
+                    </MainWeatherContainer>
                 </Container>
             )}
         </CurrentWeatherInfo.Provider>
@@ -70,7 +70,7 @@ const Container = styled.div`
     height: 100%;
 `;
 
-const MainWeatherComponent = styled.div`
+const MainWeatherContainer = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 10%;

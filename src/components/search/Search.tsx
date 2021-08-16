@@ -92,6 +92,7 @@ const Container = styled.div`
     align-items: start;
     flex-direction: column;
     width: 100%;
+    margin: inherit;
 `;
 
 const InputContainer = styled.div`
@@ -105,6 +106,7 @@ const InputContainer = styled.div`
     width: 100%;
     padding: ${SMALL_MARGIN};
     margin: ${SMALL_MARGIN};
+
     transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
     box-shadow: 0 0 1rem rgba(58, 57, 57, 0.2);
 

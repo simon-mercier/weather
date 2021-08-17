@@ -9,7 +9,7 @@ import { MARGIN } from "../../assets/styles/constants";
 export default function NavBar() {
     return (
         <Container>
-            <Title>beautiful weather 🍂</Title>
+            <Title>beautiful weather🍂</Title>
             <NavItems>
                 <SearchContainer>
                     <Search />
@@ -29,21 +29,24 @@ const Container = styled.nav`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    position: absolute;
+
     width: 100%;
     z-index: 99;
 
     @media ${device.mobileS} {
         justify-content: center;
+        position: absolute;
     }
 
     @media ${device.tablet} {
         justify-content: space-between;
+        position: fixed;
     }
 `;
 
 const Title = styled.div`
-    font-size: 2rem;
+    font-size: 2em;
+    font-weight: bold;
     margin: ${MARGIN};
     height: fit-content;
     ${Morph(MorphDirection.LEFT, 100)}
@@ -63,11 +66,11 @@ const SearchContainer = styled.div`
     ${Morph(MorphDirection.RIGHT, 100)}
 
     @media ${device.mobileS} {
-        max-width: 15rem;
+        max-width: 15em;
     }
 
     @media ${device.tablet} {
-        max-width: 20rem;
+        max-width: 20em;
     }
 `;
 

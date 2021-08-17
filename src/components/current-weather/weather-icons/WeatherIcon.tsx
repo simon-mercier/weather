@@ -7,7 +7,6 @@ import ScattteredClouds from "./icons/ScatteredClouds";
 import Overcast from "./icons/Overcast";
 import FewClouds from "./icons/FewClouds";
 import Rain from "./icons/Rain";
-import Snow from "./icons/Snow";
 import Thunderstorm from "./icons/Thunderstorm";
 import { id2Type } from "../../../utils/weather-utils";
 import styled from "styled-components";
@@ -22,7 +21,8 @@ const weatherType2Icon = new Map<WeatherType, any>([
     [WeatherType.OVERCAST_CLOUDS, <Overcast />],
     [WeatherType.DRIZZLE, <Rain />],
     [WeatherType.RAIN, <Rain />],
-    [WeatherType.SNOW, <Snow />],
+    [WeatherType.SMOKE, <Rain />],
+    [WeatherType.SNOW, <Rain />],
     [WeatherType.THUNDERSTORM, <Thunderstorm />],
 ]);
 
@@ -39,15 +39,15 @@ const WeatherIcon = () => {
 export default WeatherIcon;
 
 const Container = styled.div`
-    width: 15rem;
-    height: 15rem;
-    margin-top: -3rem;
+    width: 15em;
+    height: 15em;
+    margin-top: -3em;
 
     @media ${device.mobileS} {
-        margin-left: 0rem;
+        margin-left: 0em;
     }
 
     @media ${device.tablet} {
-        margin-left: -3rem;
+        margin-left: -3em;
     }
 `;

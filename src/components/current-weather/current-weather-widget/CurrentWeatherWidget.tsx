@@ -10,7 +10,7 @@ import { BIG_MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
 import device from "../../../assets/styles/breakpoints";
 
-const MainWeather = () => {
+const CurrentWeatherWidget = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
     const [unit, _] = useContext(UnitContext);
     return (
@@ -72,7 +72,7 @@ const MainWeather = () => {
     );
 };
 
-export default MainWeather;
+export default CurrentWeatherWidget;
 
 const Container = styled.div`
     width: fit-content;
@@ -89,8 +89,8 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-    font-size: 2rem;
-    margin-top: -1rem;
+    font-size: 2em;
+    margin-top: -0.5em;
     font-weight: bold;
 `;
 
@@ -103,21 +103,21 @@ const Temperature = styled.div`
 
 const Degrees = styled.div`
     background-color: transparent;
-    font-size: 12.5rem;
+    font-size: 12.5em;
 
     ${Morph(MorphDirection.BOTTOM, 100)}
 `;
 
 const FeelsLike = styled.div`
     margin-top: 0;
-    font-size: 3rem;
+    font-size: 3em;
     opacity: 0.9;
 
     ${Morph(MorphDirection.BOTTOM, 200)}
 `;
 
 const HighLow = styled.div`
-    font-size: 1.5rem;
+    font-size: 1.5em;
     opacity: 0.8;
     ${Morph(MorphDirection.BOTTOM, 300)}
 `;
@@ -131,7 +131,7 @@ const Weather = styled.div`
 `;
 
 const WeatherDescription = styled.div`
-    font-size: 3rem;
+    font-size: 3em;
     opacity: 90%;
 
     ${Morph(MorphDirection.BOTTOM, 200, 0.5)}
@@ -146,7 +146,7 @@ const WeatherDescription = styled.div`
 `;
 
 const HumidityPressure = styled.div`
-    font-size: 1.5rem;
+    font-size: 1.5em;
     opacity: 0.8;
 
     ${Morph(MorphDirection.BOTTOM, 300, 0.5)}

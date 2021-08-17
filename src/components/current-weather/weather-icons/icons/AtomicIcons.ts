@@ -14,9 +14,9 @@ interface IconProps {
 }
 const Image = styled.img<IconProps>`
     position: absolute;
-    width: ${(p) => p.width}rem;
-    top: ${(p) => p.top}rem;
-    left: ${(p) => p.left}rem;
+    width: ${(p) => p.width}em;
+    top: ${(p) => p.top}em;
+    left: ${(p) => p.left}em;
     ${(p) => Morph(p.morphDirection, p.morphTime, 1)}
 `;
 

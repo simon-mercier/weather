@@ -97,8 +97,8 @@ const id2WeatherType = new Map<number, WeatherType>([
     [622, WeatherType.SNOW],
 
     [701, WeatherType.DRIZZLE],
-    [711, WeatherType.OVERCAST_CLOUDS],
-    [721, WeatherType.OVERCAST_CLOUDS],
+    [711, WeatherType.SMOKE],
+    [721, WeatherType.SMOKE],
     [731, WeatherType.OVERCAST_CLOUDS],
     [741, WeatherType.OVERCAST_CLOUDS],
     [751, WeatherType.OVERCAST_CLOUDS],

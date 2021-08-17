@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { MorphDirection } from "../../../../assets/styles/animations";
-
 import { Cloud1, Cloud2, Container } from "./AtomicIcons";
 const RainJSX = () => {
     return (

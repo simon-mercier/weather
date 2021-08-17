@@ -1,14 +1,10 @@
-import React, { useContext } from "react";
-
-import TimeOfDayContext from "../../../../contexts/TimeOfDay";
-import TimesOfDay from "../../../../enums/timesOfDay";
+import React from "react";
 
 import { Cloud1, Cloud2, Container } from "./AtomicIcons";
 import { MorphDirection } from "../../../../assets/styles/animations";
 import styled from "styled-components";
 
 const BrokenCloudsJSX = () => {
-    const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
     return (
         <Container>
             <Cloud2

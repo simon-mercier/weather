@@ -10,25 +10,20 @@ import {
 
 import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
-import MainWeather from "./main-weather/MainWeather";
+import CurrentWeatherWidget from "./current-weather-widget/CurrentWeatherWidget";
 
 import LocationContext from "../../contexts/Location";
 import Location from "../../classes/Location";
-import Atmosphere from "./atmosphere/Atmosphere";
-import CloudAnimation from "./weather-animations/cloud-animation/CloudAnimation";
 
-import TimesOfDay from "../../enums/timesOfDay";
-import TimeOfDayContext from "../../contexts/TimeOfDay";
 import styled from "styled-components";
-import { DEFAULT_LOCATION_COORDINATES } from "../../const";
-import { coordinates2CurrentWeather } from "../../utils/weather-utils";
 import device from "../../assets/styles/breakpoints";
+import { coordinates2CurrentWeather } from "../../utils/weather-utils";
+import { DEFAULT_LOCATION_COORDINATES } from "../../const";
+import Background from "../background/Background";
 
 const CurrentWeather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
         useContext(LocationContext);
-
-    const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
 
     const [currentWeather, setCurrentWeather] = useState({} as ICurrentWeather);
 
@@ -41,6 +36,22 @@ const CurrentWeather = () => {
         );
     }, [location]);
 
+    // const fetchCurrentWeather = useCallback(async () => {
+    //     setCurrentWeather({
+    //         temperature: {
+    //             temp: 293,
+    //             feelsLike: 293,
+    //             tempMin: 293,
+    //             tempMax: 293,
+    //         },
+    //         weatherDescription: "TEST",
+    //         weatherId: 500,
+    //         pressure: 80,
+    //         humidity: 80,
+    //         windSpeed: 50,
+    //     });
+    // }, [location]);
+
     useEffect(() => {
         fetchCurrentWeather();
     }, [fetchCurrentWeather]);
@@ -49,14 +60,10 @@ const CurrentWeather = () => {
         <CurrentWeatherInfo.Provider value={currentWeather}>
             {currentWeather && (
                 <Container>
-                    <Atmosphere
-                        timeOfDay={timeOfDay}
-                        currentWeather={currentWeather}
-                    />
-                    <CloudAnimation />
-                    <MainWeatherContainer>
-                        <MainWeather />
-                    </MainWeatherContainer>
+                    <Background />
+                    <CurrentWeatherWidgetContainer>
+                        <CurrentWeatherWidget />
+                    </CurrentWeatherWidgetContainer>
                 </Container>
             )}
         </CurrentWeatherInfo.Provider>
@@ -70,10 +77,9 @@ const Container = styled.div`
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
 `;
 
-const MainWeatherContainer = styled.div`
+const CurrentWeatherWidgetContainer = styled.div`
     display: flex;
     justify-content: center;
 
@@ -85,23 +91,3 @@ const MainWeatherContainer = styled.div`
         margin-top: 10%;
     }
 `;
-
-// const fetchCurrentWeather = useCallback(async () => {
-//     setCurrentWeather({
-//         temperature: {
-//             temp: 293,
-//             feelsLike: 293,
-//             tempMin: 293,
-//             tempMax: 293,
-//         },
-
-//         weatherDescription: "clear",
-//         weatherId: 804,
-
-//         pressure: 80,
-
-//         humidity: 80,
-
-//         windSpeed: 50,
-//     });
-// }, [location]);

@@ -1,24 +1,24 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import Cloud1 from "../../../../assets/png/cloud1.png";
-import Cloud2 from "../../../../assets/png/cloud2.png";
-import Cloud3 from "../../../../assets/png/cloud3.png";
-import Cloud4 from "../../../../assets/png/cloud4.png";
-import Cloud5 from "../../../../assets/png/cloud5.png";
-import { CloudAnim } from "../../../../assets/styles/animations";
-import CurrentWeatherInfo from "../../../../contexts/CurrentWeatherInfo";
-import TimeOfDayContext from "../../../../contexts/TimeOfDay";
-import TimesOfDay from "../../../../enums/timesOfDay";
-import WeatherType from "../../../../enums/weatherType";
-import ICurrentWeather from "../../../../interfaces/currentWeather";
-import { random, randomMinMax } from "../../../../utils/code-utils";
-import { id2Type } from "../../../../utils/weather-utils";
+import Cloud1 from "../../../assets/png/cloud1.png";
+import Cloud2 from "../../../assets/png/cloud2.png";
+import Cloud3 from "../../../assets/png/cloud3.png";
+import Cloud4 from "../../../assets/png/cloud4.png";
+import Cloud5 from "../../../assets/png/cloud5.png";
+import { CloudAnim } from "../../../assets/styles/animations";
+import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
+import TimeOfDayContext from "../../../contexts/TimeOfDay";
+import TimesOfDay from "../../../enums/timesOfDay";
+import WeatherType from "../../../enums/weatherType";
+import ICurrentWeather from "../../../interfaces/currentWeather";
+import { random, randomMinMax } from "../../../utils/code-utils";
+import { id2Type } from "../../../utils/weather-utils";
 
 const NO_CLOUDS = 0;
 const weatherType2NumberOfClouds = new Map<WeatherType, number>([
     [WeatherType.FEW_CLOUDS, 1],
-    [WeatherType.SCATTERED_CLOUDS, 2],
-    [WeatherType.BROKEN_CLOUDS, 3],
+    [WeatherType.SCATTERED_CLOUDS, 3],
+    [WeatherType.BROKEN_CLOUDS, 4],
     [WeatherType.OVERCAST_CLOUDS, 5],
     [WeatherType.DRIZZLE, 5],
     [WeatherType.RAIN, 5],
@@ -96,4 +96,5 @@ const Cloud = styled.img<CloudProps>`
     animation-duration: ${() => randomMinMax(400, 600)}s;
     animation-delay: ${() => -1 * random(400)}s;
     animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
 `;

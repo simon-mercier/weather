@@ -1,4 +1,5 @@
 {
+    "homepage": "http://simon-mercier.github.io/weather",
     "proxy": "https://api.pluralsight.com:8000",
     "name": "weather",
     "version": "0.1.0",
@@ -26,7 +27,9 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
@@ -55,6 +58,7 @@
         "@typescript-eslint/parser": "^4.28.2",
         "eslint": "^7.30.0",
         "eslint-plugin-unused-imports": "^1.1.2",
+        "gh-pages": "^3.2.3",
         "prettier": "2.3.2",
         "react-google-maps": "^9.4.5",
         "typescript": "^4.3.5"

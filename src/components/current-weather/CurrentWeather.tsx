@@ -22,6 +22,7 @@ import TimeOfDayContext from "../../contexts/TimeOfDay";
 import styled from "styled-components";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import { coordinates2CurrentWeather } from "../../utils/weather-utils";
+import device from "../../assets/styles/breakpoints";
 
 const CurrentWeather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
@@ -66,14 +67,23 @@ export default CurrentWeather;
 
 const Container = styled.div`
     position: absolute;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 `;
 
 const MainWeatherContainer = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+
+    @media ${device.mobileS} {
+        margin-top: 30%;
+    }
+
+    @media ${device.tablet} {
+        margin-top: 10%;
+    }
 `;
 
 // const fetchCurrentWeather = useCallback(async () => {

@@ -8,6 +8,7 @@ import WeatherIcon from "../weather-icons/WeatherIcon";
 import { k2unit } from "../../../utils/weather-utils";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
+import device from "../../../assets/styles/breakpoints";
 
 const MainWeather = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
@@ -19,7 +20,7 @@ const MainWeather = () => {
                 currentWeather.weatherDescription && (
                     <Container>
                         <Temperature>
-                            <Title>weather 🌡️</Title>
+                            <Title>weather🌡️</Title>
 
                             <Degrees>
                                 {k2unit(currentWeather.temperature.temp, unit)}°
@@ -89,7 +90,7 @@ const Container = styled.div`
 
 const Title = styled.div`
     font-size: 2rem;
-    /* margin-top: -3rem; */
+    margin-top: -1rem;
     font-weight: bold;
 `;
 
@@ -134,6 +135,14 @@ const WeatherDescription = styled.div`
     opacity: 90%;
 
     ${Morph(MorphDirection.BOTTOM, 200, 0.5)}
+
+    @media ${device.mobileS} {
+        margin-top: 20%;
+    }
+
+    @media ${device.tablet} {
+        margin-top: 0;
+    }
 `;
 
 const HumidityPressure = styled.div`

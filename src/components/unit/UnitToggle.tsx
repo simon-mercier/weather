@@ -52,4 +52,5 @@ const Unit = styled.div`
     font-weight: bold;
     padding: ${SMALL_MARGIN};
     margin: ${SMALL_MARGIN};
+    margin-left: 0.2rem;
 `;

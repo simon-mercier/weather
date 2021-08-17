@@ -3,20 +3,23 @@ import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
 import WeatherType from "../../../enums/weatherType";
 import Clear from "./icons/Clear";
 import ICurrentWeather from "../../../interfaces/currentWeather";
-import Cloudy from "./icons/Cloudy";
+import ScattteredClouds from "./icons/ScatteredClouds";
 import Overcast from "./icons/Overcast";
-import PartlyCloudy from "./icons/PartlyCloudy";
+import FewClouds from "./icons/FewClouds";
 import Rain from "./icons/Rain";
 import Snow from "./icons/Snow";
 import Thunderstorm from "./icons/Thunderstorm";
 import { id2Type } from "../../../utils/weather-utils";
 import styled from "styled-components";
+import device from "../../../assets/styles/breakpoints";
+import BrokenClouds from "./icons/BrokenClouds";
 
 const weatherType2Icon = new Map<WeatherType, any>([
-    [WeatherType.CLEAR, <Clear />],
-    [WeatherType.PARTLY_CLOUDY, <PartlyCloudy />],
-    [WeatherType.CLOUDY, <Cloudy />],
-    [WeatherType.OVERCAST, <Overcast />],
+    [WeatherType.CLEAR_SKY, <Clear />],
+    [WeatherType.FEW_CLOUDS, <FewClouds />],
+    [WeatherType.SCATTERED_CLOUDS, <ScattteredClouds />],
+    [WeatherType.BROKEN_CLOUDS, <BrokenClouds />],
+    [WeatherType.OVERCAST_CLOUDS, <Overcast />],
     [WeatherType.DRIZZLE, <Rain />],
     [WeatherType.RAIN, <Rain />],
     [WeatherType.SNOW, <Snow />],
@@ -38,6 +41,13 @@ export default WeatherIcon;
 const Container = styled.div`
     width: 15rem;
     height: 15rem;
-    margin-left: -3rem;
     margin-top: -3rem;
+
+    @media ${device.mobileS} {
+        margin-left: 0rem;
+    }
+
+    @media ${device.tablet} {
+        margin-left: -3rem;
+    }
 `;

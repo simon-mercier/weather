@@ -97,22 +97,22 @@ const id2WeatherType = new Map<number, WeatherType>([
     [622, WeatherType.SNOW],
 
     [701, WeatherType.DRIZZLE],
-    [711, WeatherType.CLEAR],
-    [721, WeatherType.CLEAR],
-    [731, WeatherType.CLEAR],
-    [741, WeatherType.CLEAR],
-    [751, WeatherType.CLEAR],
-    [761, WeatherType.CLEAR],
-    [762, WeatherType.CLEAR],
+    [711, WeatherType.OVERCAST_CLOUDS],
+    [721, WeatherType.OVERCAST_CLOUDS],
+    [731, WeatherType.OVERCAST_CLOUDS],
+    [741, WeatherType.OVERCAST_CLOUDS],
+    [751, WeatherType.OVERCAST_CLOUDS],
+    [761, WeatherType.OVERCAST_CLOUDS],
+    [762, WeatherType.OVERCAST_CLOUDS],
     [771, WeatherType.RAIN],
     [781, WeatherType.THUNDERSTORM],
 
-    [800, WeatherType.CLEAR],
+    [800, WeatherType.CLEAR_SKY],
 
-    [801, WeatherType.PARTLY_CLOUDY],
-    [802, WeatherType.PARTLY_CLOUDY],
-    [803, WeatherType.CLOUDY],
-    [804, WeatherType.OVERCAST],
+    [801, WeatherType.FEW_CLOUDS],
+    [802, WeatherType.SCATTERED_CLOUDS],
+    [803, WeatherType.BROKEN_CLOUDS],
+    [804, WeatherType.OVERCAST_CLOUDS],
 ]);
 export const id2Type = (weatherId: number): WeatherType =>
-    id2WeatherType.get(weatherId) ?? WeatherType.CLEAR;
+    id2WeatherType.get(weatherId) ?? WeatherType.CLEAR_SKY;

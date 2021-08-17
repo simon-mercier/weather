@@ -16,9 +16,10 @@ import { id2Type } from "../../../../utils/weather-utils";
 
 const NO_CLOUDS = 0;
 const weatherType2NumberOfClouds = new Map<WeatherType, number>([
-    [WeatherType.PARTLY_CLOUDY, 2],
-    [WeatherType.CLOUDY, 3],
-    [WeatherType.OVERCAST, 5],
+    [WeatherType.FEW_CLOUDS, 1],
+    [WeatherType.SCATTERED_CLOUDS, 2],
+    [WeatherType.BROKEN_CLOUDS, 3],
+    [WeatherType.OVERCAST_CLOUDS, 5],
     [WeatherType.DRIZZLE, 5],
     [WeatherType.RAIN, 5],
     [WeatherType.SNOW, 5],
@@ -26,9 +27,10 @@ const weatherType2NumberOfClouds = new Map<WeatherType, number>([
 ]);
 
 const weatherType2WidthOfClouds = new Map<WeatherType, string>([
-    [WeatherType.PARTLY_CLOUDY, "30%"],
-    [WeatherType.CLOUDY, "50%"],
-    [WeatherType.OVERCAST, "70%"],
+    [WeatherType.FEW_CLOUDS, "30%"],
+    [WeatherType.SCATTERED_CLOUDS, "40%"],
+    [WeatherType.BROKEN_CLOUDS, "50%"],
+    [WeatherType.OVERCAST_CLOUDS, "70%"],
     [WeatherType.DRIZZLE, "50%"],
     [WeatherType.RAIN, "70%"],
     [WeatherType.SNOW, "70%"],
@@ -36,9 +38,10 @@ const weatherType2WidthOfClouds = new Map<WeatherType, string>([
 ]);
 
 const weatherType2CloudInvertedShade = new Map<WeatherType, string>([
-    [WeatherType.PARTLY_CLOUDY, "0%"],
-    [WeatherType.CLOUDY, "10%"],
-    [WeatherType.OVERCAST, "20%"],
+    [WeatherType.FEW_CLOUDS, "0%"],
+    [WeatherType.SCATTERED_CLOUDS, "0%"],
+    [WeatherType.BROKEN_CLOUDS, "10%"],
+    [WeatherType.OVERCAST_CLOUDS, "20%"],
     [WeatherType.DRIZZLE, "30%"],
     [WeatherType.RAIN, "40%"],
     [WeatherType.SNOW, "30%"],

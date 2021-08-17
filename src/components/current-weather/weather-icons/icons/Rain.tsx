@@ -7,8 +7,8 @@ const RainJSX = () => {
         <Container>
             <Cloud2
                 width={10}
-                top={7}
-                left={-3}
+                top={10}
+                left={-2}
                 morphDirection={MorphDirection.LEFT}
                 morphTime={500}
             />

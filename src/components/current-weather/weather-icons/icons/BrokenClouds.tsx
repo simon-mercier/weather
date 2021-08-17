@@ -3,21 +3,14 @@ import React, { useContext } from "react";
 import TimeOfDayContext from "../../../../contexts/TimeOfDay";
 import TimesOfDay from "../../../../enums/timesOfDay";
 
-import { Cloud1, Cloud2, Container, Sun } from "./AtomicIcons";
+import { Cloud1, Cloud2, Container } from "./AtomicIcons";
 import { MorphDirection } from "../../../../assets/styles/animations";
 import styled from "styled-components";
 
-const CloudyJSX = () => {
+const BrokenCloudsJSX = () => {
     const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
     return (
         <Container>
-            <Sun
-                width={15}
-                top={-3}
-                left={5}
-                morphDirection={MorphDirection.LEFT}
-                morphTime={500}
-            />
             <Cloud2
                 width={10}
                 top={10}
@@ -50,5 +43,5 @@ const CloudyJSX = () => {
     );
 };
 
-const Cloudy = styled(CloudyJSX)``;
-export default Cloudy;
+const BrokenClouds = styled(BrokenCloudsJSX)``;
+export default BrokenClouds;

@@ -8,7 +8,7 @@ import Location from "../../classes/Location";
 import { setInterval } from "timers";
 import UnitManager from "../unit/UnitManager";
 
-const LocationManager = ({}) => {
+const LocationManager = () => {
     const [location, setLocation] = useState(new Location(DEFAULT_LOCATION));
     const TEN_MINUTES = 600000;
     useEffect(() => {

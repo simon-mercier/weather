@@ -3,6 +3,8 @@ import { Morph, MorphDirection } from "../../assets/styles/animations";
 import Search from "../search/Search";
 import UnitToggle from "../unit/UnitToggle";
 import UserLocation from "../location/UserLocation";
+import device from "../../assets/styles/breakpoints";
+import { MARGIN } from "../../assets/styles/constants";
 
 export default function NavBar() {
     return (
@@ -27,16 +29,22 @@ const Container = styled.nav`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
+    position: absolute;
     width: 100%;
     z-index: 99;
+
+    @media ${device.mobileS} {
+        justify-content: center;
+    }
+
+    @media ${device.tablet} {
+        justify-content: space-between;
+    }
 `;
 
 const Title = styled.div`
     font-size: 2rem;
-    margin: 8px;
+    margin: ${MARGIN};
     height: fit-content;
     ${Morph(MorphDirection.LEFT, 100)}
 `;
@@ -50,9 +58,17 @@ const NavItems = styled.div`
 const SearchContainer = styled.div`
     margin-top: 4px;
     margin-right: 20px;
-    max-width: 50rem;
+
     width: fit-content;
     ${Morph(MorphDirection.RIGHT, 100)}
+
+    @media ${device.mobileS} {
+        max-width: 15rem;
+    }
+
+    @media ${device.tablet} {
+        max-width: 20rem;
+    }
 `;
 
 const UserLocationContainer = styled.div`

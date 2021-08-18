@@ -4,7 +4,6 @@ import PeriodOfDayContext from "../../contexts/PeriodOfDay";
 import PeriodsOfDay from "../../enums/periodsOfDay";
 import WeatherType from "../../enums/weatherType";
 import ICurrentWeather from "../../interfaces/currentWeather";
-import { id2Type } from "../../utils/weather-utils";
 import Atmosphere from "./Atmosphere";
 import { RainGif, SnowGif } from "./weather-animations/WeatherAnimations";
 import CloudAnimation from "./weather-animations/CloudAnimation";
@@ -25,8 +24,8 @@ const Background = (props: BackgroundProps) => {
                 WeatherType.RAIN,
                 WeatherType.DRIZZLE,
                 WeatherType.THUNDERSTORM,
-            ].includes(id2Type(props.currentWeather.weatherId)) && <RainGif />}
-            {id2Type(props.currentWeather.weatherId) === WeatherType.SNOW && (
+            ].includes(props.currentWeather.weatherType) && <RainGif />}
+            {props.currentWeather.weatherType === WeatherType.SNOW && (
                 <SnowGif />
             )}
             <CloudAnimation currentWeather={props.currentWeather} />

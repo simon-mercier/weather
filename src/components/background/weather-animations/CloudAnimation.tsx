@@ -11,7 +11,6 @@ import PeriodsOfDay from "../../../enums/periodsOfDay";
 import WeatherType from "../../../enums/weatherType";
 import ICurrentWeather from "../../../interfaces/currentWeather";
 import { random, randomMinMax } from "../../../utils/code-utils";
-import { id2Type } from "../../../utils/weather-utils";
 
 const NO_CLOUDS = 0;
 const weatherType2NumberOfClouds = new Map<WeatherType, number>([
@@ -60,7 +59,7 @@ const CloudAnimation = (props: CloudAnimationProps) => {
                 .slice(
                     0,
                     weatherType2NumberOfClouds.get(
-                        id2Type(props.currentWeather.weatherId)
+                        props.currentWeather.weatherType
                     ) ?? NO_CLOUDS
                 )
                 .map((cloud) => (
@@ -89,13 +88,13 @@ const Cloud = styled.img<CloudProps>`
     position: absolute;
     transform: scaleY(-1);
     width: ${(p) =>
-        weatherType2WidthOfClouds.get(id2Type(p.currentWeather.weatherId)) ??
+        weatherType2WidthOfClouds.get(p.currentWeather.weatherType) ??
         NO_CLOUDS};
     filter: invert(
         ${(p) =>
             p.periodOfDay === PeriodsOfDay.DAY
                 ? weatherType2CloudInvertedShade.get(
-                      id2Type(p.currentWeather.weatherId)
+                      p.currentWeather.weatherType
                   ) ?? NO_CLOUDS
                 : "50%"}
     );

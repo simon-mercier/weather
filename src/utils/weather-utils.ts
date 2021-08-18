@@ -5,51 +5,6 @@ import ICurrentWeather from "../interfaces/currentWeather";
 import ITemperature from "../interfaces/temperature";
 import { fetchApi } from "./api-utils";
 
-const openWeatherApiKey = "17f10aab8d22d756ce0cbdbfbaef5eb4";
-export const coordinates2CurrentWeather = async (
-    coordinates: ICoordinates
-): Promise<ICurrentWeather | undefined> => {
-    return await fetchApi<ICoordinates>(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${openWeatherApiKey}`,
-        coordinates
-    ).then(
-        (result) => {
-            console.log("Fetched weather");
-            return result
-                ? ({
-                      temperature: {
-                          temp: result.main.temp ?? undefined,
-                          feelsLike: result.main.feels_like ?? undefined,
-                          tempMin: result.main.temp_min ?? undefined,
-                          tempMax: result.main.temp_max ?? undefined,
-                      } as ITemperature,
-
-                      humidity: result.main.humidity,
-                      pressure: result.main.pressure,
-
-                      weatherId: result.weather[0].id,
-                      weatherDescription: result.weather[0].description,
-
-                      windSpeed: result.wind.speed,
-                  } as ICurrentWeather)
-                : undefined;
-        },
-        (error) => {
-            console.error(error);
-            return undefined;
-        }
-    );
-};
-
-export const k2c = (kelvin: number) => Math.round(kelvin - 273.15);
-export const k2cString = (kelvin: number) => `${k2c(kelvin)}°C`;
-
-export const k2f = (kelvin: number) => Math.round(kelvin * (9 / 5) - 459.67);
-export const k2fString = (kelvin: number) => `${k2f(kelvin)}°F`;
-
-export const k2unit = (kelvin: number, unit: UnitType) =>
-    unit === UnitType.C ? k2c(kelvin) : k2f(kelvin);
-
 const id2WeatherType = new Map<number, WeatherType>([
     [200, WeatherType.THUNDERSTORM],
     [201, WeatherType.THUNDERSTORM],
@@ -116,3 +71,48 @@ const id2WeatherType = new Map<number, WeatherType>([
 ]);
 export const id2Type = (weatherId: number): WeatherType =>
     id2WeatherType.get(weatherId) ?? WeatherType.CLEAR_SKY;
+
+const openWeatherApiKey = "17f10aab8d22d756ce0cbdbfbaef5eb4";
+export const coordinates2CurrentWeather = async (
+    coordinates: ICoordinates
+): Promise<ICurrentWeather | undefined> => {
+    return await fetchApi<ICoordinates>(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${openWeatherApiKey}`,
+        coordinates
+    ).then(
+        (result) => {
+            console.log("Fetched weather");
+            return result
+                ? ({
+                      temperature: {
+                          temp: result.main.temp ?? undefined,
+                          feelsLike: result.main.feels_like ?? undefined,
+                          tempMin: result.main.temp_min ?? undefined,
+                          tempMax: result.main.temp_max ?? undefined,
+                      } as ITemperature,
+
+                      humidity: result.main.humidity,
+                      pressure: result.main.pressure,
+
+                      weatherType: id2Type(result.weather[0].id),
+                      weatherDescription: result.weather[0].description,
+
+                      windSpeed: result.wind.speed,
+                  } as ICurrentWeather)
+                : undefined;
+        },
+        (error) => {
+            console.error(error);
+            return undefined;
+        }
+    );
+};
+
+export const k2c = (kelvin: number) => Math.round(kelvin - 273.15);
+export const k2cString = (kelvin: number) => `${k2c(kelvin)}°C`;
+
+export const k2f = (kelvin: number) => Math.round(kelvin * (9 / 5) - 459.67);
+export const k2fString = (kelvin: number) => `${k2f(kelvin)}°F`;
+
+export const k2unit = (kelvin: number, unit: UnitType) =>
+    unit === UnitType.C ? k2c(kelvin) : k2f(kelvin);

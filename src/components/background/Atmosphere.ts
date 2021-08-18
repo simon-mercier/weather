@@ -3,7 +3,6 @@ import device from "../../assets/styles/breakpoints";
 import PeriodsOfDay from "../../enums/periodsOfDay";
 import WeatherType from "../../enums/weatherType";
 import ICurrentWeather from "../../interfaces/currentWeather";
-import { id2Type } from "../../utils/weather-utils";
 
 const morning: string =
     "linear-gradient(to bottom, #CAD5D7 0%, 26.80412232875824%, #FBAA72 53.60824465751648%, 62.542954087257385%, #B86F83 71.47766351699829%, 85.73883175849915%, #446996 100%)";
@@ -140,13 +139,13 @@ const Atmosphere = styled.div<AtmosphereProps>`
     background-image: ${(p: AtmosphereProps) =>
         (periodOfDay2Atmosphere
             .get(p.periodOfDay)
-            ?.get(id2Type(p.currentWeather.weatherId)) as string) ?? clear};
+            ?.get(p.currentWeather.weatherType) as string) ?? clear};
 
     filter: grayscale(
         ${(p: AtmosphereProps) =>
             periodOfDay2Brightness
                 .get(p.periodOfDay)
-                ?.get(id2Type(p.currentWeather.weatherId)) ?? 0}
+                ?.get(p.currentWeather.weatherType) ?? 0}
     );
 
     position: absolute;

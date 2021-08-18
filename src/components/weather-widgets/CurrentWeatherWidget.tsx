@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Frosted } from "../../assets/styles/styles";
 import { Morph, MorphDirection } from "../../assets/styles/animations";
 import WeatherIcon from "../icons/WeatherIcon";
-import { id2Type, k2unit } from "../../utils/weather-utils";
+import { k2unit } from "../../utils/weather-utils";
 import { BIG_MARGIN } from "../../assets/styles/constants";
 import UnitContext from "../../contexts/Unit";
 import device from "../../assets/styles/breakpoints";
@@ -29,7 +29,8 @@ const CurrentWeatherWidget = () => {
                                 <FeelsLike>
                                     feels like{" "}
                                     {k2unit(
-                                        currentWeather.temperature.feelsLike,
+                                        currentWeather.temperature
+                                            .feelsLike as number,
                                         unit
                                     )}
                                     °
@@ -38,13 +39,15 @@ const CurrentWeatherWidget = () => {
                                 <HighLow>
                                     with a high of{" "}
                                     {k2unit(
-                                        currentWeather.temperature.tempMax,
+                                        currentWeather.temperature
+                                            .tempMax as number,
                                         unit
                                     )}
                                     °
                                     <br /> and a low of{" "}
                                     {k2unit(
-                                        currentWeather.temperature.tempMin,
+                                        currentWeather.temperature
+                                            .tempMin as number,
                                         unit
                                     )}
                                     °
@@ -56,9 +59,7 @@ const CurrentWeatherWidget = () => {
                                 <WeatherIcon
                                     width={15}
                                     height={15}
-                                    weatherType={id2Type(
-                                        currentWeather.weatherId
-                                    )}
+                                    weatherType={currentWeather.weatherType}
                                 />
                                 <WeatherInfoContainer>
                                     <WeatherDescription>

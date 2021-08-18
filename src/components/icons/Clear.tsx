@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 
-import TimeOfDayContext from "../../../../contexts/TimeOfDay";
-import TimesOfDay from "../../../../enums/timesOfDay";
+import TimeOfDayContext from "../../contexts/TimeOfDay";
+import TimesOfDay from "../../enums/timesOfDay";
 
 import { Cloud1, Container, Moon, Sun } from "./AtomicIcons";
-import { MorphDirection } from "../../../../assets/styles/animations";
+import { MorphDirection } from "../../assets/styles/animations";
 import styled from "styled-components";
 const ClearJSX = () => {
     const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
@@ -12,26 +12,26 @@ const ClearJSX = () => {
         <Container>
             {timeOfDay !== TimesOfDay.NIGHT ? (
                 <Sun
-                    width={15}
-                    top={4}
-                    left={4}
+                    width={100}
+                    top={0}
+                    left={0}
                     morphDirection={MorphDirection.LEFT}
                     morphTime={200}
                 />
             ) : (
                 <Moon
-                    width={15}
-                    top={4}
-                    left={7}
+                    width={100}
+                    top={0}
+                    left={10}
                     morphDirection={MorphDirection.LEFT}
                     morphTime={200}
                 />
             )}
 
             <Cloud1
-                width={10}
-                top={10}
-                left={0}
+                width={70}
+                top={50}
+                left={60}
                 morphDirection={MorphDirection.RIGHT}
                 morphTime={100}
             />

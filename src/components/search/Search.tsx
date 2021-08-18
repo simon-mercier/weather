@@ -92,8 +92,7 @@ const Container = styled.div`
     justify-content: flex-start;
     align-items: start;
     flex-direction: column;
-    width: 100%;
-    margin: inherit;
+    max-width: min-content;
 `;
 
 const InputContainer = styled.div`
@@ -104,9 +103,7 @@ const InputContainer = styled.div`
     align-items: center;
     height: 2em;
 
-    width: 100%;
     padding: ${SMALL_MARGIN};
-    margin: ${SMALL_MARGIN};
 
     transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
     box-shadow: 0 0 1em rgba(58, 57, 57, 0.2);
@@ -130,9 +127,7 @@ const InputContainer = styled.div`
 const Input = styled.input`
     font-size: 1em;
     cursor: text;
-    width: 100%;
     padding: ${SMALL_MARGIN};
-    margin: ${SMALL_MARGIN};
 
     background-color: transparent;
     border: none;
@@ -152,16 +147,13 @@ const PredictionList = styled.ul`
     }
 
     padding: ${SMALL_MARGIN};
-    margin: ${SMALL_MARGIN};
-
-    width: 100%;
 `;
 
 const Prediction = styled.li`
     ${Frosted}
 
     background-color: transparent;
-    margin: ${SMALL_MARGIN};
+
     list-style-type: none;
     &:hover {
         background-color: rgba(0, 0, 0, 0.2);

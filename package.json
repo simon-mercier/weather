@@ -1,6 +1,6 @@
 {
     "homepage": "http://simon-mercier.github.io/weather",
-    "proxy": "https://api.pluralsight.com:8000",
+    "proxy": "https://simon-mercier.github.io/weather",
     "name": "weather",
     "version": "0.1.0",
     "private": true,

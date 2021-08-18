@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import Cloud1_img from "../../../../assets/icons/cloud1.svg";
-import Cloud2_img from "../../../../assets/icons/cloud2.svg";
-import Sun_img from "../../../../assets/icons/sun.svg";
-import Moon_img from "../../../../assets/icons/moon.svg";
-import { Morph, MorphDirection } from "../../../../assets/styles/animations";
+import Cloud1_img from "../../assets/icons/cloud1.svg";
+import Cloud2_img from "../../assets/icons/cloud2.svg";
+import Sun_img from "../../assets/icons/sun.svg";
+import Moon_img from "../../assets/icons/moon.svg";
+import { Morph, MorphDirection } from "../../assets/styles/animations";
 
 interface IconProps {
     width: number;
@@ -39,5 +39,5 @@ export const Cloud2 = styled(Image).attrs({
 export const Container = styled.div`
     position: relative;
     width: 100%;
-    height: max-content;
+    height: 100%;
 `;

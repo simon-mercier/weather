@@ -53,25 +53,16 @@ const Title = styled.div`
 `;
 
 const NavItems = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    justify-items: center;
+    width: min-content;
 `;
 
 const SearchContainer = styled.div`
     margin-top: 4px;
-    margin-right: 20px;
 
-    width: fit-content;
     ${Morph(MorphDirection.RIGHT, 100)}
-
-    @media ${device.mobileS} {
-        max-width: 15em;
-    }
-
-    @media ${device.tablet} {
-        max-width: 20em;
-    }
 `;
 
 const UserLocationContainer = styled.div`

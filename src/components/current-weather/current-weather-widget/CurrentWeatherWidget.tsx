@@ -4,7 +4,7 @@ import ICurrentWeather from "../../../interfaces/currentWeather";
 import styled from "styled-components";
 import { Frosted } from "../../../assets/styles/styles";
 import { Morph, MorphDirection } from "../../../assets/styles/animations";
-import WeatherIcon from "../weather-icons/WeatherIcon";
+import WeatherIcon from "./weather-icons/WeatherIcon";
 import { k2unit } from "../../../utils/weather-utils";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
@@ -147,23 +147,15 @@ const WeatherDescriptionContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 `;
 
 const WeatherDescription = styled.div`
     font-size: 3em;
     opacity: 90%;
-    display: inline-block;
     overflow-wrap: break-word;
 
     ${Morph(MorphDirection.BOTTOM, 200, 0.5)}
-
-    @media ${device.mobileS} {
-        margin-top: 20%;
-    }
-
-    @media ${device.tablet} {
-        margin-top: 0;
-    }
 `;
 
 const HumidityPressure = styled.div`

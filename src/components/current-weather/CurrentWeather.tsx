@@ -18,8 +18,8 @@ import Location from "../../classes/Location";
 import styled from "styled-components";
 import device from "../../assets/styles/breakpoints";
 import Background from "../background/Background";
-import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import { coordinates2CurrentWeather } from "../../utils/weather-utils";
+import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 
 const CurrentWeather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
@@ -45,7 +45,7 @@ const CurrentWeather = () => {
     //             tempMax: 293,
     //         },
     //         weatherDescription: "TEST",
-    //         weatherId: 500,
+    //         weatherId: 803,
     //         pressure: 80,
     //         humidity: 80,
     //         windSpeed: 50,

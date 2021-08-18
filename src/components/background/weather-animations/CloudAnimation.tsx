@@ -6,7 +6,6 @@ import Cloud3 from "../../../assets/png/cloud3.png";
 import Cloud4 from "../../../assets/png/cloud4.png";
 import Cloud5 from "../../../assets/png/cloud5.png";
 import { CloudAnim } from "../../../assets/styles/animations";
-import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
 import PeriodOfDayContext from "../../../contexts/PeriodOfDay";
 import PeriodsOfDay from "../../../enums/periods-of-day";
 import WeatherType from "../../../enums/weatherType";
@@ -48,23 +47,26 @@ const weatherType2CloudInvertedShade = new Map<WeatherType, string>([
     [WeatherType.THUNDERSTORM, "70%"],
 ]);
 
-const CloudAnimation = () => {
+interface CloudAnimationProps {
+    currentWeather: ICurrentWeather;
+}
+
+const CloudAnimation = (props: CloudAnimationProps) => {
     const clouds = [Cloud1, Cloud2, Cloud3, Cloud4, Cloud5];
     const periodOfDay: PeriodsOfDay = useContext(PeriodOfDayContext);
-    const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
     return (
         <Container>
             {clouds
                 .slice(
                     0,
                     weatherType2NumberOfClouds.get(
-                        id2Type(currentWeather.weatherId)
+                        id2Type(props.currentWeather.weatherId)
                     ) ?? NO_CLOUDS
                 )
                 .map((cloud) => (
                     <Cloud
                         periodOfDay={periodOfDay}
-                        currentWeather={currentWeather}
+                        currentWeather={props.currentWeather}
                         src={cloud}
                     />
                 ))}

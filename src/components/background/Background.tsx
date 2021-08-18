@@ -29,7 +29,7 @@ const Background = (props: BackgroundProps) => {
             {id2Type(props.currentWeather.weatherId) === WeatherType.SNOW && (
                 <SnowGif />
             )}
-            <CloudAnimation />
+            <CloudAnimation currentWeather={props.currentWeather} />
         </Container>
     );
 };

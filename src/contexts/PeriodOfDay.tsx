@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-import PeriodsOfDay from "../enums/periods-of-day";
+import PeriodsOfDay from "../enums/periodsOfDay";
 
 const PeriodOfDayContext = createContext<PeriodsOfDay>({} as PeriodsOfDay);
 

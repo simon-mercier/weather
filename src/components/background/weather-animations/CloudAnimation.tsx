@@ -7,7 +7,7 @@ import Cloud4 from "../../../assets/png/cloud4.png";
 import Cloud5 from "../../../assets/png/cloud5.png";
 import { CloudAnim } from "../../../assets/styles/animations";
 import PeriodOfDayContext from "../../../contexts/PeriodOfDay";
-import PeriodsOfDay from "../../../enums/periods-of-day";
+import PeriodsOfDay from "../../../enums/periodsOfDay";
 import WeatherType from "../../../enums/weatherType";
 import ICurrentWeather from "../../../interfaces/currentWeather";
 import { random, randomMinMax } from "../../../utils/code-utils";

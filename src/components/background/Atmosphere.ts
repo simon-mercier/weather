@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import device from "../../assets/styles/breakpoints";
-import PeriodsOfDay from "../../enums/periods-of-day";
+import PeriodsOfDay from "../../enums/periodsOfDay";
 import WeatherType from "../../enums/weatherType";
 import ICurrentWeather from "../../interfaces/currentWeather";
 import { id2Type } from "../../utils/weather-utils";
@@ -165,10 +165,3 @@ const Atmosphere = styled.div<AtmosphereProps>`
 `;
 
 export default Atmosphere;
-
-// brightness(
-//             ${(p: AtmosphereProps) =>
-//                 periodOfDay2Brightness
-//                     .get(p.periodOfDay)
-//                     ?.get(id2Type(p.currentWeather.weatherId)) ?? 1}
-//         )

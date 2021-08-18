@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import PeriodOfDayContext from "../../contexts/PeriodOfDay";
-import PeriodsOfDay from "../../enums/periods-of-day";
+import PeriodsOfDay from "../../enums/periodsOfDay";
 import WeatherType from "../../enums/weatherType";
 import ICurrentWeather from "../../interfaces/currentWeather";
 import { id2Type } from "../../utils/weather-utils";

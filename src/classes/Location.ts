@@ -1,5 +1,5 @@
 import { DEFAULT_LOCATION_COORDINATES } from "../const";
-import PeriodsOfDay from "../enums/periods-of-day";
+import PeriodsOfDay from "../enums/periodsOfDay";
 import ICoordinates from "../interfaces/coordinates";
 import ILocation from "../interfaces/location";
 import { placeId2Coordinates } from "../utils/location-utils";

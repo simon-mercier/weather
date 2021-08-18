@@ -25,6 +25,8 @@ const Weather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
         useContext(LocationContext);
 
+    // current weather
+
     const [currentWeather, setCurrentWeather] = useState({} as ICurrentWeather);
 
     const fetchCurrentWeather = useCallback(async () => {
@@ -36,25 +38,11 @@ const Weather = () => {
         );
     }, [location]);
 
-    // const fetchCurrentWeather = useCallback(async () => {
-    //     setCurrentWeather({
-    //         temperature: {
-    //             temp: 293,
-    //             feelsLike: 293,
-    //             tempMin: 293,
-    //             tempMax: 293,
-    //         },
-    //         weatherDescription: "TEST",
-    //         weatherId: 803,
-    //         pressure: 80,
-    //         humidity: 80,
-    //         windSpeed: 50,
-    //     });
-    // }, [location]);
-
     useEffect(() => {
         fetchCurrentWeather();
     }, [fetchCurrentWeather]);
+
+    // hourly weather
 
     return (
         <Container>
@@ -94,3 +82,19 @@ const CurrentWeatherWidgetContainer = styled.div`
         margin-top: 10%;
     }
 `;
+
+// const fetchCurrentWeather = useCallback(async () => {
+//     setCurrentWeather({
+//         temperature: {
+//             temp: 293,
+//             feelsLike: 293,
+//             tempMin: 293,
+//             tempMax: 293,
+//         },
+//         weatherDescription: "TEST",
+//         weatherId: 803,
+//         pressure: 80,
+//         humidity: 80,
+//         windSpeed: 50,
+//     });
+// }, [location]);

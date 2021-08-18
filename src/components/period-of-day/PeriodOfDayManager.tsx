@@ -9,7 +9,7 @@ import { SetStateAction } from "react";
 import Location from "../../classes/Location";
 import LocationContext from "../../contexts/Location";
 import PeriodOfDayContext from "../../contexts/PeriodOfDay";
-import PeriodsOfDay from "../../enums/periods-of-day";
+import PeriodsOfDay from "../../enums/periodsOfDay";
 import WeatherManager from "../weather/WeatherManager";
 import NavBar from "../navbar/Navbar";
 

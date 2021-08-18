@@ -1,4 +1,4 @@
-import PeriodsOfDay from "../enums/periods-of-day";
+import PeriodsOfDay from "../enums/periodsOfDay";
 import ICoordinates from "../interfaces/coordinates";
 import { fetchApi } from "./api-utils";
 

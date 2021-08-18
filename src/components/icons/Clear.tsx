@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import PeriodOfDayContext from "../../contexts/PeriodOfDay";
-import PeriodsOfDay from "../../enums/periods-of-day";
+import PeriodsOfDay from "../../enums/periodsOfDay";
 
 import { Cloud1, Container, Moon, Sun } from "./AtomicIcons";
 import { MorphDirection } from "../../assets/styles/animations";

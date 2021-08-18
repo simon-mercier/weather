@@ -53,7 +53,7 @@ const CloudAnimation = () => {
     const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
     return (
-        <>
+        <Container>
             {clouds
                 .slice(
                     0,
@@ -68,7 +68,7 @@ const CloudAnimation = () => {
                         src={cloud}
                     />
                 ))}
-        </>
+        </Container>
     );
 };
 
@@ -78,6 +78,11 @@ interface CloudProps {
     timeOfDay: TimesOfDay;
     currentWeather: ICurrentWeather;
 }
+
+const Container = styled.div`
+    width: 100vw;
+`;
+
 const Cloud = styled.img<CloudProps>`
     position: absolute;
     transform: scaleY(-1);

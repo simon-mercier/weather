@@ -14,8 +14,9 @@ import { DEFAULT_LOCATION_CITY } from "../../const";
 
 import Location from "../../classes/Location";
 import styled from "styled-components";
-import { Frosted } from "../../assets/styles/styles";
+import { Frosted, FrostedOpaque } from "../../assets/styles/styles";
 import { SMALL_MARGIN } from "../../assets/styles/constants";
+import device from "../../assets/styles/breakpoints";
 
 const Search = () => {
     const [predictions, setPredictions] = useState({} as [ILocation]);
@@ -142,7 +143,13 @@ const Input = styled.input`
 `;
 
 const PredictionList = styled.ul`
-    ${Frosted}
+    @media ${device.mobileS} {
+        ${FrostedOpaque}
+    }
+
+    @media ${device.tablet} {
+        ${Frosted}
+    }
 
     padding: ${SMALL_MARGIN};
     margin: ${SMALL_MARGIN};

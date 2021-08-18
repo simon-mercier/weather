@@ -17,9 +17,9 @@ import Location from "../../classes/Location";
 
 import styled from "styled-components";
 import device from "../../assets/styles/breakpoints";
-import { coordinates2CurrentWeather } from "../../utils/weather-utils";
-import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import Background from "../background/Background";
+import { DEFAULT_LOCATION_COORDINATES } from "../../const";
+import { coordinates2CurrentWeather } from "../../utils/weather-utils";
 
 const CurrentWeather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
@@ -74,6 +74,8 @@ export default CurrentWeather;
 
 const Container = styled.div`
     position: absolute;
+    display: flex;
+    justify-content: center;
     top: 0;
     left: 0;
     width: 100vw;
@@ -85,6 +87,7 @@ const CurrentWeatherWidgetContainer = styled.div`
 
     @media ${device.mobileS} {
         margin-top: 30%;
+        max-width: 90vw;
     }
 
     @media ${device.tablet} {

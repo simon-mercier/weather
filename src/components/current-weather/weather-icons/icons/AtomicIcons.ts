@@ -14,9 +14,9 @@ interface IconProps {
 }
 const Image = styled.img<IconProps>`
     position: absolute;
-    width: ${(p) => p.width}em;
-    top: ${(p) => p.top}em;
-    left: ${(p) => p.left}em;
+    width: ${(p) => p.width}%;
+    top: ${(p) => p.top}%;
+    left: ${(p) => p.left}%;
     ${(p) => Morph(p.morphDirection, p.morphTime, 1)}
 `;
 
@@ -37,5 +37,7 @@ export const Cloud2 = styled(Image).attrs({
 })``;
 
 export const Container = styled.div`
-    position: absolute;
+    position: relative;
+    width: 100%;
+    height: max-content;
 `;

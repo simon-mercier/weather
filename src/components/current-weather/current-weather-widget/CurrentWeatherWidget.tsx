@@ -52,19 +52,23 @@ const CurrentWeatherWidget = () => {
                             </div>
                         </Temperature>
                         <Weather>
-                            <WeatherIcon />
-                            <div>
-                                <WeatherDescription>
-                                    {currentWeather.weatherDescription}
-                                </WeatherDescription>
-
-                                <HumidityPressure>
-                                    {currentWeather.humidity}
-                                    % humidity
-                                    <br />
-                                    pressure of {currentWeather.pressure} hPa
-                                </HumidityPressure>
-                            </div>
+                            <WeatherDescriptionContainer>
+                                <WeatherIcon />
+                                <WeatherInfoContainer>
+                                    <WeatherDescription>
+                                        {currentWeather.weatherDescription}
+                                    </WeatherDescription>
+                                    <HumidityPressure>
+                                        {currentWeather.humidity}
+                                        % humidity
+                                        <br />
+                                        pressure of {
+                                            currentWeather.pressure
+                                        }{" "}
+                                        hPa
+                                    </HumidityPressure>
+                                </WeatherInfoContainer>
+                            </WeatherDescriptionContainer>
                         </Weather>
                     </Container>
                 )}
@@ -73,9 +77,19 @@ const CurrentWeatherWidget = () => {
 };
 
 export default CurrentWeatherWidget;
+const WeatherInfoContainer = styled.div`
+    @media ${device.mobileS} {
+        width: fit-content;
+    }
+
+    @media ${device.tablet} {
+        width: max-content;
+    }
+`;
 
 const Container = styled.div`
-    width: fit-content;
+    width: max-content;
+    max-width: 100%;
 
     display: flex;
     flex-direction: row;
@@ -123,16 +137,23 @@ const HighLow = styled.div`
 `;
 
 const Weather = styled.div`
+    width: max-content;
     margin: ${BIG_MARGIN};
+`;
+
+const WeatherDescriptionContainer = styled.div`
+    width: min-content;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: max-content;
 `;
 
 const WeatherDescription = styled.div`
     font-size: 3em;
     opacity: 90%;
+    display: inline-block;
+    overflow-wrap: break-word;
 
     ${Morph(MorphDirection.BOTTOM, 200, 0.5)}
 

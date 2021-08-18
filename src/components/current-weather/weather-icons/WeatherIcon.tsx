@@ -10,8 +10,8 @@ import Rain from "./icons/Rain";
 import Thunderstorm from "./icons/Thunderstorm";
 import { id2Type } from "../../../utils/weather-utils";
 import styled from "styled-components";
-import device from "../../../assets/styles/breakpoints";
 import BrokenClouds from "./icons/BrokenClouds";
+import device from "../../../assets/styles/breakpoints";
 
 const weatherType2Icon = new Map<WeatherType, any>([
     [WeatherType.CLEAR_SKY, <Clear />],
@@ -39,15 +39,10 @@ const WeatherIcon = () => {
 export default WeatherIcon;
 
 const Container = styled.div`
-    width: 15em;
-    height: 15em;
-    margin-top: -3em;
+    width: 100%;
+    height: 100%;
 
     @media ${device.mobileS} {
-        margin-left: 0em;
-    }
-
-    @media ${device.tablet} {
-        margin-left: -3em;
+        height: 5em;
     }
 `;

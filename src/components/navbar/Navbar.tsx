@@ -30,7 +30,7 @@ const Container = styled.nav`
     flex-wrap: wrap;
     flex-direction: row;
 
-    width: 100%;
+    width: 100vw;
     z-index: 99;
 
     @media ${device.mobileS} {

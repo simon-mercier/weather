@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
-import ICurrentWeather from "../../../interfaces/currentWeather";
+import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
+import ICurrentWeather from "../../interfaces/currentWeather";
 import styled from "styled-components";
-import { Frosted } from "../../../assets/styles/styles";
-import { Morph, MorphDirection } from "../../../assets/styles/animations";
-import WeatherIcon from "./weather-icons/WeatherIcon";
-import { k2unit } from "../../../utils/weather-utils";
-import { BIG_MARGIN } from "../../../assets/styles/constants";
-import UnitContext from "../../../contexts/Unit";
-import device from "../../../assets/styles/breakpoints";
+import { Frosted } from "../../assets/styles/styles";
+import { Morph, MorphDirection } from "../../assets/styles/animations";
+import WeatherIcon from "../icons/WeatherIcon";
+import { id2Type, k2unit } from "../../utils/weather-utils";
+import { BIG_MARGIN } from "../../assets/styles/constants";
+import UnitContext from "../../contexts/Unit";
+import device from "../../assets/styles/breakpoints";
 
 const CurrentWeatherWidget = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
@@ -53,7 +53,13 @@ const CurrentWeatherWidget = () => {
                         </Temperature>
                         <Weather>
                             <WeatherDescriptionContainer>
-                                <WeatherIcon />
+                                <WeatherIcon
+                                    width={15}
+                                    height={15}
+                                    weatherType={id2Type(
+                                        currentWeather.weatherId
+                                    )}
+                                />
                                 <WeatherInfoContainer>
                                     <WeatherDescription>
                                         {currentWeather.weatherDescription}

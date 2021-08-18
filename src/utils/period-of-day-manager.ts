@@ -1,4 +1,4 @@
-import TimesOfDay from "../enums/timesOfDay";
+import PeriodsOfDay from "../enums/periods-of-day";
 import ICoordinates from "../interfaces/coordinates";
 import { fetchApi } from "./api-utils";
 
@@ -19,40 +19,43 @@ import { fetchApi } from "./api-utils";
 //         }
 //     );
 // };
-export const coordinates2TimeOfDay = async (
+export const coordinates2PeriodOfDay = async (
     coordinates: ICoordinates
-): Promise<TimesOfDay | undefined> => {
+): Promise<PeriodsOfDay | undefined> => {
     if (!coordinates) return undefined;
 
     const localeTime = new Date();
-    const timesOfDay = await coordinates2TimesOfDay(coordinates, localeTime);
+    const periodsOfDay = await coordinates2PeriodsOfDay(
+        coordinates,
+        localeTime
+    );
 
-    if (!timesOfDay || !localeTime) return undefined;
+    if (!periodsOfDay || !localeTime) return undefined;
 
-    let currentTimeOfDay: TimesOfDay | undefined = undefined;
-    for (let i = 0; i < timesOfDay.length - 1; i++) {
+    let currentPeriodOfDay: PeriodsOfDay | undefined = undefined;
+    for (let i = 0; i < periodsOfDay.length - 1; i++) {
         if (
-            localeTime > timesOfDay[i][1] &&
-            localeTime < timesOfDay[i + 1][1]
+            localeTime > periodsOfDay[i][1] &&
+            localeTime < periodsOfDay[i + 1][1]
         ) {
-            currentTimeOfDay = timesOfDay[i][0];
+            currentPeriodOfDay = periodsOfDay[i][0];
         }
     }
 
-    return timeOfDay2DayCycle.get(currentTimeOfDay ?? TimesOfDay.EVENING);
+    return periodOfDay2DayCycle.get(currentPeriodOfDay ?? PeriodsOfDay.EVENING);
 };
 
-const timeOfDay2DayCycle = new Map<TimesOfDay, TimesOfDay>([
-    [TimesOfDay.MORNING, TimesOfDay.MORNING],
-    [TimesOfDay.SUNRISE, TimesOfDay.DAY],
-    [TimesOfDay.SUNSET, TimesOfDay.EVENING],
-    [TimesOfDay.EVENING, TimesOfDay.NIGHT],
+const periodOfDay2DayCycle = new Map<PeriodsOfDay, PeriodsOfDay>([
+    [PeriodsOfDay.MORNING, PeriodsOfDay.MORNING],
+    [PeriodsOfDay.SUNRISE, PeriodsOfDay.DAY],
+    [PeriodsOfDay.SUNSET, PeriodsOfDay.EVENING],
+    [PeriodsOfDay.EVENING, PeriodsOfDay.NIGHT],
 ]);
 
-const coordinates2TimesOfDay = async (
+const coordinates2PeriodsOfDay = async (
     coordinates: ICoordinates,
     date: Date
-): Promise<Array<[TimesOfDay, Date]> | undefined> => {
+): Promise<Array<[PeriodsOfDay, Date]> | undefined> => {
     if (!coordinates) return undefined;
     return await fetchApi<ICoordinates>(
         `https://api.sunrise-sunset.org/json?lat=${coordinates.latitude}&lng=${
@@ -64,16 +67,16 @@ const coordinates2TimesOfDay = async (
             return result
                 ? [
                       [
-                          TimesOfDay.MORNING,
+                          PeriodsOfDay.MORNING,
                           new Date(result.results.astronomical_twilight_begin),
                       ],
 
-                      [TimesOfDay.SUNRISE, new Date(result.results.sunrise)],
+                      [PeriodsOfDay.SUNRISE, new Date(result.results.sunrise)],
 
-                      [TimesOfDay.SUNSET, new Date(result.results.sunset)],
+                      [PeriodsOfDay.SUNSET, new Date(result.results.sunset)],
 
                       [
-                          TimesOfDay.EVENING,
+                          PeriodsOfDay.EVENING,
                           new Date(result.results.astronomical_twilight_end),
                       ],
                   ]

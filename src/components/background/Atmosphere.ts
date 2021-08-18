@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import device from "../../assets/styles/breakpoints";
-import TimesOfDay from "../../enums/timesOfDay";
+import PeriodsOfDay from "../../enums/periods-of-day";
 import WeatherType from "../../enums/weatherType";
 import ICurrentWeather from "../../interfaces/currentWeather";
 import { id2Type } from "../../utils/weather-utils";
@@ -13,9 +13,9 @@ const evening: string =
     "linear-gradient(to bottom, #525179 0%, 32.37822353839874%, #E39396 64.75644707679749%, 82.37822353839874%, #FFA187 100%)";
 const dark: string =
     "linear-gradient(to top, #25232E 0%, 15.919812023639679%, #383641 31.839624047279358%, 42.21698194742203%, #353341 52.5943398475647%, 60.96698045730591%, #33313C 69.33962106704712%, 76.29716992378235%, #212026 83.25471878051758%, 91.62735939025879%, #090A04 100%)";
-const timeOfDay2Atmosphere = new Map<TimesOfDay, Map<WeatherType, string>>([
+const periodOfDay2Atmosphere = new Map<PeriodsOfDay, Map<WeatherType, string>>([
     [
-        TimesOfDay.DAY,
+        PeriodsOfDay.DAY,
         new Map<WeatherType, string>([
             [WeatherType.CLEAR_SKY, clear],
             [WeatherType.FEW_CLOUDS, clear],
@@ -29,7 +29,7 @@ const timeOfDay2Atmosphere = new Map<TimesOfDay, Map<WeatherType, string>>([
         ]),
     ],
     [
-        TimesOfDay.EVENING,
+        PeriodsOfDay.EVENING,
         new Map<WeatherType, string>([
             [WeatherType.CLEAR_SKY, evening],
             [WeatherType.FEW_CLOUDS, evening],
@@ -43,7 +43,7 @@ const timeOfDay2Atmosphere = new Map<TimesOfDay, Map<WeatherType, string>>([
         ]),
     ],
     [
-        TimesOfDay.NIGHT,
+        PeriodsOfDay.NIGHT,
         new Map<WeatherType, string>([
             [WeatherType.CLEAR_SKY, dark],
             [WeatherType.FEW_CLOUDS, dark],
@@ -57,7 +57,7 @@ const timeOfDay2Atmosphere = new Map<TimesOfDay, Map<WeatherType, string>>([
         ]),
     ],
     [
-        TimesOfDay.MORNING,
+        PeriodsOfDay.MORNING,
         new Map<WeatherType, string>([
             [WeatherType.CLEAR_SKY, morning],
             [WeatherType.FEW_CLOUDS, morning],
@@ -72,9 +72,9 @@ const timeOfDay2Atmosphere = new Map<TimesOfDay, Map<WeatherType, string>>([
     ],
 ]);
 
-const timeOfDay2Brightness = new Map<TimesOfDay, Map<WeatherType, number>>([
+const periodOfDay2Brightness = new Map<PeriodsOfDay, Map<WeatherType, number>>([
     [
-        TimesOfDay.DAY,
+        PeriodsOfDay.DAY,
         new Map<WeatherType, number>([
             [WeatherType.CLEAR_SKY, 0],
             [WeatherType.FEW_CLOUDS, 0.1],
@@ -88,7 +88,7 @@ const timeOfDay2Brightness = new Map<TimesOfDay, Map<WeatherType, number>>([
         ]),
     ],
     [
-        TimesOfDay.EVENING,
+        PeriodsOfDay.EVENING,
         new Map<WeatherType, number>([
             [WeatherType.CLEAR_SKY, 0],
             [WeatherType.FEW_CLOUDS, 0.1],
@@ -102,7 +102,7 @@ const timeOfDay2Brightness = new Map<TimesOfDay, Map<WeatherType, number>>([
         ]),
     ],
     [
-        TimesOfDay.NIGHT,
+        PeriodsOfDay.NIGHT,
         new Map<WeatherType, number>([
             [WeatherType.CLEAR_SKY, 0],
             [WeatherType.FEW_CLOUDS, 0.1],
@@ -116,7 +116,7 @@ const timeOfDay2Brightness = new Map<TimesOfDay, Map<WeatherType, number>>([
         ]),
     ],
     [
-        TimesOfDay.MORNING,
+        PeriodsOfDay.MORNING,
         new Map<WeatherType, number>([
             [WeatherType.CLEAR_SKY, 0],
             [WeatherType.FEW_CLOUDS, 0.1],
@@ -132,20 +132,20 @@ const timeOfDay2Brightness = new Map<TimesOfDay, Map<WeatherType, number>>([
 ]);
 
 interface AtmosphereProps {
-    timeOfDay: TimesOfDay;
+    periodOfDay: PeriodsOfDay;
     currentWeather: ICurrentWeather;
 }
 
 const Atmosphere = styled.div<AtmosphereProps>`
     background-image: ${(p: AtmosphereProps) =>
-        (timeOfDay2Atmosphere
-            .get(p.timeOfDay)
+        (periodOfDay2Atmosphere
+            .get(p.periodOfDay)
             ?.get(id2Type(p.currentWeather.weatherId)) as string) ?? clear};
 
     filter: grayscale(
         ${(p: AtmosphereProps) =>
-            timeOfDay2Brightness
-                .get(p.timeOfDay)
+            periodOfDay2Brightness
+                .get(p.periodOfDay)
                 ?.get(id2Type(p.currentWeather.weatherId)) ?? 0}
     );
 
@@ -168,7 +168,7 @@ export default Atmosphere;
 
 // brightness(
 //             ${(p: AtmosphereProps) =>
-//                 timeOfDay2Brightness
-//                     .get(p.timeOfDay)
+//                 periodOfDay2Brightness
+//                     .get(p.periodOfDay)
 //                     ?.get(id2Type(p.currentWeather.weatherId)) ?? 1}
 //         )

@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 
-import TimeOfDayContext from "../../contexts/TimeOfDay";
-import TimesOfDay from "../../enums/timesOfDay";
+import PeriodOfDayContext from "../../contexts/PeriodOfDay";
+import PeriodsOfDay from "../../enums/periods-of-day";
 
 import { Cloud1, Container, Moon, Sun } from "./AtomicIcons";
 import { MorphDirection } from "../../assets/styles/animations";
 import styled from "styled-components";
 const ClearJSX = () => {
-    const timeOfDay: TimesOfDay = useContext(TimeOfDayContext);
+    const periodOfDay: PeriodsOfDay = useContext(PeriodOfDayContext);
     return (
         <Container>
-            {timeOfDay !== TimesOfDay.NIGHT ? (
+            {periodOfDay !== PeriodsOfDay.NIGHT ? (
                 <Sun
                     width={100}
                     top={0}

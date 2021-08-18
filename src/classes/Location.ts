@@ -1,16 +1,16 @@
 import { DEFAULT_LOCATION_COORDINATES } from "../const";
-import TimesOfDay from "../enums/timesOfDay";
+import PeriodsOfDay from "../enums/periods-of-day";
 import ICoordinates from "../interfaces/coordinates";
 import ILocation from "../interfaces/location";
 import { placeId2Coordinates } from "../utils/location-utils";
-import { coordinates2TimeOfDay } from "../utils/time-of-day-utils";
+import { coordinates2PeriodOfDay } from "../utils/period-of-day-manager";
 
 class Location {
     location: ILocation;
 
     private coordinates: ICoordinates | undefined;
 
-    private timeOfDay: TimesOfDay | undefined;
+    private periodOfDay: PeriodsOfDay | undefined;
 
     constructor(location: ILocation, coordinates?: ICoordinates) {
         this.location = location;
@@ -26,13 +26,13 @@ class Location {
         return this.coordinates;
     };
 
-    getTimeOfDay = async (): Promise<TimesOfDay> => {
-        if (!this.timeOfDay)
-            this.timeOfDay =
-                (await coordinates2TimeOfDay(await this.getCoordinates())) ??
-                TimesOfDay.DAY;
+    getPeriodOfDay = async (): Promise<PeriodsOfDay> => {
+        if (!this.periodOfDay)
+            this.periodOfDay =
+                (await coordinates2PeriodOfDay(await this.getCoordinates())) ??
+                PeriodsOfDay.DAY;
 
-        return this.timeOfDay;
+        return this.periodOfDay;
     };
 }
 

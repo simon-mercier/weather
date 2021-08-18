@@ -10,7 +10,7 @@ import {
 
 import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
-import CurrentWeatherWidget from "./current-weather-widget/CurrentWeatherWidget";
+import CurrentWeatherWidget from "../weather-widgets/CurrentWeatherWidget";
 
 import LocationContext from "../../contexts/Location";
 import Location from "../../classes/Location";
@@ -21,7 +21,7 @@ import Background from "../background/Background";
 import { coordinates2CurrentWeather } from "../../utils/weather-utils";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 
-const CurrentWeather = () => {
+const Weather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
         useContext(LocationContext);
 
@@ -57,20 +57,20 @@ const CurrentWeather = () => {
     }, [fetchCurrentWeather]);
 
     return (
-        <CurrentWeatherInfo.Provider value={currentWeather}>
-            {currentWeather && (
-                <Container>
-                    <Background />
+        <Container>
+            <Background currentWeather={currentWeather} />
+            <CurrentWeatherInfo.Provider value={currentWeather}>
+                {currentWeather && (
                     <CurrentWeatherWidgetContainer>
                         <CurrentWeatherWidget />
                     </CurrentWeatherWidgetContainer>
-                </Container>
-            )}
-        </CurrentWeatherInfo.Provider>
+                )}
+            </CurrentWeatherInfo.Provider>
+        </Container>
     );
 };
 
-export default CurrentWeather;
+export default Weather;
 
 const Container = styled.div`
     position: absolute;

@@ -1,4 +1,4 @@
-enum TimesOfDay {
+enum PeriodsOfDay {
     MORNING,
     DAY,
     SUNRISE,
@@ -7,4 +7,4 @@ enum TimesOfDay {
     NIGHT,
 }
 
-export default TimesOfDay;
+export default PeriodsOfDay;

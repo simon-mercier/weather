@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
-import ICurrentWeather from "../../interfaces/currentWeather";
+import { ICurrentWeather } from "../../interfaces/weather";
 import styled from "styled-components";
 import { Frosted } from "../../assets/styles/styles";
 import { Morph, MorphDirection } from "../../assets/styles/animations";
@@ -17,13 +17,17 @@ const CurrentWeatherWidget = () => {
         <>
             {currentWeather &&
                 currentWeather.temperature &&
-                currentWeather.weatherDescription && (
+                currentWeather.condition.weatherDescription && (
                     <Container>
                         <Temperature>
                             <Title>weather🌡️</Title>
 
                             <Degrees>
-                                {k2unit(currentWeather.temperature.temp, unit)}°
+                                {k2unit(
+                                    currentWeather.temperature.temp as number,
+                                    unit
+                                )}
+                                °
                             </Degrees>
                             <div>
                                 <FeelsLike>
@@ -59,20 +63,25 @@ const CurrentWeatherWidget = () => {
                                 <WeatherIcon
                                     width={15}
                                     height={15}
-                                    weatherType={currentWeather.weatherType}
+                                    weatherType={
+                                        currentWeather.condition.weatherType
+                                    }
                                 />
                                 <WeatherInfoContainer>
                                     <WeatherDescription>
-                                        {currentWeather.weatherDescription}
+                                        {
+                                            currentWeather.condition
+                                                .weatherDescription as string
+                                        }
                                     </WeatherDescription>
                                     <HumidityPressure>
-                                        {currentWeather.humidity}
-                                        % humidity
+                                        ultraviolet index of{" "}
+                                        {parseInt(
+                                            currentWeather.uvi.toString(),
+                                            10
+                                        )}
                                         <br />
-                                        pressure of {
-                                            currentWeather.pressure
-                                        }{" "}
-                                        hPa
+                                        {currentWeather.humidity}% humidity
                                     </HumidityPressure>
                                 </WeatherInfoContainer>
                             </WeatherDescriptionContainer>

@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import ICurrentWeather from "../interfaces/currentWeather";
+import { IHourlyWeather } from "../interfaces/weather";
 
-const HourlyWeatherInfo = createContext<ICurrentWeather>({} as ICurrentWeather);
+const HourlyWeatherInfo = createContext<IHourlyWeather>({} as IHourlyWeather);
 
 export default HourlyWeatherInfo;

@@ -9,7 +9,7 @@ import { CloudAnim } from "../../../assets/styles/animations";
 import PeriodOfDayContext from "../../../contexts/PeriodOfDay";
 import PeriodsOfDay from "../../../enums/periodsOfDay";
 import WeatherType from "../../../enums/weatherType";
-import ICurrentWeather from "../../../interfaces/currentWeather";
+import { ICurrentWeather } from "../../../interfaces/weather";
 import { random, randomMinMax } from "../../../utils/code-utils";
 
 const NO_CLOUDS = 0;
@@ -25,14 +25,14 @@ const weatherType2NumberOfClouds = new Map<WeatherType, number>([
 ]);
 
 const weatherType2WidthOfClouds = new Map<WeatherType, string>([
-    [WeatherType.FEW_CLOUDS, "30%"],
-    [WeatherType.SCATTERED_CLOUDS, "40%"],
-    [WeatherType.BROKEN_CLOUDS, "50%"],
-    [WeatherType.OVERCAST_CLOUDS, "70%"],
-    [WeatherType.DRIZZLE, "50%"],
-    [WeatherType.RAIN, "70%"],
-    [WeatherType.SNOW, "70%"],
-    [WeatherType.THUNDERSTORM, "90%"],
+    [WeatherType.FEW_CLOUDS, "30vmax"],
+    [WeatherType.SCATTERED_CLOUDS, "40vmax"],
+    [WeatherType.BROKEN_CLOUDS, "50vmax"],
+    [WeatherType.OVERCAST_CLOUDS, "70vmax"],
+    [WeatherType.DRIZZLE, "50vmax"],
+    [WeatherType.RAIN, "70vmax"],
+    [WeatherType.SNOW, "70vmax"],
+    [WeatherType.THUNDERSTORM, "90vmax"],
 ]);
 
 const weatherType2CloudInvertedShade = new Map<WeatherType, string>([
@@ -59,14 +59,15 @@ const CloudAnimation = (props: CloudAnimationProps) => {
                 .slice(
                     0,
                     weatherType2NumberOfClouds.get(
-                        props.currentWeather.weatherType
+                        props.currentWeather.condition.weatherType
                     ) ?? NO_CLOUDS
                 )
-                .map((cloud) => (
+                .map((cloud, i) => (
                     <Cloud
+                        key={i}
                         periodOfDay={periodOfDay}
                         currentWeather={props.currentWeather}
-                        src={cloud}
+                        source={cloud}
                     />
                 ))}
         </Container>
@@ -76,6 +77,7 @@ const CloudAnimation = (props: CloudAnimationProps) => {
 export default CloudAnimation;
 
 interface CloudProps {
+    source: string;
     periodOfDay: PeriodsOfDay;
     currentWeather: ICurrentWeather;
 }
@@ -84,17 +86,19 @@ const Container = styled.div`
     width: 100vw;
 `;
 
-const Cloud = styled.img<CloudProps>`
+const Cloud = styled.img.attrs((p: CloudProps) => ({
+    src: p.source,
+}))<CloudProps>`
     position: absolute;
     transform: scaleY(-1);
     width: ${(p) =>
-        weatherType2WidthOfClouds.get(p.currentWeather.weatherType) ??
+        weatherType2WidthOfClouds.get(p.currentWeather.condition.weatherType) ??
         NO_CLOUDS};
     filter: invert(
         ${(p) =>
             p.periodOfDay === PeriodsOfDay.DAY
                 ? weatherType2CloudInvertedShade.get(
-                      p.currentWeather.weatherType
+                      p.currentWeather.condition.weatherType
                   ) ?? NO_CLOUDS
                 : "50%"}
     );

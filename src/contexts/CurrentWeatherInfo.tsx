@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import ICurrentWeather from "../interfaces/currentWeather";
+import { ICurrentWeather } from "../interfaces/weather";
 
 const CurrentWeatherInfo = createContext<ICurrentWeather>(
     {} as ICurrentWeather

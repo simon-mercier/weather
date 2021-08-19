@@ -1,9 +1,15 @@
 import UnitType from "../enums/unit";
 import WeatherType from "../enums/weatherType";
 import ICoordinates from "../interfaces/coordinates";
-import ICurrentWeather from "../interfaces/currentWeather";
+import {
+    ICurrentWeather,
+    IDailyWeather,
+    IHourlyWeather,
+    IWeather,
+} from "../interfaces/weather";
 import ITemperature from "../interfaces/temperature";
 import { fetchApi } from "./api-utils";
+import ICondition from "../interfaces/condition";
 
 const id2WeatherType = new Map<number, WeatherType>([
     [200, WeatherType.THUNDERSTORM],
@@ -73,32 +79,64 @@ export const id2Type = (weatherId: number): WeatherType =>
     id2WeatherType.get(weatherId) ?? WeatherType.CLEAR_SKY;
 
 const openWeatherApiKey = "17f10aab8d22d756ce0cbdbfbaef5eb4";
-export const coordinates2CurrentWeather = async (
+export const coordinates2Weather = async (
     coordinates: ICoordinates
-): Promise<ICurrentWeather | undefined> => {
-    return await fetchApi<ICoordinates>(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${openWeatherApiKey}`,
-        coordinates
+): Promise<IWeather | undefined> => {
+    return await fetchApi(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.latitude}&lon=${coordinates.longitude}&exclude=minutely,alerts&appid=${openWeatherApiKey}`
     ).then(
         (result) => {
             console.log("Fetched weather");
             return result
                 ? ({
-                      temperature: {
-                          temp: result.main.temp ?? undefined,
-                          feelsLike: result.main.feels_like ?? undefined,
-                          tempMin: result.main.temp_min ?? undefined,
-                          tempMax: result.main.temp_max ?? undefined,
-                      } as ITemperature,
+                      currentWeather: {
+                          temperature: {
+                              temp: result.current.temp,
+                              feelsLike: result.current.feels_like,
+                              tempMin: result.daily[0].temp.min,
+                              tempMax: result.daily[0].temp.max,
+                          } as ITemperature,
 
-                      humidity: result.main.humidity,
-                      pressure: result.main.pressure,
+                          condition: {
+                              weatherType: id2Type(
+                                  result.current.weather[0].id
+                              ),
+                              weatherDescription:
+                                  result.current.weather[0].description,
+                          } as ICondition,
 
-                      weatherType: id2Type(result.weather[0].id),
-                      weatherDescription: result.weather[0].description,
+                          humidity: result.current.humidity,
+                          clouds: result.current.clouds,
+                          uvi: result.current.uvi,
+                      } as ICurrentWeather,
 
-                      windSpeed: result.wind.speed,
-                  } as ICurrentWeather)
+                      hourlyWeather: {
+                          hourlyTemperature: result.hourly.map((hour: any) => {
+                              return { temp: hour.temp } as ITemperature;
+                          }),
+                          hourlyWeather: result.hourly.map((hour: any) => {
+                              return {
+                                  weatherType: id2Type(hour.weather[0].id),
+                                  probabilityOfPrecipitation: hour.pop,
+                              } as ICondition;
+                          }),
+                      } as IHourlyWeather,
+
+                      dailyWeather: {
+                          dailyTemperature: result.daily.map((day: any) => {
+                              return {
+                                  tempMin: day.temp.min,
+                                  tempMax: day.temp.max,
+                              } as ITemperature;
+                          }),
+                          dailyWeather: result.daily.map((day: any) => {
+                              return {
+                                  weatherType: id2Type(day.weather[0].id),
+                                  probabilityOfPrecipitation: day.pop,
+                              } as ICondition;
+                          }),
+                      } as IDailyWeather,
+                  } as IWeather)
                 : undefined;
         },
         (error) => {

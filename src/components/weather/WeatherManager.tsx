@@ -1,4 +1,4 @@
-import ICurrentWeather from "../../interfaces/currentWeather";
+import { IWeather } from "../../interfaces/weather";
 import {
     Dispatch,
     SetStateAction,
@@ -18,42 +18,50 @@ import Location from "../../classes/Location";
 import styled from "styled-components";
 import device from "../../assets/styles/breakpoints";
 import Background from "../background/Background";
-import { coordinates2CurrentWeather } from "../../utils/weather-utils";
+import { coordinates2Weather } from "../../utils/weather-utils";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
+import HourlyWeatherInfo from "../../contexts/HourlyWeatherInfo";
+import DailyWeatherInfo from "../../contexts/DailyWeatherInfo";
 
 const Weather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
         useContext(LocationContext);
 
-    // current weather
+    const [weather, setWeather] = useState({} as IWeather);
 
-    const [currentWeather, setCurrentWeather] = useState({} as ICurrentWeather);
-
-    const fetchCurrentWeather = useCallback(async () => {
-        setCurrentWeather(
-            (await coordinates2CurrentWeather(
+    const fetchWeather = useCallback(async () => {
+        setWeather(
+            (await coordinates2Weather(
                 (await location.getCoordinates()) ??
                     DEFAULT_LOCATION_COORDINATES
-            )) as ICurrentWeather
+            )) as IWeather
         );
     }, [location]);
 
     useEffect(() => {
-        fetchCurrentWeather();
-    }, [fetchCurrentWeather]);
-
-    // hourly weather
+        fetchWeather();
+    }, [fetchWeather]);
 
     return (
         <Container>
-            <Background currentWeather={currentWeather} />
-            <CurrentWeatherInfo.Provider value={currentWeather}>
-                {currentWeather && (
-                    <CurrentWeatherWidgetContainer>
-                        <CurrentWeatherWidget />
-                    </CurrentWeatherWidgetContainer>
-                )}
-            </CurrentWeatherInfo.Provider>
+            {weather && weather.currentWeather && (
+                <>
+                    <Background currentWeather={weather.currentWeather} />
+                    <CurrentWeatherInfo.Provider value={weather.currentWeather}>
+                        {weather.currentWeather && (
+                            <CurrentWeatherWidgetContainer>
+                                <CurrentWeatherWidget />
+                            </CurrentWeatherWidgetContainer>
+                        )}
+                    </CurrentWeatherInfo.Provider>
+                    <HourlyWeatherInfo.Provider value={weather.hourlyWeather}>
+                        {weather.hourlyWeather && <></>}
+                    </HourlyWeatherInfo.Provider>
+                    <DailyWeatherInfo.Provider value={weather.dailyWeather}>
+                        {weather.dailyWeather && <></>}
+                    </DailyWeatherInfo.Provider>
+                </>
+            )}
         </Container>
     );
 };

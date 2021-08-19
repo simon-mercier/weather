@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PeriodOfDayContext from "../../contexts/PeriodOfDay";
 import PeriodsOfDay from "../../enums/periodsOfDay";
 import WeatherType from "../../enums/weatherType";
-import ICurrentWeather from "../../interfaces/currentWeather";
+import { ICurrentWeather } from "../../interfaces/weather";
 import Atmosphere from "./Atmosphere";
 import { RainGif, SnowGif } from "./weather-animations/WeatherAnimations";
 import CloudAnimation from "./weather-animations/CloudAnimation";
@@ -24,10 +24,11 @@ const Background = (props: BackgroundProps) => {
                 WeatherType.RAIN,
                 WeatherType.DRIZZLE,
                 WeatherType.THUNDERSTORM,
-            ].includes(props.currentWeather.weatherType) && <RainGif />}
-            {props.currentWeather.weatherType === WeatherType.SNOW && (
-                <SnowGif />
+            ].includes(props.currentWeather.condition.weatherType) && (
+                <RainGif />
             )}
+            {props.currentWeather.condition.weatherType ===
+                WeatherType.SNOW && <SnowGif />}
             <CloudAnimation currentWeather={props.currentWeather} />
         </Container>
     );

@@ -57,11 +57,10 @@ const coordinates2PeriodsOfDay = async (
     date: Date
 ): Promise<Array<[PeriodsOfDay, Date]> | undefined> => {
     if (!coordinates) return undefined;
-    return await fetchApi<ICoordinates>(
+    return await fetchApi(
         `https://api.sunrise-sunset.org/json?lat=${coordinates.latitude}&lng=${
             coordinates.longitude
-        }&formatted=0&date=${date.toDateString()}`,
-        coordinates
+        }&formatted=0&date=${date.toDateString()}`
     ).then(
         (result) => {
             return result

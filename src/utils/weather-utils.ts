@@ -110,32 +110,36 @@ export const coordinates2Weather = async (
                           uvi: result.current.uvi,
                       } as ICurrentWeather,
 
-                      hourlyWeather: {
-                          hourlyTemperature: result.hourly.map((hour: any) => {
-                              return { temp: hour.temp } as ITemperature;
-                          }),
-                          hourlyWeather: result.hourly.map((hour: any) => {
-                              return {
+                      hourlyWeather: result.hourly.map((hour: any) => {
+                          return {
+                              hourlyTemperature: {
+                                  temp: hour.temp,
+                              } as ITemperature,
+
+                              hourlyWeather: {
                                   weatherType: id2Type(hour.weather[0].id),
                                   probabilityOfPrecipitation: hour.pop,
-                              } as ICondition;
-                          }),
-                      } as IHourlyWeather,
+                              } as ICondition,
 
-                      dailyWeather: {
-                          dailyTemperature: result.daily.map((day: any) => {
-                              return {
+                              date: new Date(hour.dt * 1000),
+                          } as IHourlyWeather;
+                      }) as Array<IHourlyWeather>,
+
+                      dailyWeather: result.daily.map((day: any) => {
+                          return {
+                              dailyTemperature: {
                                   tempMin: day.temp.min,
                                   tempMax: day.temp.max,
-                              } as ITemperature;
-                          }),
-                          dailyWeather: result.daily.map((day: any) => {
-                              return {
+                              } as ITemperature,
+
+                              dailyWeather: {
                                   weatherType: id2Type(day.weather[0].id),
                                   probabilityOfPrecipitation: day.pop,
-                              } as ICondition;
-                          }),
-                      } as IDailyWeather,
+                              } as ICondition,
+
+                              date: new Date(day.dt * 1000),
+                          } as IDailyWeather;
+                      }) as Array<IDailyWeather>,
                   } as IWeather)
                 : undefined;
         },

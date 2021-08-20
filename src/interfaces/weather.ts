@@ -3,8 +3,8 @@ import ITemperature from "./temperature";
 
 export interface IWeather {
     currentWeather: ICurrentWeather;
-    hourlyWeather: IHourlyWeather;
-    dailyWeather: IDailyWeather;
+    hourlyWeather: Array<IHourlyWeather>;
+    dailyWeather: Array<IDailyWeather>;
 }
 
 export interface ICurrentWeather {
@@ -20,11 +20,13 @@ export interface ICurrentWeather {
 }
 
 export interface IHourlyWeather {
-    hourlyTemperature: Array<ITemperature>;
-    hourlyWeather: Array<ICondition>;
+    hourlyTemperature: ITemperature;
+    hourlyWeather: ICondition;
+    date: Date;
 }
 
 export interface IDailyWeather {
-    dailyTemperature: Array<ITemperature>;
-    dailyWeather: Array<ICondition>;
+    dailyTemperature: ITemperature;
+    dailyWeather: ICondition;
+    date: Date;
 }

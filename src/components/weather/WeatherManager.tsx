@@ -10,7 +10,7 @@ import {
 
 import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
-import CurrentWeatherWidget from "../weather-widgets/CurrentWeatherWidget";
+import CurrentWeatherWidget from "../weather-widgets/current/CurrentWeatherWidget";
 
 import LocationContext from "../../contexts/Location";
 import Location from "../../classes/Location";
@@ -22,6 +22,7 @@ import { coordinates2Weather } from "../../utils/weather-utils";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import HourlyWeatherInfo from "../../contexts/HourlyWeatherInfo";
 import DailyWeatherInfo from "../../contexts/DailyWeatherInfo";
+import HourlyWeatherWidget from "../weather-widgets/hourly/HourlyWeatherWidget";
 
 const Weather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
@@ -47,19 +48,21 @@ const Weather = () => {
             {weather && weather.currentWeather && (
                 <>
                     <Background currentWeather={weather.currentWeather} />
-                    <CurrentWeatherInfo.Provider value={weather.currentWeather}>
-                        {weather.currentWeather && (
-                            <CurrentWeatherWidgetContainer>
-                                <CurrentWeatherWidget />
-                            </CurrentWeatherWidgetContainer>
-                        )}
-                    </CurrentWeatherInfo.Provider>
-                    <HourlyWeatherInfo.Provider value={weather.hourlyWeather}>
-                        {weather.hourlyWeather && <></>}
-                    </HourlyWeatherInfo.Provider>
-                    <DailyWeatherInfo.Provider value={weather.dailyWeather}>
-                        {weather.dailyWeather && <></>}
-                    </DailyWeatherInfo.Provider>
+                    <Widgets>
+                        <CurrentWeatherInfo.Provider
+                            value={weather.currentWeather}
+                        >
+                            {weather.currentWeather && <CurrentWeatherWidget />}
+                        </CurrentWeatherInfo.Provider>
+                        <HourlyWeatherInfo.Provider
+                            value={weather.hourlyWeather}
+                        >
+                            {weather.hourlyWeather && <HourlyWeatherWidget />}
+                        </HourlyWeatherInfo.Provider>
+                        <DailyWeatherInfo.Provider value={weather.dailyWeather}>
+                            {weather.dailyWeather && <></>}
+                        </DailyWeatherInfo.Provider>
+                    </Widgets>
                 </>
             )}
         </Container>
@@ -76,10 +79,10 @@ const Container = styled.div`
     left: 0;
     width: 100vw;
 `;
-
-const CurrentWeatherWidgetContainer = styled.div`
+const Widgets = styled.section`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
     @media ${device.mobileS} {
         margin-top: 30%;

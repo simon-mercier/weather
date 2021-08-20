@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
-import { ICurrentWeather } from "../../interfaces/weather";
+import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
+import { ICurrentWeather } from "../../../interfaces/weather";
 import styled from "styled-components";
-import { Frosted } from "../../assets/styles/styles";
-import { Morph, MorphDirection } from "../../assets/styles/animations";
-import WeatherIcon from "../icons/WeatherIcon";
-import { k2unit } from "../../utils/weather-utils";
-import { BIG_MARGIN } from "../../assets/styles/constants";
-import UnitContext from "../../contexts/Unit";
-import device from "../../assets/styles/breakpoints";
+import { Frosted } from "../../../assets/styles/styles";
+import { Morph, MorphDirection } from "../../../assets/styles/animations";
+import WeatherIcon from "../../icons/WeatherIcon";
+import { k2unit } from "../../../utils/weather-utils";
+import { BIG_MARGIN } from "../../../assets/styles/constants";
+import UnitContext from "../../../contexts/Unit";
+import device from "../../../assets/styles/breakpoints";
 
 const CurrentWeatherWidget = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);

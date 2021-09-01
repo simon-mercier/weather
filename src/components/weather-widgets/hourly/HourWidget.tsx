@@ -21,7 +21,10 @@ function HourWidget(hourProps: HourProps) {
             <Time>
                 {hourProps.isNow ? "now" : hourProps.hour.date.getHours() + "h"}
             </Time>
-            {k2unit(hourProps.hour.hourlyTemperature.temp as number, unit)}
+            <Temperature>
+                {k2unit(hourProps.hour.hourlyTemperature.temp as number, unit) +
+                    "°"}
+            </Temperature>
         </Container>
     );
 }
@@ -54,4 +57,9 @@ const Container = styled.div<HourContainerProps>`
 const Time = styled.div`
     font-size: 1.5em;
     font-weight: bold;
+`;
+
+const Temperature = styled.div`
+    margin-top: 10%;
+    font-size: 5em;
 `;

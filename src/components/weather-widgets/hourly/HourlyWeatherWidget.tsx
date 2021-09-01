@@ -5,17 +5,38 @@ import { IHourlyWeather } from "../../../interfaces/weather";
 import HourWidget from "./HourWidget";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Morph, MorphDirection } from "../../../assets/styles/animations";
+import {
+    CustomButtonGroup,
+    CustomDot,
+    CustomLeftArrow,
+    CustomRightArrow,
+} from "../../../assets/styles/CustomCarousel";
 
 const responsive = {
     desktop: {
-        breakpoint: { max: 3000, min: 1024 },
+        breakpoint: { max: 3000, min: 1760 },
         items: 7,
         slidesToSlide: 3, // optional, default to 1.
     },
-    tablet: {
-        breakpoint: { max: 1024, min: 464 },
+    smalldesktop: {
+        breakpoint: { max: 1760, min: 1500 },
+        items: 6,
+        slidesToSlide: 2, // optional, default to 1.
+    },
+    bigtablet: {
+        breakpoint: { max: 1500, min: 1250 },
         items: 5,
         slidesToSlide: 2, // optional, default to 1.
+    },
+    mediumtablet: {
+        breakpoint: { max: 1250, min: 1024 },
+        items: 4,
+        slidesToSlide: 2, // optional, default to 1.
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 3,
     },
 };
 
@@ -47,16 +68,22 @@ function HourlyWeatherWidget() {
                 )}
             </Title>
 
-            <Carousel
+            <CarouselContainer
                 swipeable={true}
                 draggable={true}
-                showDots={false}
+                showDots={true}
+                arrows={true}
+                customLeftArrow={<CustomLeftArrow />}
+                customRightArrow={<CustomRightArrow />}
+                customButtonGroup={<CustomButtonGroup />}
+                customDot={<CustomDot />}
                 responsive={responsive}
                 infinite={false}
                 keyBoardControl={true}
-                customTransition="all .5"
                 transitionDuration={500}
-                removeArrowOnDeviceType={["tablet", "mobile"]}
+                removeArrowOnDeviceType={["tablet"]}
+                renderButtonGroupOutside={true}
+                renderDotsOutside={true}
             >
                 {hourlyWeather.slice(0, 23).map((hour, i) => (
                     <HourWidget
@@ -65,7 +92,7 @@ function HourlyWeatherWidget() {
                         morphTime={(i + 1) * 100}
                     ></HourWidget>
                 ))}
-            </Carousel>
+            </CarouselContainer>
         </Container>
     );
 }
@@ -73,20 +100,24 @@ function HourlyWeatherWidget() {
 export default HourlyWeatherWidget;
 
 const Container = styled.div`
-    margin-top: 20vh;
+    margin-bottom: 20vh;
     width: 100%;
-    max-width: 100%;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
 
     z-index: 1;
 `;
+
 const Title = styled.div`
     margin-left: 8px;
 
     font-size: 2em;
     margin-top: -0.5em;
     font-weight: bold;
+    ${Morph(MorphDirection.BOTTOM, 100)}
+`;
+
+const CarouselContainer = styled(Carousel)`
+    height: min-content;
 `;

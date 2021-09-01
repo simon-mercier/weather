@@ -106,6 +106,7 @@ const WeatherInfoContainer = styled.div`
 const Container = styled.div`
     width: max-content;
     max-width: 100%;
+    margin-bottom: 20vh;
 
     display: flex;
     flex-direction: row;

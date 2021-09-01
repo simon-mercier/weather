@@ -60,8 +60,8 @@ const NavItems = styled.div`
 `;
 
 const SearchContainer = styled.div`
-    margin-top: 4px;
-
+    margin-top: 12px;
+    margin-right: 8px;
     ${Morph(MorphDirection.RIGHT, 100)}
 `;
 

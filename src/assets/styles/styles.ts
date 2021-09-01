@@ -3,7 +3,6 @@ import { css } from "styled-components";
 export const Frosted = css`
     border: none;
     outline: none;
-    margin: 8px;
     padding: 8px;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.2);
@@ -13,7 +12,6 @@ export const Frosted = css`
 export const FrostedOpaque = css`
     border: none;
     outline: none;
-    margin: 8px;
     padding: 8px;
     border-radius: 8px;
     background-color: black;

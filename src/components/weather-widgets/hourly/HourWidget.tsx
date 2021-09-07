@@ -1,26 +1,30 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Morph, MorphDirection } from "../../../assets/styles/animations";
-import device from "../../../assets/styles/breakpoints";
-import { Frosted } from "../../../assets/styles/styles";
+import { BIG_MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
 import { IHourlyWeather } from "../../../interfaces/weather";
 import { k2unit } from "../../../utils/weather-utils";
+import WeatherIcon from "../../icons/WeatherIcon";
 
 interface HourProps {
     hour: IHourlyWeather;
     isNow: boolean;
-    morphTime: number;
 }
 
 function HourWidget(hourProps: HourProps) {
     const [unit, _] = useContext(UnitContext);
 
     return (
-        <Container morphTime={hourProps.morphTime}>
+        <Container>
             <Time>
                 {hourProps.isNow ? "now" : hourProps.hour.date.getHours() + "h"}
             </Time>
+            <WeatherIcon
+                width={5}
+                height={5}
+                weatherType={hourProps.hour.hourlyWeather.weatherType}
+                animations={false}
+            />
             <Temperature>
                 {k2unit(hourProps.hour.hourlyTemperature.temp as number, unit) +
                     "°"}
@@ -31,27 +35,17 @@ function HourWidget(hourProps: HourProps) {
 
 export default HourWidget;
 
-interface HourContainerProps {
-    morphTime: number;
-}
-
-const Container = styled.div<HourContainerProps>`
+const Container = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 
     z-index: 1;
-    ${(p) => Morph(MorphDirection.BOTTOM, p.morphTime)}
-    ${Frosted}
 
-    @media ${device.mobileS} {
-        width: 100%;
-        height: 200px;
-    }
+    height: 200px;
 
-    @media ${device.tablet} {
-        height: 300px;
-        width: 200px;
-    }
+    padding: ${BIG_MARGIN};
 `;
 
 const Time = styled.div`
@@ -61,5 +55,5 @@ const Time = styled.div`
 
 const Temperature = styled.div`
     margin-top: 10%;
-    font-size: 5em;
+    font-size: 3em;
 `;

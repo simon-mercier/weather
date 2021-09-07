@@ -99,6 +99,7 @@ const RightArrow = styled.div`
 
 const Dot = styled.div`
     margin: 8px;
+    margin-bottom: -500px;
     opacity: 0.2;
 `;
 

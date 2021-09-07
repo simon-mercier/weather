@@ -4,7 +4,6 @@ import Cloud2_img from "../../assets/icons/cloud2.svg";
 import Sun_img from "../../assets/icons/sun.svg";
 import Moon_img from "../../assets/icons/moon.svg";
 import { Morph, MorphDirection } from "../../assets/styles/animations";
-
 interface IconProps {
     width: number;
     top: number;

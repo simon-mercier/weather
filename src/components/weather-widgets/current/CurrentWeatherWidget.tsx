@@ -66,6 +66,7 @@ const CurrentWeatherWidget = () => {
                                     weatherType={
                                         currentWeather.condition.weatherType
                                     }
+                                    animations={true}
                                 />
                                 <WeatherInfoContainer>
                                     <WeatherDescription>

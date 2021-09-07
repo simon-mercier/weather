@@ -7,7 +7,7 @@ import Rain from "../components/icons/Rain";
 import Thunderstorm from "../components/icons/Thunderstorm";
 import BrokenClouds from "../components/icons/BrokenClouds";
 
-export const weatherType2Icon = new Map<WeatherType, any>([
+const weatherType2IconNoAnimation = new Map<WeatherType, any>([
     [WeatherType.CLEAR_SKY, <Clear />],
     [WeatherType.FEW_CLOUDS, <FewClouds />],
     [WeatherType.SCATTERED_CLOUDS, <ScattteredClouds />],
@@ -19,3 +19,25 @@ export const weatherType2Icon = new Map<WeatherType, any>([
     [WeatherType.SNOW, <Rain />],
     [WeatherType.THUNDERSTORM, <Thunderstorm />],
 ]);
+
+const weatherType2IconAnimation = new Map<WeatherType, any>([
+    [WeatherType.CLEAR_SKY, <Clear />],
+    [WeatherType.FEW_CLOUDS, <FewClouds />],
+    [WeatherType.SCATTERED_CLOUDS, <ScattteredClouds />],
+    [WeatherType.BROKEN_CLOUDS, <BrokenClouds />],
+    [WeatherType.OVERCAST_CLOUDS, <Overcast />],
+    [WeatherType.DRIZZLE, <Rain />],
+    [WeatherType.RAIN, <Rain />],
+    [WeatherType.SMOKE, <Rain />],
+    [WeatherType.SNOW, <Rain />],
+    [WeatherType.THUNDERSTORM, <Thunderstorm />],
+]);
+
+export const weatherType2Icon = (
+    weatherType: WeatherType,
+    animations: boolean
+) => {
+    return animations
+        ? weatherType2IconAnimation.get(weatherType)
+        : weatherType2IconNoAnimation.get(weatherType);
+};

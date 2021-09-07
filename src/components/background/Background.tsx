@@ -6,7 +6,6 @@ import WeatherType from "../../enums/weatherType";
 import { ICurrentWeather } from "../../interfaces/weather";
 import Atmosphere from "./Atmosphere";
 import { RainGif, SnowGif } from "./weather-animations/WeatherAnimations";
-import CloudAnimation from "./weather-animations/CloudAnimation";
 
 interface BackgroundProps {
     currentWeather: ICurrentWeather;
@@ -29,7 +28,7 @@ const Background = (props: BackgroundProps) => {
             )}
             {props.currentWeather.condition.weatherType ===
                 WeatherType.SNOW && <SnowGif />}
-            <CloudAnimation currentWeather={props.currentWeather} />
+            {/* <CloudAnimation currentWeather={props.currentWeather} /> */}
         </Container>
     );
 };

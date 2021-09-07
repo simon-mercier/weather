@@ -54,11 +54,13 @@ const Weather = () => {
                         >
                             {weather.currentWeather && <CurrentWeatherWidget />}
                         </CurrentWeatherInfo.Provider>
+
                         <HourlyWeatherInfo.Provider
                             value={weather.hourlyWeather}
                         >
                             {weather.hourlyWeather && <HourlyWeatherWidget />}
                         </HourlyWeatherInfo.Provider>
+
                         <DailyWeatherInfo.Provider value={weather.dailyWeather}>
                             {weather.dailyWeather && <></>}
                         </DailyWeatherInfo.Provider>

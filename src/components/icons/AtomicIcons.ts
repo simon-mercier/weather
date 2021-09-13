@@ -12,10 +12,6 @@ interface IconProps {
     morphTime: number;
 }
 const Image = styled.img<IconProps>`
-    position: absolute;
-    width: ${(p) => p.width}%;
-    top: ${(p) => p.top}%;
-    left: ${(p) => p.left}%;
     ${(p) => Morph(p.morphDirection, p.morphTime, 1)}
 `;
 

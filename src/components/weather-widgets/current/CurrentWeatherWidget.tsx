@@ -60,14 +60,16 @@ const CurrentWeatherWidget = () => {
                         </Temperature>
                         <Weather>
                             <WeatherDescriptionContainer>
-                                <WeatherIcon
-                                    width={15}
-                                    height={15}
-                                    weatherType={
-                                        currentWeather.condition.weatherType
-                                    }
-                                    animations={true}
-                                />
+                                <WeatherIconContainer>
+                                    <WeatherIcon
+                                        width={20}
+                                        height={20}
+                                        weatherType={
+                                            currentWeather.condition.weatherType
+                                        }
+                                    />
+                                </WeatherIconContainer>
+
                                 <WeatherInfoContainer>
                                     <WeatherDescription>
                                         {
@@ -104,14 +106,21 @@ const WeatherInfoContainer = styled.div`
     }
 `;
 
+const WeatherIconContainer = styled.div`
+    position: relative;
+    ${Morph(MorphDirection.BOTTOM, 100, 0.5)}
+`;
+
 const Container = styled.div`
     width: max-content;
     max-width: 100%;
-    margin-bottom: 20vh;
+    min-width: 100%;
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    margin-bottom: 32px;
 
     padding: ${BIG_MARGIN};
     border-radius: ${BIG_MARGIN};

@@ -13,3 +13,30 @@ export const DEFAULT_LOCATION: ILocation = {
     placeId: "ChIJDbdkHFQayUwR7-8fITgxTmU",
     locationFormatted: "Montreal, QC, Canada",
 };
+
+export const CAROUSEL_RESPONSIVE = {
+    desktop: {
+        breakpoint: { max: 3000, min: 1760 },
+        items: 14,
+        slidesToSlide: 3, // optional, default to 1.
+    },
+    smalldesktop: {
+        breakpoint: { max: 1760, min: 1500 },
+        items: 12,
+        slidesToSlide: 2, // optional, default to 1.
+    },
+    bigtablet: {
+        breakpoint: { max: 1500, min: 1250 },
+        items: 10,
+        slidesToSlide: 2, // optional, default to 1.
+    },
+    mediumtablet: {
+        breakpoint: { max: 1250, min: 1024 },
+        items: 8,
+        slidesToSlide: 2, // optional, default to 1.
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 6,
+    },
+};

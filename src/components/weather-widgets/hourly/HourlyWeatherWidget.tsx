@@ -3,39 +3,10 @@ import styled from "styled-components";
 import HourlyWeatherInfo from "../../../contexts/HourlyWeatherInfo";
 import { IHourlyWeather } from "../../../interfaces/weather";
 import HourWidget from "./HourWidget";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Morph, MorphDirection } from "../../../assets/styles/animations";
-import { CustomDot } from "../../../assets/styles/CustomCarousel";
 import { Frosted } from "../../../assets/styles/styles";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
-
-const responsive = {
-    desktop: {
-        breakpoint: { max: 3000, min: 1760 },
-        items: 14,
-        slidesToSlide: 3, // optional, default to 1.
-    },
-    smalldesktop: {
-        breakpoint: { max: 1760, min: 1500 },
-        items: 12,
-        slidesToSlide: 2, // optional, default to 1.
-    },
-    bigtablet: {
-        breakpoint: { max: 1500, min: 1250 },
-        items: 10,
-        slidesToSlide: 2, // optional, default to 1.
-    },
-    mediumtablet: {
-        breakpoint: { max: 1250, min: 1024 },
-        items: 8,
-        slidesToSlide: 2, // optional, default to 1.
-    },
-    tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 6,
-    },
-};
+import { Morph, MorphDirection } from "../../../assets/styles/animations";
 
 const time2clock = new Map<number, string>([
     [0, "🕛"],
@@ -65,27 +36,9 @@ function HourlyWeatherWidget() {
                 )}
             </Title>
 
-            <CarouselContainer
-                swipeable={true}
-                draggable={true}
-                showDots={true}
-                arrows={false}
-                customDot={<CustomDot />}
-                responsive={responsive}
-                infinite={false}
-                keyBoardControl={true}
-                transitionDuration={500}
-                renderButtonGroupOutside={true}
-                renderDotsOutside={true}
-            >
-                {hourlyWeather.slice(0, 23).map((hour, i) => (
-                    <HourWidget
-                        key={i}
-                        hour={hour}
-                        isNow={i === 0}
-                    ></HourWidget>
-                ))}
-            </CarouselContainer>
+            {hourlyWeather.slice(0, 11).map((hour, i) => (
+                <HourWidget key={i} hour={hour} isNow={i === 0}></HourWidget>
+            ))}
         </Container>
     );
 }
@@ -93,29 +46,26 @@ function HourlyWeatherWidget() {
 export default HourlyWeatherWidget;
 
 const Container = styled.div`
-    margin-bottom: 20vh;
     width: 100%;
 
     display: flex;
     flex-direction: column;
+    margin-bottom: 32px;
 
     z-index: 1;
 
     padding: ${BIG_MARGIN};
     border-radius: ${BIG_MARGIN};
 
+    ${Morph(MorphDirection.BOTTOM, 200, 1.1)}
+
     ${Frosted}
-    ${Morph(MorphDirection.BOTTOM, 100)}
 `;
 
 const Title = styled.div`
     margin-left: 8px;
-
+    margin-bottom: ${BIG_MARGIN};
     font-size: 2em;
     font-weight: bold;
-    ${Morph(MorphDirection.BOTTOM, 100)}
 `;
-
-const CarouselContainer = styled(Carousel)`
-    height: min-content;
-`;
+/* ${Morph(MorphDirection.BOTTOM, 100)} */

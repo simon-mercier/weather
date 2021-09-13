@@ -1,24 +1,43 @@
 import styled from "styled-components";
-import { weatherType2Icon } from "../../utils/icon-utils";
 import WeatherType from "../../enums/weatherType";
+import SvgClear from "./Clear";
+import SvgPartlyCloudy from "./PartlyCloudy";
+import SvgMostlyCloudy from "./MostlyCloudy";
+import SvgCloudy from "./Cloudy";
+import SvgRain from "./Rain";
+import SvgMist from "./Mist";
+import SvgSnow from "./Snow";
+import SvgThunder from "./Thunder";
+
+const weatherType2Icon = new Map<WeatherType, any>([
+    [WeatherType.CLEAR_SKY, <SvgClear width="100%" height="100%" />],
+    [WeatherType.FEW_CLOUDS, <SvgPartlyCloudy width="100%" height="100%" />],
+    [
+        WeatherType.SCATTERED_CLOUDS,
+        <SvgPartlyCloudy width="100%" height="100%" />,
+    ],
+    [WeatherType.BROKEN_CLOUDS, <SvgMostlyCloudy width="100%" height="100%" />],
+    [WeatherType.OVERCAST_CLOUDS, <SvgCloudy width="100%" height="100%" />],
+    [WeatherType.DRIZZLE, <SvgRain width="100%" height="100%" />],
+    [WeatherType.RAIN, <SvgRain width="100%" height="100%" />],
+    [WeatherType.SMOKE, <SvgMist width="100%" height="100%" />],
+    [WeatherType.SNOW, <SvgSnow width="100%" height="100%" />],
+    [WeatherType.THUNDERSTORM, <SvgThunder width="100%" height="100%" />],
+]);
 
 interface WeatherIconProps {
     width: number;
     height: number;
     weatherType?: WeatherType;
-    animations: boolean;
 }
 
-const WeatherIcon = ({
-    width,
-    height,
-    weatherType,
-    animations,
-}: WeatherIconProps) => {
+const WeatherIcon = ({ width, height, weatherType }: WeatherIconProps) => {
     return (
         <Container width={width} height={height}>
-            {weatherType2Icon(weatherType ?? WeatherType.CLEAR_SKY, animations)}
+            {weatherType2Icon.get(weatherType ?? WeatherType.CLEAR_SKY)}
         </Container>
+        // <> {weatherType2Icon.get(weatherType ?? WeatherType.CLEAR_SKY)}</>
+        // <SvgClear width={width + "em"} height={height + "em"} />
     );
 };
 

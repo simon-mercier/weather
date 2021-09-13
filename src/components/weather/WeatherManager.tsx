@@ -23,6 +23,7 @@ import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import HourlyWeatherInfo from "../../contexts/HourlyWeatherInfo";
 import DailyWeatherInfo from "../../contexts/DailyWeatherInfo";
 import HourlyWeatherWidget from "../weather-widgets/hourly/HourlyWeatherWidget";
+import DailyWeatherWidget from "../weather-widgets/daily/DailyWeatherWidget";
 
 const Weather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
@@ -44,30 +45,29 @@ const Weather = () => {
     }, [fetchWeather]);
 
     return (
-        <Container>
+        <>
             {weather && weather.currentWeather && (
-                <>
+                <Container>
                     <Background currentWeather={weather.currentWeather} />
                     <Widgets>
                         <CurrentWeatherInfo.Provider
                             value={weather.currentWeather}
                         >
-                            {weather.currentWeather && <CurrentWeatherWidget />}
+                            <CurrentWeatherWidget />
                         </CurrentWeatherInfo.Provider>
-
                         <HourlyWeatherInfo.Provider
                             value={weather.hourlyWeather}
                         >
-                            {weather.hourlyWeather && <HourlyWeatherWidget />}
+                            <HourlyWeatherWidget />
                         </HourlyWeatherInfo.Provider>
 
                         <DailyWeatherInfo.Provider value={weather.dailyWeather}>
-                            {weather.dailyWeather && <></>}
+                            <DailyWeatherWidget />
                         </DailyWeatherInfo.Provider>
                     </Widgets>
-                </>
+                </Container>
             )}
-        </Container>
+        </>
     );
 };
 
@@ -93,6 +93,7 @@ const Widgets = styled.section`
 
     @media ${device.tablet} {
         margin-top: 10%;
+        width: min-content;
     }
 `;
 

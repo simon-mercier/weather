@@ -23,7 +23,6 @@ function HourWidget(hourProps: HourProps) {
                 width={5}
                 height={5}
                 weatherType={hourProps.hour.hourlyWeather.weatherType}
-                animations={false}
             />
             <Temperature>
                 {k2unit(hourProps.hour.hourlyTemperature.temp as number, unit) +
@@ -36,24 +35,21 @@ function HourWidget(hourProps: HourProps) {
 export default HourWidget;
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
     z-index: 1;
-
-    height: 200px;
-
-    padding: ${BIG_MARGIN};
+    padding: 0 ${BIG_MARGIN};
 `;
 
 const Time = styled.div`
     font-size: 1.5em;
     font-weight: bold;
+    place-self: start;
 `;
 
 const Temperature = styled.div`
-    margin-top: 10%;
-    font-size: 3em;
+    font-size: 2em;
+    padding: ${BIG_MARGIN};
+    place-self: end;
 `;

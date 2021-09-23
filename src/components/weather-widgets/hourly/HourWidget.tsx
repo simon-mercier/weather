@@ -46,10 +46,12 @@ const Time = styled.div`
     font-size: 1.5em;
     font-weight: bold;
     place-self: start;
+    align-self: center;
 `;
 
 const Temperature = styled.div`
     font-size: 2em;
-    padding: ${BIG_MARGIN};
+    padding: 0 ${BIG_MARGIN};
     place-self: end;
+    align-self: center;
 `;

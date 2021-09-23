@@ -1,12 +1,13 @@
 import ILocation from "../interfaces/location";
 import ICoordinates from "../interfaces/coordinates";
-import { fetchApi } from "./api-utils";
+import { API, fetchApi } from "./api-utils";
 
 export const cityPredictions = async (
     input: string
 ): Promise<[ILocation] | undefined> => {
     return await fetchApi(
-        `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&types=(cities)&language=en&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
+        `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&types=(cities)&language=en&key=`,
+        API.GOOGLE
     ).then(
         (result) => {
             return result
@@ -32,7 +33,8 @@ export const coordinates2ILocation = async (
     coordinates: ICoordinates
 ): Promise<ILocation | undefined> => {
     return await fetchApi(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.latitude},${coordinates.longitude}&types=(locality)&language=en&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.latitude},${coordinates.longitude}&types=(locality)&language=en&key=`,
+        API.GOOGLE
     ).then(
         (result) => {
             if (!result) return undefined;
@@ -61,7 +63,8 @@ export const placeId2Coordinates = async (
 ): Promise<ICoordinates | undefined> => {
     if (!placeId) return undefined;
     return await fetchApi(
-        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=geometry&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`
+        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=geometry&key=`,
+        API.GOOGLE
     ).then(
         (result) => {
             return result

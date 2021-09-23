@@ -7,8 +7,7 @@ import { fetchApi } from "./api-utils";
 // ): Promise<Date | undefined> => {
 //     if (!coordinates) return undefined;
 //     return await fetchApi<ICoordinates>(
-//         `https://maps.googleapis.com/maps/api/timezone/json?location=${coordinates.latitude},${coordinates.longitude}&timestamp=0&key=AIzaSyBUO0kTfhpr4poz-VPZICMJ3202GglTlPA`,
-//         coordinates
+//         `https://maps.googleapis.com/maps/api/timezone/json?location=${coordinates.latitude},${coordinates.longitude}&timestamp=0&key=`, API.GOOGLE
 //     ).then(
 //         (result) => {
 //             return result ? getLocaleTime(result.rawOffset) : undefined;

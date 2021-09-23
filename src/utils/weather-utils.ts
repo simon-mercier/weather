@@ -8,7 +8,7 @@ import {
     IWeather,
 } from "../interfaces/weather";
 import ITemperature from "../interfaces/temperature";
-import { fetchApi } from "./api-utils";
+import { API, fetchApi } from "./api-utils";
 import ICondition from "../interfaces/condition";
 
 const id2WeatherType = new Map<number, WeatherType>([
@@ -78,12 +78,12 @@ const id2WeatherType = new Map<number, WeatherType>([
 export const id2Type = (weatherId: number): WeatherType =>
     id2WeatherType.get(weatherId) ?? WeatherType.CLEAR_SKY;
 
-const openWeatherApiKey = "17f10aab8d22d756ce0cbdbfbaef5eb4";
 export const coordinates2Weather = async (
     coordinates: ICoordinates
 ): Promise<IWeather | undefined> => {
     return await fetchApi(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.latitude}&lon=${coordinates.longitude}&exclude=minutely,alerts&appid=${openWeatherApiKey}`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.latitude}&lon=${coordinates.longitude}&exclude=minutely,alerts&appid=`,
+        API.OPENWEATHER
     ).then(
         (result) => {
             console.log("Fetched weather");

@@ -70,6 +70,7 @@ const Time = styled.div`
     font-size: 1.5em;
     font-weight: bold;
     place-self: start;
+    align-self: center;
 `;
 
 const LowHigh = styled.div`
@@ -78,9 +79,11 @@ const LowHigh = styled.div`
     align-items: flex-end;
     justify-content: space-between;
     place-self: end;
+    align-self: center;
 `;
 
 const Temperature = styled.div`
     font-size: 2em;
-    padding: ${BIG_MARGIN};
+    padding: 0 ${BIG_MARGIN};
+    align-self: center;
 `;

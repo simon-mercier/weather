@@ -1,22 +1,3 @@
-// @font-face {
-//     font-family: "Comfortaa";
-//     font-style: normal;
-//     font-weight: normal;
-//     src: url(./assets/fonts/Comfortaa-Regular.ttf) format("truetype");
-// }
-// @font-face {
-//     font-family: "Comfortaa";
-//     font-style: light;
-//     font-weight: normal;
-//     src: url(./assets/fonts/Comfortaa-Bold.ttf) format("truetype");
-// }
-// @font-face {
-//     font-family: "Comfortaa";
-//     font-style: normal;
-//     font-weight: bold;
-//     src: url(./assets/fonts/Comfortaa-Light.ttf) format("truetype");
-// }
-
 @font-face {
     font-family: gotham-book;
 
@@ -43,6 +24,7 @@
     user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
 body {
     margin: 0;
     color: white;
@@ -52,6 +34,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
 }
+
 ::-webkit-scrollbar {
     display: none;
 }

@@ -3,10 +3,6 @@ export async function fetchApi(
     query: string,
     api: API | undefined = undefined
 ): Promise<any | undefined> {
-    const key = getKey(api);
-    const key2 = process.env.REACT_APP_GOOGLE_API_KEY;
-    console.log(key);
-
     return await fetch(query + (getKey(api) ?? ""))
         .then((res) => res.json())
         .then(

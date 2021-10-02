@@ -2,20 +2,25 @@ export async function fetchApi(
     url: string,
     api: API | undefined = undefined
 ): Promise<any | undefined> {
-    const response = await fetch(url, {
-        method: "GET",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
+    return await fetch(getApiUrl(api), {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-        body: JSON.stringify(api),
-    });
-    return response.json();
+        body: JSON.stringify({ url: url }),
+    }).then((res) => res.json());
 }
+
+const getApiUrl = (api: API | undefined) => {
+    switch (api) {
+        case API.GOOGLE:
+            return "api/google";
+        case API.OPENWEATHER:
+            return "api/openweathermap";
+        default:
+            return "api";
+    }
+};
 
 export enum API {
     GOOGLE,

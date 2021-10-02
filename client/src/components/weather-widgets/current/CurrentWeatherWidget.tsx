@@ -19,58 +19,58 @@ const CurrentWeatherWidget = () => {
                 currentWeather.temperature &&
                 currentWeather.condition.weatherDescription && (
                     <Container>
-                        <Temperature>
-                            <Title>weather🌡️</Title>
+                        <Title>weather🌡️</Title>
+                        <Info>
+                            <Temperature>
+                                <Degrees>
+                                    {k2unit(
+                                        currentWeather.temperature
+                                            .temp as number,
+                                        unit
+                                    )}
+                                    °
+                                </Degrees>
+                                <InfoContainer>
+                                    <FeelsLike>
+                                        feels like{" "}
+                                        {k2unit(
+                                            currentWeather.temperature
+                                                .feelsLike as number,
+                                            unit
+                                        )}
+                                        °
+                                    </FeelsLike>
 
-                            <Degrees>
-                                {k2unit(
-                                    currentWeather.temperature.temp as number,
-                                    unit
-                                )}
-                                °
-                            </Degrees>
-                            <div>
-                                <FeelsLike>
-                                    feels like{" "}
-                                    {k2unit(
-                                        currentWeather.temperature
-                                            .feelsLike as number,
-                                        unit
-                                    )}
-                                    °
-                                </FeelsLike>
-
-                                <HighLow>
-                                    with a high of{" "}
-                                    {k2unit(
-                                        currentWeather.temperature
-                                            .tempMax as number,
-                                        unit
-                                    )}
-                                    °
-                                    <br /> and a low of{" "}
-                                    {k2unit(
-                                        currentWeather.temperature
-                                            .tempMin as number,
-                                        unit
-                                    )}
-                                    °
-                                </HighLow>
-                            </div>
-                        </Temperature>
-                        <Weather>
-                            <WeatherDescriptionContainer>
+                                    <HighLow>
+                                        with a high of{" "}
+                                        {k2unit(
+                                            currentWeather.temperature
+                                                .tempMax as number,
+                                            unit
+                                        )}
+                                        °
+                                        <br /> and a low of{" "}
+                                        {k2unit(
+                                            currentWeather.temperature
+                                                .tempMin as number,
+                                            unit
+                                        )}
+                                        °
+                                    </HighLow>
+                                </InfoContainer>
+                            </Temperature>
+                            <Weather>
                                 <WeatherIconContainer>
                                     <WeatherIcon
-                                        width={20}
-                                        height={20}
+                                        width={1}
+                                        height={1}
                                         weatherType={
                                             currentWeather.condition.weatherType
                                         }
                                     />
                                 </WeatherIconContainer>
 
-                                <WeatherInfoContainer>
+                                <InfoContainer>
                                     <WeatherDescription>
                                         {
                                             currentWeather.condition
@@ -86,9 +86,9 @@ const CurrentWeatherWidget = () => {
                                         <br />
                                         {currentWeather.humidity}% humidity
                                     </HumidityPressure>
-                                </WeatherInfoContainer>
-                            </WeatherDescriptionContainer>
-                        </Weather>
+                                </InfoContainer>
+                            </Weather>
+                        </Info>
                     </Container>
                 )}
         </>
@@ -96,9 +96,43 @@ const CurrentWeatherWidget = () => {
 };
 
 export default CurrentWeatherWidget;
-const WeatherInfoContainer = styled.div`
+const InfoContainer = styled.div`
+    width: 100%;
+`;
+
+const WeatherIconContainer = styled.div`
+    position: relative;
+    ${Morph(MorphDirection.LEFT, 100)}
     @media ${device.mobileS} {
-        width: fit-content;
+        font-size: 12.5em;
+    }
+
+    @media ${device.tablet} {
+        font-size: 20em;
+    }
+`;
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 32px;
+    width: 100%;
+    padding: ${BIG_MARGIN};
+    border-radius: ${BIG_MARGIN};
+    z-index: 1;
+    ${Morph(MorphDirection.LEFT, 100)}
+    ${Frosted}
+`;
+
+const Info = styled.div`
+    font-size: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @media ${device.mobileS} {
+        width: 100%;
     }
 
     @media ${device.tablet} {
@@ -106,33 +140,10 @@ const WeatherInfoContainer = styled.div`
     }
 `;
 
-const WeatherIconContainer = styled.div`
-    position: relative;
-    ${Morph(MorphDirection.UP, 100, 0.5)}
-`;
-
-const Container = styled.div`
-    width: max-content;
-    max-width: 100%;
-    min-width: 100%;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    margin-bottom: 32px;
-
-    padding: ${BIG_MARGIN};
-    border-radius: ${BIG_MARGIN};
-    z-index: 1;
-    ${Morph(MorphDirection.UP, 100)}
-    ${Frosted}
-`;
-
 const Title = styled.div`
     font-size: 2em;
-    margin-top: -0.5em;
     font-weight: bold;
+    margin-left: 8px;
 `;
 
 const Temperature = styled.div`
@@ -140,13 +151,29 @@ const Temperature = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media ${device.mobileS} {
+        width: 100%;
+        align-items: center;
+    }
+
+    @media ${device.tablet} {
+        width: max-content;
+    }
 `;
 
 const Degrees = styled.div`
     background-color: transparent;
-    font-size: 12.5em;
 
-    ${Morph(MorphDirection.UP, 100)}
+    @media ${device.mobileS} {
+        font-size: 10em;
+    }
+
+    @media ${device.tablet} {
+        font-size: 12.5em;
+    }
+
+    ${Morph(MorphDirection.LEFT, 100, 0.5)}
 `;
 
 const FeelsLike = styled.div`
@@ -154,27 +181,31 @@ const FeelsLike = styled.div`
     font-size: 3em;
     opacity: 0.9;
 
-    ${Morph(MorphDirection.UP, 200)}
+    ${Morph(MorphDirection.LEFT, 200, 0.5)}
 `;
 
 const HighLow = styled.div`
     font-size: 1.5em;
     opacity: 0.8;
-    ${Morph(MorphDirection.UP, 300)}
+    width: 100%;
+
+    ${Morph(MorphDirection.LEFT, 300, 0.5)}
 `;
 
 const Weather = styled.div`
-    width: max-content;
     margin: ${BIG_MARGIN};
-`;
-
-const WeatherDescriptionContainer = styled.div`
-    width: min-content;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+
+    @media ${device.mobileS} {
+        width: 100%;
+        align-items: center;
+    }
+
+    @media ${device.tablet} {
+        width: max-content;
+    }
 `;
 
 const WeatherDescription = styled.div`
@@ -182,12 +213,12 @@ const WeatherDescription = styled.div`
     opacity: 90%;
     overflow-wrap: break-word;
 
-    ${Morph(MorphDirection.UP, 200, 0.5)}
+    ${Morph(MorphDirection.LEFT, 200)}
 `;
 
 const HumidityPressure = styled.div`
     font-size: 1.5em;
     opacity: 0.8;
 
-    ${Morph(MorphDirection.UP, 300, 0.5)}
+    ${Morph(MorphDirection.LEFT, 300)}
 `;

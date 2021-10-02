@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import device from "../../../assets/styles/breakpoints";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
 import { IHourlyWeather } from "../../../interfaces/weather";
@@ -20,8 +21,8 @@ function HourWidget(hourProps: HourProps) {
                 {hourProps.isNow ? "now" : hourProps.hour.date.getHours() + "h"}
             </Time>
             <WeatherIcon
-                width={5}
-                height={5}
+                width={3}
+                height={3}
                 weatherType={hourProps.hour.hourlyWeather.weatherType}
             />
             <Temperature>
@@ -35,6 +36,13 @@ function HourWidget(hourProps: HourProps) {
 export default HourWidget;
 
 const Container = styled.div`
+    @media ${device.mobileS} {
+        font-size: 1.2em;
+    }
+
+    @media ${device.tablet} {
+        font-size: 2em;
+    }
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
@@ -43,14 +51,14 @@ const Container = styled.div`
 `;
 
 const Time = styled.div`
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: bold;
     place-self: start;
     align-self: center;
 `;
 
 const Temperature = styled.div`
-    font-size: 2em;
+    font-size: 1em;
     padding: 0 ${BIG_MARGIN};
     place-self: end;
     align-self: center;

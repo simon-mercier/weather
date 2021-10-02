@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import device from "../../../assets/styles/breakpoints";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
 import { IDailyWeather } from "../../../interfaces/weather";
@@ -32,8 +33,8 @@ function DayWidget(dayProps: DayProps) {
                     : time2DayName.get(dayProps.day.date.getDay())}
             </Time>
             <WeatherIcon
-                width={5}
-                height={5}
+                width={3}
+                height={3}
                 weatherType={dayProps.day.dailyWeather.weatherType}
             />
             <LowHigh>
@@ -57,6 +58,14 @@ function DayWidget(dayProps: DayProps) {
 export default DayWidget;
 
 const Container = styled.div`
+    @media ${device.mobileS} {
+        font-size: 1.2em;
+    }
+
+    @media ${device.tablet} {
+        font-size: 2em;
+    }
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
@@ -64,10 +73,11 @@ const Container = styled.div`
 
     z-index: 1;
     padding: 0 ${BIG_MARGIN};
+    max-width: 100%;
 `;
 
 const Time = styled.div`
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: bold;
     place-self: start;
     align-self: center;
@@ -83,7 +93,7 @@ const LowHigh = styled.div`
 `;
 
 const Temperature = styled.div`
-    font-size: 2em;
+    font-size: 1em;
     padding: 0 ${BIG_MARGIN};
     align-self: center;
 `;

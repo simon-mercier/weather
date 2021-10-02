@@ -75,19 +75,22 @@ export default Weather;
 
 const Container = styled.div`
     position: absolute;
-    display: flex;
-    justify-content: center;
     top: 0;
     left: 0;
-    width: 100vw;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
 `;
+
 const Widgets = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
 
     @media ${device.mobileS} {
-        margin-top: 30%;
+        margin-top: 35%;
         max-width: 90vw;
     }
 

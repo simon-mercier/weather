@@ -6,6 +6,7 @@ import "react-multi-carousel/lib/styles.css";
 import { Frosted } from "../../../assets/styles/styles";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import DailyWeatherInfo from "../../../contexts/DailyWeatherInfo";
+import device from "../../../assets/styles/breakpoints";
 
 function DailyWeatherWidget() {
     const dailyWeather: Array<IDailyWeather> = useContext(DailyWeatherInfo);
@@ -41,6 +42,7 @@ const Container = styled.div`
     z-index: 1;
 
     padding: ${BIG_MARGIN};
+
     border-radius: ${BIG_MARGIN};
 
     ${Frosted}
@@ -65,10 +67,16 @@ const LowHigh = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: 1em;
-    opacity: 0.9;
+    opacity: 0.8;
 `;
 const LowHighText = styled.div`
-    width: 4em;
-    padding: 0 0 0 ${BIG_MARGIN};
+    @media ${device.mobileS} {
+        font-size: 1em;
+    }
+
+    @media ${device.tablet} {
+        font-size: 1.5em;
+    }
+    width: max-content;
+    padding: 0 0 0 1em;
 `;

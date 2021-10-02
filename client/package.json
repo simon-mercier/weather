@@ -1,6 +1,6 @@
 {
     "homepage": "https://www.beautifulweather.live/weather",
-    "proxy": "https://localhost:3001",
+    "proxy": "http://localhost:3001/",
     "name": "weather",
     "version": "0.1.0",
     "private": true,

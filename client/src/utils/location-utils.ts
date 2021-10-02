@@ -69,8 +69,8 @@ export const placeId2Coordinates = async (
         (result) => {
             return result
                 ? ({
-                      longitude: result.result.geometry.location.lng,
-                      latitude: result.result.geometry.location.lat,
+                      longitude: result?.result.geometry.location.lng,
+                      latitude: result?.result.geometry.location.lat,
                   } as ICoordinates)
                 : undefined;
         },

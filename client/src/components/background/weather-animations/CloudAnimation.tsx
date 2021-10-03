@@ -64,7 +64,7 @@ const CloudAnimation = (props: CloudAnimationProps) => {
                 )
                 .map((cloud, i) => (
                     <Cloud
-                        key={i}
+                        key={"cloud" + i}
                         periodOfDay={periodOfDay}
                         currentWeather={props.currentWeather}
                         source={cloud}

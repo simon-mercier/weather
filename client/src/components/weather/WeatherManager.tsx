@@ -10,18 +10,17 @@ import {
 
 import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
-import CurrentWeatherWidget from "../weather-widgets/current/CurrentWeatherWidget";
-
 import LocationContext from "../../contexts/Location";
 import Location from "../../classes/Location";
 
 import styled from "styled-components";
 import device from "../../assets/styles/breakpoints";
-import Background from "../background/Background";
 import { coordinates2Weather } from "../../utils/weather-utils";
 import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import HourlyWeatherInfo from "../../contexts/HourlyWeatherInfo";
 import DailyWeatherInfo from "../../contexts/DailyWeatherInfo";
+import Background from "../background/Background";
+import CurrentWeatherWidget from "../weather-widgets/current/CurrentWeatherWidget";
 import HourlyWeatherWidget from "../weather-widgets/hourly/HourlyWeatherWidget";
 import DailyWeatherWidget from "../weather-widgets/daily/DailyWeatherWidget";
 
@@ -46,27 +45,31 @@ const Weather = () => {
 
     return (
         <>
-            {weather && weather.currentWeather && (
-                <Container>
-                    <Background currentWeather={weather.currentWeather} />
-                    <Widgets>
-                        <CurrentWeatherInfo.Provider
-                            value={weather.currentWeather}
-                        >
-                            <CurrentWeatherWidget />
-                        </CurrentWeatherInfo.Provider>
+            {weather &&
+                weather.currentWeather &&
+                weather.hourlyWeather &&
+                weather.dailyWeather && (
+                    <CurrentWeatherInfo.Provider value={weather.currentWeather}>
                         <HourlyWeatherInfo.Provider
                             value={weather.hourlyWeather}
                         >
-                            <HourlyWeatherWidget />
-                        </HourlyWeatherInfo.Provider>
+                            <DailyWeatherInfo.Provider
+                                value={weather.dailyWeather}
+                            >
+                                <Container>
+                                    <Background />
+                                    <Widgets>
+                                        <CurrentWeatherWidget />
 
-                        <DailyWeatherInfo.Provider value={weather.dailyWeather}>
-                            <DailyWeatherWidget />
-                        </DailyWeatherInfo.Provider>
-                    </Widgets>
-                </Container>
-            )}
+                                        <HourlyWeatherWidget />
+
+                                        <DailyWeatherWidget />
+                                    </Widgets>
+                                </Container>
+                            </DailyWeatherInfo.Provider>
+                        </HourlyWeatherInfo.Provider>
+                    </CurrentWeatherInfo.Provider>
+                )}
         </>
     );
 };
@@ -88,6 +91,7 @@ const Widgets = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: fit-content;
 
     @media ${device.mobileS} {
         margin-top: 35%;

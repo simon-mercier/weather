@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.d20afb0e.chunk.css",
-    "main.js": "/static/js/main.89e6081f.chunk.js",
-    "main.js.map": "/static/js/main.89e6081f.chunk.js.map",
+    "main.js": "/static/js/main.d3e1d5fd.chunk.js",
+    "main.js.map": "/static/js/main.d3e1d5fd.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5fcf3367.js",
     "runtime-main.js.map": "/static/js/runtime-main.5fcf3367.js.map",
     "static/css/2.61b22967.chunk.css": "/static/css/2.61b22967.chunk.css",
@@ -15,6 +15,11 @@
     "static/css/main.d20afb0e.chunk.css.map": "/static/css/main.d20afb0e.chunk.css.map",
     "static/js/2.54594694.chunk.js.LICENSE.txt": "/static/js/2.54594694.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/static/media/Gotham-Medium.6b347ac1.otf",
+    "static/media/cloud1.deebc7b5.png": "/static/media/cloud1.deebc7b5.png",
+    "static/media/cloud2.d30b116b.png": "/static/media/cloud2.d30b116b.png",
+    "static/media/cloud3.9328a85b.png": "/static/media/cloud3.9328a85b.png",
+    "static/media/cloud4.d6d2482c.png": "/static/media/cloud4.d6d2482c.png",
+    "static/media/cloud5.2b00aa33.png": "/static/media/cloud5.2b00aa33.png",
     "static/media/styles.css": "/static/media/revicons.e8746a62.woff"
   },
   "entrypoints": [
@@ -22,6 +27,6 @@
     "static/css/2.61b22967.chunk.css",
     "static/js/2.54594694.chunk.js",
     "static/css/main.d20afb0e.chunk.css",
-    "static/js/main.89e6081f.chunk.js"
+    "static/js/main.d3e1d5fd.chunk.js"
   ]
 }

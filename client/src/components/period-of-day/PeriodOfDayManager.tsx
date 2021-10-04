@@ -21,7 +21,6 @@ const PeriodOfDayManager = () => {
 
     const fetchCurrentPeriodOfDay = useCallback(async () => {
         setPeriodOfDay((await location.getPeriodOfDay()) ?? PeriodsOfDay.DAY);
-        console.log("Fetched");
     }, [location]);
 
     useEffect(() => {

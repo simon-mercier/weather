@@ -86,7 +86,6 @@ export const coordinates2Weather = async (
         API.OPENWEATHER
     ).then(
         (result) => {
-            console.log("Fetched weather");
             return result
                 ? ({
                       currentWeather: {

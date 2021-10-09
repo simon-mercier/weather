@@ -3,7 +3,6 @@ import styled from "styled-components";
 import HourlyWeatherInfo from "../../../contexts/HourlyWeatherInfo";
 import { IHourlyWeather } from "../../../interfaces/weather";
 import HourWidget from "./HourWidget";
-import "react-multi-carousel/lib/styles.css";
 import { Frosted } from "../../../assets/styles/styles";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import { Morph, MorphDirection } from "../../../assets/styles/animations";

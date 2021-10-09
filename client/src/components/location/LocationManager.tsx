@@ -3,13 +3,12 @@ import { useEffect, useState } from "react";
 import { DEFAULT_LOCATION } from "../../const";
 import LocationContext from "../../contexts/Location";
 
-import Location from "../../classes/Location";
-
 import { setInterval } from "timers";
 import UnitManager from "../unit/UnitManager";
 
 const LocationManager = () => {
-    const [location, setLocation] = useState(new Location(DEFAULT_LOCATION));
+    const [location, setLocation] = useState(DEFAULT_LOCATION);
+
     const TEN_MINUTES = 600000;
     useEffect(() => {
         setInterval(() => {
@@ -19,7 +18,7 @@ const LocationManager = () => {
 
     return (
         <LocationContext.Provider value={[location, setLocation]}>
-            {location && <UnitManager />}
+                {location && <UnitManager />}
         </LocationContext.Provider>
     );
 };

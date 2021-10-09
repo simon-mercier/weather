@@ -1,9 +1,8 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
 import { SMALL_MARGIN } from "../../assets/styles/constants";
 import { Frosted } from "../../assets/styles/styles";
-import Location from "../../classes/Location";
 import LocationContext from "../../contexts/Location";
 import ICoordinates from "../../interfaces/coordinates";
 import ILocation from "../../interfaces/location";
@@ -13,16 +12,13 @@ import {
 } from "../../utils/location-utils";
 
 const UserLocation = () => {
-    const [_, setLocation]: [Location, Dispatch<SetStateAction<Location>>] =
-        useContext(LocationContext);
+    const [_, setLocation] = useContext(LocationContext);
 
     const handleClick = async () => {
         setLocation(
-            new Location(
-                (await coordinates2ILocation(
-                    (await getUserCoordinates()) as ICoordinates
-                )) as ILocation
-            )
+            (await coordinates2ILocation(
+                (await getUserCoordinates()) as ICoordinates
+            )) as ILocation
         );
     };
 

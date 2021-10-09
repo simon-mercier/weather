@@ -1,22 +1,12 @@
 import { IWeather } from "../../interfaces/weather";
-import {
-    Dispatch,
-    SetStateAction,
-    useCallback,
-    useContext,
-    useEffect,
-    useState,
-} from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
 import LocationContext from "../../contexts/Location";
-import Location from "../../classes/Location";
-
 import styled from "styled-components";
 import device from "../../assets/styles/breakpoints";
 import { coordinates2Weather } from "../../utils/weather-utils";
-import { DEFAULT_LOCATION_COORDINATES } from "../../const";
 import HourlyWeatherInfo from "../../contexts/HourlyWeatherInfo";
 import DailyWeatherInfo from "../../contexts/DailyWeatherInfo";
 import Background from "../background/Background";
@@ -26,17 +16,13 @@ import DailyWeatherWidget from "../weather-widgets/daily/DailyWeatherWidget";
 import NavBar from "../navbar/Navbar";
 
 const Weather = () => {
-    const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
-        useContext(LocationContext);
+    const [location, _] = useContext(LocationContext);
 
     const [weather, setWeather] = useState({} as IWeather);
 
     const fetchWeather = useCallback(async () => {
         setWeather(
-            (await coordinates2Weather(
-                (await location.getCoordinates()) ??
-                    DEFAULT_LOCATION_COORDINATES
-            )) as IWeather
+            (await coordinates2Weather(location.coordinates)) as IWeather
         );
     }, [location]);
 

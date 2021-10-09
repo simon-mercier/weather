@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, createContext } from "react";
-import Location from "../classes/Location";
+import ILocation from "../interfaces/location";
 
 const LocationContext = createContext<
-    [Location, Dispatch<SetStateAction<Location>>]
->([{} as Location, () => null]);
+    [ILocation, Dispatch<SetStateAction<ILocation>>]
+>([{} as ILocation, () => null]);
 
 export default LocationContext;

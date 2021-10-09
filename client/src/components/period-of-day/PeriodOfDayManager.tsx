@@ -1,25 +1,20 @@
-import React, {
-    Dispatch,
-    useCallback,
-    useContext,
-    useEffect,
-    useState,
-} from "react";
-import { SetStateAction } from "react";
-import Location from "../../classes/Location";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import LocationContext from "../../contexts/Location";
 import PeriodOfDayContext from "../../contexts/PeriodOfDay";
 import PeriodsOfDay from "../../enums/periodsOfDay";
+import { coordinates2PeriodOfDay } from "../../utils/period-of-day-manager";
 import WeatherManager from "../weather/WeatherManager";
 
 const PeriodOfDayManager = () => {
-    const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
-        useContext(LocationContext);
+    const [location, _] = useContext(LocationContext);
 
     const [periodOfDay, setPeriodOfDay] = useState(PeriodsOfDay.DAY);
 
     const fetchCurrentPeriodOfDay = useCallback(async () => {
-        setPeriodOfDay((await location.getPeriodOfDay()) ?? PeriodsOfDay.DAY);
+        setPeriodOfDay(
+            (await coordinates2PeriodOfDay(location.coordinates)) ??
+                PeriodsOfDay.DAY
+        );
     }, [location]);
 
     useEffect(() => {

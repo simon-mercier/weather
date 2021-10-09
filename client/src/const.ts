@@ -12,6 +12,7 @@ export const DEFAULT_LOCATION: ILocation = {
     location: ["Montreal", "QC", "Canada"],
     placeId: "ChIJDbdkHFQayUwR7-8fITgxTmU",
     locationFormatted: "Montreal, QC, Canada",
+    coordinates: DEFAULT_LOCATION_COORDINATES,
 };
 
 export const CAROUSEL_RESPONSIVE = {

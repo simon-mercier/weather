@@ -18,6 +18,7 @@ export const cityPredictions = async (
                           }),
                           placeId: prediction.place_id,
                           locationFormatted: prediction.description,
+                          coordinates: {} as ICoordinates,
                       } as ILocation;
                   })
                 : undefined;
@@ -49,6 +50,7 @@ export const coordinates2ILocation = async (
                 }),
                 placeId: locality.place_id,
                 locationFormatted: locality.description,
+                coordinates: coordinates,
             } as ILocation;
         },
         (error) => {

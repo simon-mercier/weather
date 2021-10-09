@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { IDailyWeather } from "../../../interfaces/weather";
 import HourWidget from "./DayWidget";
-import "react-multi-carousel/lib/styles.css";
 import { Frosted } from "../../../assets/styles/styles";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import DailyWeatherInfo from "../../../contexts/DailyWeatherInfo";

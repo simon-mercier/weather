@@ -1,18 +1,16 @@
-import {
-    Dispatch,
-    SetStateAction,
-    useContext,
-    useEffect,
-    useRef,
-    useState,
-} from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
-import { cityPredictions } from "../../utils/location-utils";
+import {
+    cityPredictions,
+    placeId2Coordinates,
+} from "../../utils/location-utils";
 import ILocation from "../../interfaces/location";
 import LocationContext from "../../contexts/Location";
-import { DEFAULT_LOCATION_CITY } from "../../const";
+import {
+    DEFAULT_LOCATION_CITY,
+    DEFAULT_LOCATION_COORDINATES,
+} from "../../const";
 
-import Location from "../../classes/Location";
 import styled from "styled-components";
 import { Frosted, FrostedOpaque } from "../../assets/styles/styles";
 import { SMALL_MARGIN } from "../../assets/styles/constants";
@@ -21,16 +19,12 @@ import device from "../../assets/styles/breakpoints";
 const Search = () => {
     const [predictions, setPredictions] = useState({} as [ILocation]);
     const [dropDownActive, setDropDownActive] = useState(false);
-    const [location, setLocation]: [
-        Location,
-        Dispatch<SetStateAction<Location>>
-    ] = useContext(LocationContext);
+    const [location, setLocation] = useContext(LocationContext);
 
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        inputRef.current!.value =
-            location.location.location[0] || DEFAULT_LOCATION_CITY;
+        inputRef.current!.value = location.location[0] || DEFAULT_LOCATION_CITY;
     }, [location]);
 
     const fetchPredictions = async () => {
@@ -41,9 +35,12 @@ const Search = () => {
         );
     };
 
-    const handleClickPrediction = (location: ILocation) => {
+    const handleClickPrediction = async (location: ILocation) => {
         if (!location) return;
-        setLocation(new Location(location));
+        location.coordinates =
+            (await placeId2Coordinates(location.placeId)) ??
+            DEFAULT_LOCATION_COORDINATES;
+        setLocation(location);
         setDropDownActive(false);
         return;
     };
@@ -74,7 +71,9 @@ const Search = () => {
                     {predictions.map((location: ILocation) => (
                         <Prediction
                             key={location.locationFormatted}
-                            onMouseDown={() => handleClickPrediction(location)}
+                            onMouseDown={async () =>
+                                await handleClickPrediction(location)
+                            }
                         >
                             {location.locationFormatted}
                         </Prediction>

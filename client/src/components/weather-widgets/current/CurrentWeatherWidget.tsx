@@ -69,6 +69,7 @@ const CurrentWeatherWidget = () => {
                                         weatherType={
                                             currentWeather.condition.weatherType
                                         }
+                                        bigIcon={true}
                                     />
                                 </WeatherIconContainer>
 

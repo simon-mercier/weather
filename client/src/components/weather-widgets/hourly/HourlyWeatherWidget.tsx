@@ -57,7 +57,7 @@ const Container = styled.div`
     padding: ${BIG_MARGIN};
     border-radius: ${BIG_MARGIN};
 
-    ${Morph(MorphDirection.LEFT, 100, 1)}
+    ${Morph(MorphDirection.BOTTOM, 100, 1)}
 
     ${Frosted}
 `;

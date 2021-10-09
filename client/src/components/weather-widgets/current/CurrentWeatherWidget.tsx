@@ -105,7 +105,7 @@ const InfoContainer = styled.div`
 
 const WeatherIconContainer = styled.div`
     position: relative;
-    ${Morph(MorphDirection.LEFT, 100)}
+    ${Morph(MorphDirection.BOTTOM, 100, 0.5)}
     @media ${device.mobileS} {
         font-size: 12.5em;
     }
@@ -124,7 +124,7 @@ const Container = styled.div`
     padding: ${BIG_MARGIN};
     border-radius: ${BIG_MARGIN};
     z-index: 1;
-    ${Morph(MorphDirection.LEFT, 100)}
+    ${Morph(MorphDirection.BOTTOM, 100)}
     ${Frosted}
 `;
 
@@ -179,7 +179,7 @@ const Degrees = styled.div`
         font-size: 12.5em;
     }
 
-    ${Morph(MorphDirection.LEFT, 100, 0.5)}
+    ${Morph(MorphDirection.BOTTOM, 100)}
 `;
 
 const DegreesText = styled.div`
@@ -191,7 +191,7 @@ const FeelsLike = styled.div`
     font-size: 3em;
     opacity: 0.9;
 
-    ${Morph(MorphDirection.LEFT, 200, 0.5)}
+    ${Morph(MorphDirection.BOTTOM, 200)}
 `;
 
 const HighLow = styled.div`
@@ -199,7 +199,7 @@ const HighLow = styled.div`
     opacity: 0.8;
     width: 100%;
 
-    ${Morph(MorphDirection.LEFT, 300, 0.5)}
+    ${Morph(MorphDirection.BOTTOM, 300)}
 `;
 
 const Weather = styled.div`
@@ -223,12 +223,12 @@ const WeatherDescription = styled.div`
     opacity: 90%;
     overflow-wrap: break-word;
 
-    ${Morph(MorphDirection.LEFT, 200)}
+    ${Morph(MorphDirection.BOTTOM, 200, 0.5)}
 `;
 
 const HumidityPressure = styled.div`
     font-size: 1.5em;
     opacity: 0.8;
 
-    ${Morph(MorphDirection.LEFT, 300)}
+    ${Morph(MorphDirection.BOTTOM, 300, 0.5)}
 `;

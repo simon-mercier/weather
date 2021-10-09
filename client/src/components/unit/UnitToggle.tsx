@@ -5,7 +5,7 @@ import { Frosted } from "../../assets/styles/styles";
 import UnitContext from "../../contexts/Unit";
 import { toggleUnit } from "../../utils/code-utils";
 
-const UnitManager = () => {
+const UnitToggle = () => {
     const [unit, setUnit] = useContext(UnitContext);
 
     const handleClick = () => {
@@ -19,7 +19,7 @@ const UnitManager = () => {
     );
 };
 
-export default UnitManager;
+export default UnitToggle;
 
 const Container = styled.div`
     ${Frosted}

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import styled from "styled-components";
 import Cloud1 from "../../../assets/png/cloud1.png";
 import Cloud2 from "../../../assets/png/cloud2.png";
@@ -51,11 +51,11 @@ interface CloudAnimationProps {
 }
 
 const CloudAnimation = (props: CloudAnimationProps) => {
-    const clouds = [Cloud1, Cloud2, Cloud3, Cloud4, Cloud5];
+    const clouds = useRef([Cloud1, Cloud2, Cloud3, Cloud4, Cloud5]);
     const periodOfDay: PeriodsOfDay = useContext(PeriodOfDayContext);
     return (
         <Container>
-            {clouds
+            {clouds.current
                 .slice(
                     0,
                     weatherType2NumberOfClouds.get(

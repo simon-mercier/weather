@@ -152,7 +152,7 @@ const Atmosphere = styled.div<AtmosphereProps>`
     top: 0;
     left: 0;
 
-    width: 100vw;
+    width: 100%;
 
     @media ${device.mobileS} {
         height: 120vh;

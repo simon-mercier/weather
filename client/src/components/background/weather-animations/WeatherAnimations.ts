@@ -6,7 +6,7 @@ const Gif = styled.img`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     z-index: 0;
 `;
 

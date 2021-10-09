@@ -80,9 +80,9 @@ const MorphDirection2Keyframe = new Map<MorphDirection, Function>([
 
 export const CloudAnim = keyframes`
         0% {
-            left: -100vw;
+            left: -100%;
         }
         100% {
-            left: 100vw;
+            left: 100%;
         }
     `;

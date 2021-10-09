@@ -11,7 +11,6 @@ import { RainGif, SnowGif } from "./weather-animations/WeatherAnimations";
 
 const Background = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
-
     const periodOfDay: PeriodsOfDay = useContext(PeriodOfDayContext);
 
     return (
@@ -38,5 +37,6 @@ export default Background;
 const Container = styled.section`
     position: fixed;
     top: 0;
-    width: 100vw;
+    width: 100%;
+    height: 100%;
 `;

@@ -11,7 +11,6 @@ import LocationContext from "../../contexts/Location";
 import PeriodOfDayContext from "../../contexts/PeriodOfDay";
 import PeriodsOfDay from "../../enums/periodsOfDay";
 import WeatherManager from "../weather/WeatherManager";
-import NavBar from "../navbar/Navbar";
 
 const PeriodOfDayManager = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
@@ -29,12 +28,7 @@ const PeriodOfDayManager = () => {
 
     return (
         <PeriodOfDayContext.Provider value={periodOfDay}>
-            {periodOfDay && (
-                <>
-                    <NavBar />
-                    <WeatherManager />
-                </>
-            )}
+            {periodOfDay && <WeatherManager />}
         </PeriodOfDayContext.Provider>
     );
 };

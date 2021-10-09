@@ -23,12 +23,14 @@ const CurrentWeatherWidget = () => {
                         <Info>
                             <Temperature>
                                 <Degrees>
-                                    {k2unit(
-                                        currentWeather.temperature
-                                            .temp as number,
-                                        unit
-                                    )}
-                                    °
+                                    <DegreesText>
+                                        {k2unit(
+                                            currentWeather.temperature
+                                                .temp as number,
+                                            unit
+                                        )}
+                                        °
+                                    </DegreesText>
                                 </Degrees>
                                 <InfoContainer>
                                     <FeelsLike>
@@ -163,7 +165,10 @@ const Temperature = styled.div`
 `;
 
 const Degrees = styled.div`
-    background-color: transparent;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @media ${device.mobileS} {
         font-size: 10em;
@@ -174,6 +179,10 @@ const Degrees = styled.div`
     }
 
     ${Morph(MorphDirection.LEFT, 100, 0.5)}
+`;
+
+const DegreesText = styled.div`
+    height: fit-content;
 `;
 
 const FeelsLike = styled.div`

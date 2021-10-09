@@ -9,8 +9,26 @@ import SvgMist from "./Mist";
 import SvgSnow from "./Snow";
 import SvgThunder from "./Thunder";
 
-const weatherType2Icon = new Map<WeatherType, any>([
+import PngClear from "../../assets/icons/png/clear.png";
+
+const weatherType2IconSVG = new Map<WeatherType, any>([
     [WeatherType.CLEAR_SKY, <SvgClear width="100%" height="100%" />],
+    [WeatherType.FEW_CLOUDS, <SvgPartlyCloudy width="100%" height="100%" />],
+    [
+        WeatherType.SCATTERED_CLOUDS,
+        <SvgPartlyCloudy width="100%" height="100%" />,
+    ],
+    [WeatherType.BROKEN_CLOUDS, <SvgMostlyCloudy width="100%" height="100%" />],
+    [WeatherType.OVERCAST_CLOUDS, <SvgCloudy width="100%" height="100%" />],
+    [WeatherType.DRIZZLE, <SvgRain width="100%" height="100%" />],
+    [WeatherType.RAIN, <SvgRain width="100%" height="100%" />],
+    [WeatherType.SMOKE, <SvgMist width="100%" height="100%" />],
+    [WeatherType.SNOW, <SvgSnow width="100%" height="100%" />],
+    [WeatherType.THUNDERSTORM, <SvgThunder width="100%" height="100%" />],
+]);
+
+const weatherType2IconPNG = new Map<WeatherType, any>([
+    [WeatherType.CLEAR_SKY, PngClear],
     [WeatherType.FEW_CLOUDS, <SvgPartlyCloudy width="100%" height="100%" />],
     [
         WeatherType.SCATTERED_CLOUDS,
@@ -34,10 +52,8 @@ interface WeatherIconProps {
 const WeatherIcon = ({ width, height, weatherType }: WeatherIconProps) => {
     return (
         <Container width={width} height={height}>
-            {weatherType2Icon.get(weatherType ?? WeatherType.CLEAR_SKY)}
+            {weatherType2IconSVG.get(weatherType ?? WeatherType.CLEAR_SKY)}
         </Container>
-        // <> {weatherType2Icon.get(weatherType ?? WeatherType.CLEAR_SKY)}</>
-        // <SvgClear width={width + "em"} height={height + "em"} />
     );
 };
 

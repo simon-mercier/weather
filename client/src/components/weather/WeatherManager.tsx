@@ -23,6 +23,7 @@ import Background from "../background/Background";
 import CurrentWeatherWidget from "../weather-widgets/current/CurrentWeatherWidget";
 import HourlyWeatherWidget from "../weather-widgets/hourly/HourlyWeatherWidget";
 import DailyWeatherWidget from "../weather-widgets/daily/DailyWeatherWidget";
+import NavBar from "../navbar/Navbar";
 
 const Weather = () => {
     const [location, _]: [Location, Dispatch<SetStateAction<Location>>] =
@@ -56,8 +57,9 @@ const Weather = () => {
                             <DailyWeatherInfo.Provider
                                 value={weather.dailyWeather}
                             >
+                                <Background />
                                 <Container>
-                                    <Background />
+                                    <NavBar />
                                     <Widgets>
                                         <CurrentWeatherWidget />
 

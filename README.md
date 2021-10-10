@@ -3,7 +3,7 @@
 An awesome looking weather application to access current, hourly, and daily weather forecasts of your current location or anywhere in the world. 🌎
 ## Demo
 
-I encourage you to take a look at the [website](https://simonmercierweather.herokuapp.com/)
+I encourage you to take a look at the [website](https://simonmercierweather.herokuapp.com/) ⚛️ 
 
 ## Features
 This weather application has everything you need to stay up to date with the current forecast:

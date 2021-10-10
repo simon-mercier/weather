@@ -24,7 +24,8 @@ This weather application has everything you need to stay up to date with the cur
     - Mobile view 📱 
 
 ## Screenshots
-<img src="https://user-images.githubusercontent.com/53417469/136676880-bc687828-2015-49c0-8a7e-71b47aedc6b4.png" height="350" > <img src="https://user-images.githubusercontent.com/53417469/136676884-24c83a9d-3f3d-4c5c-99df-3ca39ac6cdec.png" height="350" > <img src="https://user-images.githubusercontent.com/53417469/136676885-0c776fe0-9093-485c-90e0-b63b6b29df79.png" height="350" >
+<img src="https://user-images.githubusercontent.com/53417469/136713800-113ef67f-b89d-4b44-9a5a-a03f27efa87d.png" height="350" > <img src="https://user-images.githubusercontent.com/53417469/136713866-2ef69e09-2927-40f8-8b94-61113f1620b0.png" height="350" > <img src="https://user-images.githubusercontent.com/53417469/136676885-0c776fe0-9093-485c-90e0-b63b6b29df79.png" height="350" > <img src="https://user-images.githubusercontent.com/53417469/136714000-9bf693b5-3a42-444b-a42a-78efc860cc95.png" height="350" > 
+
 
 ## Installation
 

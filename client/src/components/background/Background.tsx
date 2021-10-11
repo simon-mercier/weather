@@ -1,17 +1,28 @@
-import { useContext } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
-import PeriodOfDayContext from "../../contexts/PeriodOfDay";
 import PeriodsOfDay from "../../enums/periodsOfDay";
 import WeatherType from "../../enums/weatherType";
 import { ICurrentWeather } from "../../interfaces/weather";
+import { getPeriodsOfDay } from "../../utils/period-of-day-utils";
 import Atmosphere from "./Atmosphere";
 import CloudAnimation from "./weather-animations/CloudAnimation";
 import { RainGif, SnowGif } from "./weather-animations/WeatherAnimations";
 
 const Background = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
-    const periodOfDay: PeriodsOfDay = useContext(PeriodOfDayContext);
+
+    const [periodOfDay, setPeriodOfDay] = useState(PeriodsOfDay.DAY);
+
+    const fetchCurrentPeriodOfDay = useCallback(async () => {
+        setPeriodOfDay(
+            getPeriodsOfDay(currentWeather.sunrise, currentWeather.sunset)
+        );
+    }, [currentWeather]);
+
+    useEffect(() => {
+        fetchCurrentPeriodOfDay();
+    }, [fetchCurrentPeriodOfDay]);
 
     return (
         <Container>

@@ -17,6 +17,10 @@ export interface ICurrentWeather {
     clouds: number;
 
     uvi: number;
+
+    sunrise: Date;
+
+    sunset: Date;
 }
 
 export interface IHourlyWeather {

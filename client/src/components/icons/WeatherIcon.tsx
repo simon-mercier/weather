@@ -30,18 +30,10 @@ interface WeatherIconProps {
     bigIcon?: boolean;
 }
 
-const WeatherIcon = ({
-    width,
-    height,
-    weatherType,
-    bigIcon = false,
-}: WeatherIconProps) => {
+const WeatherIcon = ({ width, height, weatherType }: WeatherIconProps) => {
     return (
         <Container width={width} height={height}>
-            {!bigIcon && <IconPng src={weatherType2IconPNG.get(weatherType)} />}
-            {bigIcon && (
-                <BigIconPng src={weatherType2IconPNG.get(weatherType)} />
-            )}
+            <IconPng src={weatherType2IconPNG.get(weatherType)} />
         </Container>
     );
 };
@@ -61,13 +53,4 @@ const IconPng = styled.img.attrs((props) => ({
 }))`
     width: 100%;
     height: 100%;
-`;
-
-const BigIconPng = styled(IconPng)`
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150%;
-    height: 150%;
 `;

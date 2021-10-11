@@ -1,8 +1,0 @@
-export { default as Clear } from './Clear'
-export { default as Cloudy } from './Cloudy'
-export { default as Mist } from './Mist'
-export { default as MostlyCloudy } from './MostlyCloudy'
-export { default as PartlyCloudy } from './PartlyCloudy'
-export { default as Rain } from './Rain'
-export { default as Snow } from './Snow'
-export { default as Thunder } from './Thunder'

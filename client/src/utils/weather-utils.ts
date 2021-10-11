@@ -10,6 +10,7 @@ import {
 import ITemperature from "../interfaces/temperature";
 import { API, fetchApi } from "./api-utils";
 import ICondition from "../interfaces/condition";
+import { MILLISECONDS_IN_SECONDS, OFFSET_TORONTO } from "../const";
 
 const id2WeatherType = new Map<number, WeatherType>([
     [200, WeatherType.THUNDERSTORM],
@@ -107,6 +108,8 @@ export const coordinates2Weather = async (
                           humidity: result.current.humidity,
                           clouds: result.current.clouds,
                           uvi: result.current.uvi,
+                          sunrise: new Date(result.current.sunrise * 1000),
+                          sunset: new Date(result.current.sunset * 1000),
                       } as ICurrentWeather,
 
                       hourlyWeather: result.hourly.map((hour: any) => {
@@ -120,7 +123,12 @@ export const coordinates2Weather = async (
                                   probabilityOfPrecipitation: hour.pop,
                               } as ICondition,
 
-                              date: new Date(hour.dt * 1000),
+                              date: new Date(
+                                  (hour.dt +
+                                      result.timezone_offset +
+                                      OFFSET_TORONTO) *
+                                      MILLISECONDS_IN_SECONDS
+                              ),
                           } as IHourlyWeather;
                       }) as Array<IHourlyWeather>,
 

@@ -98,19 +98,3 @@ const Widgets = styled.section`
         width: min-content;
     }
 `;
-
-// const fetchCurrentWeather = useCallback(async () => {
-//     setCurrentWeather({
-//         temperature: {
-//             temp: 293,
-//             feelsLike: 293,
-//             tempMin: 293,
-//             tempMax: 293,
-//         },
-//         weatherDescription: "TEST",
-//         weatherId: 803,
-//         pressure: 80,
-//         humidity: 80,
-//         windSpeed: 50,
-//     });
-// }, [location]);

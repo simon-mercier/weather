@@ -5,6 +5,7 @@ enum WeatherType {
     BROKEN_CLOUDS,
     OVERCAST_CLOUDS,
     SMOKE,
+    HAZE,
     RAIN,
     DRIZZLE,
     SNOW,

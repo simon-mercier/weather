@@ -30,8 +30,10 @@ const Container = styled.nav`
     flex-wrap: wrap;
     flex-direction: row;
 
-    width: 100vw;
     z-index: 99;
+
+    min-width: 100vw;
+    max-width: 100vw;
 
     @media ${device.mobileS} {
         justify-content: center;
@@ -57,17 +59,18 @@ const NavItems = styled.div`
     grid-template-columns: auto 1fr 1fr;
     justify-items: center;
     width: min-content;
+    place-items: center;
 `;
 
 const SearchContainer = styled.div`
-    margin-top: 12px;
+    margin-top: 8px;
     margin-right: 8px;
     ${Morph(MorphDirection.RIGHT, 100)}
 `;
 
 const UserLocationContainer = styled.div`
     margin-top: 8px;
-    margin-right: 4px;
+    margin-right: 8px;
     ${Morph(MorphDirection.RIGHT, 200)}
 `;
 

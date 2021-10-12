@@ -27,7 +27,6 @@ const Container = styled.div`
     width: 2em;
     height: 2em;
     padding: ${SMALL_MARGIN};
-    margin: ${SMALL_MARGIN};
     transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
     box-shadow: 0 0 1em rgba(58, 57, 57, 0.2);
 

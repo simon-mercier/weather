@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useMemo, useRef } from "react";
 import styled from "styled-components";
 import Cloud1 from "../../../assets/png/cloud1.png";
 import Cloud2 from "../../../assets/png/cloud2.png";
@@ -51,25 +51,27 @@ const CloudAnimation = () => {
     const clouds = useRef([Cloud1, Cloud2, Cloud3, Cloud4, Cloud5]);
     const periodOfDay: PeriodsOfDay = useContext(PeriodOfDayContext);
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
-    return (
-        <Container>
-            {clouds.current
-                .slice(
-                    0,
-                    weatherType2NumberOfClouds.get(
-                        currentWeather.condition.weatherType
-                    ) ?? NO_CLOUDS
-                )
-                .map((cloud, i) => (
-                    <Cloud
-                        key={"cloud" + i}
-                        periodOfDay={periodOfDay}
-                        currentWeather={currentWeather}
-                        source={cloud}
-                    />
-                ))}
-        </Container>
-    );
+    return useMemo(() => {
+        return (
+            <Container>
+                {clouds.current
+                    .slice(
+                        0,
+                        weatherType2NumberOfClouds.get(
+                            currentWeather.condition.weatherType
+                        ) ?? NO_CLOUDS
+                    )
+                    .map((cloud, i) => (
+                        <Cloud
+                            key={"cloud" + i}
+                            periodOfDay={periodOfDay}
+                            currentWeather={currentWeather}
+                            source={cloud}
+                        />
+                    ))}
+            </Container>
+        );
+    }, [periodOfDay, currentWeather]);
 };
 
 export default CloudAnimation;

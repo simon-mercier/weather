@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import device from "../../assets/styles/breakpoints";
 import PeriodsOfDay from "../../enums/periodsOfDay";
 import WeatherType from "../../enums/weatherType";
 import { ICurrentWeather } from "../../interfaces/weather";
@@ -33,12 +32,12 @@ const periodOfDay2Atmosphere = new Map<PeriodsOfDay, Map<WeatherType, string>>([
             [WeatherType.CLEAR_SKY, evening],
             [WeatherType.FEW_CLOUDS, evening],
             [WeatherType.SCATTERED_CLOUDS, evening],
-            [WeatherType.BROKEN_CLOUDS, dark],
-            [WeatherType.OVERCAST_CLOUDS, dark],
+            [WeatherType.BROKEN_CLOUDS, evening],
+            [WeatherType.OVERCAST_CLOUDS, evening],
             [WeatherType.DRIZZLE, evening],
             [WeatherType.RAIN, dark],
             [WeatherType.THUNDERSTORM, dark],
-            [WeatherType.SNOW, dark],
+            [WeatherType.SNOW, evening],
         ]),
     ],
     [
@@ -152,15 +151,10 @@ const Atmosphere = styled.div<AtmosphereProps>`
     top: 0;
     left: 0;
 
-    width: 100%;
-
-    @media ${device.mobileS} {
-        height: 120vh;
-    }
-
-    @media ${device.tablet} {
-        height: 100vh;
-    }
+    min-width: 100vw;
+    min-height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
 `;
 
 export default Atmosphere;

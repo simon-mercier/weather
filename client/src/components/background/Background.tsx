@@ -38,7 +38,7 @@ const Background = () => {
             {currentWeather.condition.weatherType === WeatherType.SNOW && (
                 <SnowGif />
             )}
-            <CloudAnimation currentWeather={currentWeather} />
+            <CloudAnimation />
         </Container>
     );
 };

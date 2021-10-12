@@ -7,18 +7,26 @@ import { setInterval } from "timers";
 import UnitManager from "../unit/UnitManager";
 
 const LocationManager = () => {
-    const [location, setLocation] = useState(DEFAULT_LOCATION);
+    const [location, setLocation] = useState(
+        JSON.parse(
+            localStorage.getItem("location") ?? JSON.stringify(DEFAULT_LOCATION)
+        )
+    );
 
-    const TEN_MINUTES = 600000;
+    useEffect(() => {
+        localStorage.setItem("location", JSON.stringify(location));
+    }, [location]);
+
+    const FIVE_MINUTES = 300000;
     useEffect(() => {
         setInterval(() => {
             setLocation(Object.assign({}, location));
-        }, TEN_MINUTES);
+        }, FIVE_MINUTES);
     }, []);
 
     return (
         <LocationContext.Provider value={[location, setLocation]}>
-                {location && <UnitManager />}
+            {location && <UnitManager />}
         </LocationContext.Provider>
     );
 };

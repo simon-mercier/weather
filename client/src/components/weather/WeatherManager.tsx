@@ -15,7 +15,7 @@ import HourlyWeatherWidget from "../weather-widgets/hourly/HourlyWeatherWidget";
 import DailyWeatherWidget from "../weather-widgets/daily/DailyWeatherWidget";
 import NavBar from "../navbar/Navbar";
 
-const Weather = () => {
+const WeatherManager = () => {
     const [location, _] = useContext(LocationContext);
 
     const [weather, setWeather] = useState({} as IWeather);
@@ -29,6 +29,13 @@ const Weather = () => {
     useEffect(() => {
         fetchWeather();
     }, [fetchWeather]);
+
+    const FIVE_MINUTES = 300000;
+    useEffect(() => {
+        setInterval(() => {
+            fetchWeather();
+        }, FIVE_MINUTES);
+    }, []);
 
     return (
         <>
@@ -62,7 +69,7 @@ const Weather = () => {
     );
 };
 
-export default Weather;
+export default WeatherManager;
 
 const Container = styled.div`
     position: absolute;

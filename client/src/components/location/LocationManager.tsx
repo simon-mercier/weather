@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { DEFAULT_LOCATION } from "../../const";
 import LocationContext from "../../contexts/Location";
 
-import { setInterval } from "timers";
 import UnitManager from "../unit/UnitManager";
 
 const LocationManager = () => {
@@ -16,13 +15,6 @@ const LocationManager = () => {
     useEffect(() => {
         localStorage.setItem("location", JSON.stringify(location));
     }, [location]);
-
-    const FIVE_MINUTES = 300000;
-    useEffect(() => {
-        setInterval(() => {
-            setLocation(Object.assign({}, location));
-        }, FIVE_MINUTES);
-    }, []);
 
     return (
         <LocationContext.Provider value={[location, setLocation]}>

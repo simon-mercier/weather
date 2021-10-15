@@ -26,6 +26,7 @@ const weatherType2IconDay = new Map<WeatherType, any>([
     [WeatherType.DRIZZLE, PngRain],
     [WeatherType.RAIN, PngRain],
     [WeatherType.SMOKE, PngMist],
+    [WeatherType.HAZE, PngMist],
     [WeatherType.SNOW, PngSnow],
     [WeatherType.THUNDERSTORM, PngThunder],
 ]);
@@ -39,6 +40,7 @@ const weatherType2IconNight = new Map<WeatherType, any>([
     [WeatherType.DRIZZLE, PngRain],
     [WeatherType.RAIN, PngRain],
     [WeatherType.SMOKE, PngMist],
+    [WeatherType.HAZE, PngMist],
     [WeatherType.SNOW, PngSnow],
     [WeatherType.THUNDERSTORM, PngThunder],
 ]);
@@ -52,7 +54,6 @@ interface WeatherIconProps {
 
 const WeatherIcon = ({ width, height, weatherType }: WeatherIconProps) => {
     const periodOfDay: PeriodsOfDay = useContext(PeriodOfDayContext);
-    console.log(periodOfDay);
     return (
         <Container width={width} height={height}>
             <IconPng

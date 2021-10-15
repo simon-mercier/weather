@@ -45,4 +45,5 @@ export const CAROUSEL_RESPONSIVE = {
 export const OFFSET_TORONTO = 14400;
 export const MILLISECONDS_IN_SECONDS = 1000;
 export const TIME_IN_ONE_HOUR_MS = 3600000;
+export const ONE_DAY_IN_MS = 86400000;
 export const TIME_INTERVAL_SUNRISE_SUNSET_HOURS = 0.25;

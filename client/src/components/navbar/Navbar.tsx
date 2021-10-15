@@ -57,25 +57,24 @@ const Title = styled.div`
 const NavItems = styled.div`
     display: grid;
     grid-template-columns: auto 1fr 1fr;
-    justify-items: center;
+    justify-items: flex-start;
     width: min-content;
-    place-items: center;
 `;
 
 const SearchContainer = styled.div`
-    margin-top: 8px;
-    margin-right: 8px;
+    margin: 8px;
+
     ${Morph(MorphDirection.RIGHT, 100)}
 `;
 
 const UserLocationContainer = styled.div`
-    margin-top: 8px;
-    margin-right: 8px;
+    margin: 8px;
+
     ${Morph(MorphDirection.RIGHT, 200)}
+    align-self: center;
 `;
 
 const UnitToggleContainer = styled.div`
-    margin-top: 8px;
-    margin-right: 8px;
+    margin: 8px;
     ${Morph(MorphDirection.RIGHT, 300)}
 `;

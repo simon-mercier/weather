@@ -1,5 +1,4 @@
 import {
-    ONE_DAY_IN_MS,
     TIME_INTERVAL_SUNRISE_SUNSET_HOURS,
     TIME_IN_ONE_HOUR_MS,
 } from "../const";
@@ -12,21 +11,16 @@ export const getPeriodsOfDay = (
 ): PeriodOfDay => {
     if (getTimeDifference(time, sunrise) < TIME_INTERVAL_SUNRISE_SUNSET_HOURS)
         return PeriodOfDay.MORNING;
-    else if (
-        getTimeDifference(time, sunset) < TIME_INTERVAL_SUNRISE_SUNSET_HOURS
-    )
+    if (getTimeDifference(time, sunset) < TIME_INTERVAL_SUNRISE_SUNSET_HOURS)
         return PeriodOfDay.EVENING;
-    else if (
-        time.getTime() > sunrise.getTime() &&
-        time.getTime() < sunset.getTime()
-    )
-        return PeriodOfDay.DAY;
-    else if (
-        time.getTime() > sunset.getTime() &&
-        time.getTime() < sunrise.getTime() + ONE_DAY_IN_MS
+    if (
+        time.getHours() >= sunrise.getHours() &&
+        time.getHours() <= sunset.getHours()
     ) {
-        return PeriodOfDay.NIGHT;
-    } else return PeriodOfDay.DAY;
+        return PeriodOfDay.DAY;
+    }
+
+    return PeriodOfDay.NIGHT;
 };
 
 const getTimeDifference = (localeTime: Date, otherTime: Date) =>

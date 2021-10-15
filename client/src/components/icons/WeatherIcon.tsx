@@ -32,7 +32,7 @@ const weatherType2IconDay = new Map<WeatherType, any>([
 const weatherType2IconNight = new Map<WeatherType, any>([
     [WeatherType.CLEAR_SKY, PngClearNight],
     [WeatherType.FEW_CLOUDS, PngPartlyCloudyNight],
-    [WeatherType.SCATTERED_CLOUDS, PngPartlyCloudy],
+    [WeatherType.SCATTERED_CLOUDS, PngPartlyCloudyNight],
     [WeatherType.BROKEN_CLOUDS, PngMostlyCloudy],
     [WeatherType.OVERCAST_CLOUDS, PngCloudy],
     [WeatherType.DRIZZLE, PngRain],
@@ -60,7 +60,7 @@ const WeatherIcon = ({
         <Container width={width} height={height}>
             <IconPng
                 src={
-                    periodOfDay == PeriodOfDay.NIGHT
+                    periodOfDay === PeriodOfDay.NIGHT
                         ? weatherType2IconNight.get(weatherType)
                         : weatherType2IconDay.get(weatherType)
                 }

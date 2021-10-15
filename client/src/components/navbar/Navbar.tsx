@@ -69,9 +69,7 @@ const SearchContainer = styled.div`
 
 const UserLocationContainer = styled.div`
     margin: 8px;
-
     ${Morph(MorphDirection.RIGHT, 200)}
-    align-self: center;
 `;
 
 const UnitToggleContainer = styled.div`

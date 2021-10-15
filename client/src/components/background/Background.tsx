@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
-import PeriodsOfDay from "../../enums/periodsOfDay";
+import PeriodOfDay from "../../enums/periodOfDay";
 import WeatherType from "../../enums/weatherType";
 import { ICurrentWeather } from "../../interfaces/weather";
 import { getPeriodsOfDay } from "../../utils/period-of-day-utils";
@@ -12,7 +12,7 @@ import { RainGif, SnowGif } from "./weather-animations/WeatherAnimations";
 const Background = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
 
-    const [periodOfDay, setPeriodOfDay] = useState(PeriodsOfDay.DAY);
+    const [periodOfDay, setPeriodOfDay] = useState(PeriodOfDay.DAY);
 
     const fetchCurrentPeriodOfDay = useCallback(async () => {
         setPeriodOfDay(

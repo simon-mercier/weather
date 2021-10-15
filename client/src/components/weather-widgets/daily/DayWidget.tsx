@@ -3,6 +3,7 @@ import styled from "styled-components";
 import device from "../../../assets/styles/breakpoints";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
+import PeriodOfDay from "../../../enums/periodOfDay";
 import { IDailyWeather } from "../../../interfaces/weather";
 import { k2unit } from "../../../utils/weather-utils";
 import WeatherIcon from "../../icons/WeatherIcon";
@@ -36,6 +37,7 @@ function DayWidget(dayProps: DayProps) {
                 width={3}
                 height={3}
                 weatherType={dayProps.day.dailyWeather.weatherType}
+                periodOfDay={PeriodOfDay.DAY}
             />
             <LowHigh>
                 <Temperature>

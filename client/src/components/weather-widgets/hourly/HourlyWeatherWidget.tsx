@@ -35,8 +35,8 @@ function HourlyWeatherWidget() {
                 )}
             </Title>
 
-            {hourlyWeather.slice(0, 11).map((hour, i) => (
-                <HourWidget key={i} hour={hour} isNow={i === 0}></HourWidget>
+            {hourlyWeather.slice(0, 23).map((hour, i) => (
+                <HourWidget key={i} hour={hour} time={i}></HourWidget>
             ))}
         </Container>
     );

@@ -13,9 +13,7 @@ import PngRain from "../../assets/icons/png/rain.png";
 import PngMist from "../../assets/icons/png/mist.png";
 import PngSnow from "../../assets/icons/png/snow.png";
 import PngThunder from "../../assets/icons/png/thunder.png";
-import PeriodsOfDay from "../../enums/periodsOfDay";
-import { useContext } from "react";
-import PeriodOfDayContext from "../../contexts/PeriodOfDay";
+import PeriodOfDay from "../../enums/periodOfDay";
 
 const weatherType2IconDay = new Map<WeatherType, any>([
     [WeatherType.CLEAR_SKY, PngClear],
@@ -49,16 +47,20 @@ interface WeatherIconProps {
     width: number;
     height: number;
     weatherType: WeatherType;
-    bigIcon?: boolean;
+    periodOfDay: PeriodOfDay;
 }
 
-const WeatherIcon = ({ width, height, weatherType }: WeatherIconProps) => {
-    const periodOfDay: PeriodsOfDay = useContext(PeriodOfDayContext);
+const WeatherIcon = ({
+    width,
+    height,
+    weatherType,
+    periodOfDay,
+}: WeatherIconProps) => {
     return (
         <Container width={width} height={height}>
             <IconPng
                 src={
-                    periodOfDay == PeriodsOfDay.NIGHT
+                    periodOfDay == PeriodOfDay.NIGHT
                         ? weatherType2IconNight.get(weatherType)
                         : weatherType2IconDay.get(weatherType)
                 }

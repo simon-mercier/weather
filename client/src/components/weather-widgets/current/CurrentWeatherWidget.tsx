@@ -9,6 +9,7 @@ import { k2unit } from "../../../utils/weather-utils";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
 import device from "../../../assets/styles/breakpoints";
+import { getPeriodsOfDay } from "../../../utils/period-of-day-utils";
 
 const CurrentWeatherWidget = () => {
     const currentWeather: ICurrentWeather = useContext(CurrentWeatherInfo);
@@ -69,6 +70,10 @@ const CurrentWeatherWidget = () => {
                                         weatherType={
                                             currentWeather.condition.weatherType
                                         }
+                                        periodOfDay={getPeriodsOfDay(
+                                            currentWeather.sunrise,
+                                            currentWeather.sunset
+                                        )}
                                     />
                                 </WeatherIconContainer>
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PeriodsOfDay from "../../enums/periodsOfDay";
+import PeriodOfDay from "../../enums/periodOfDay";
 import WeatherType from "../../enums/weatherType";
 import { ICurrentWeather } from "../../interfaces/weather";
 
@@ -11,9 +11,9 @@ const evening: string =
     "linear-gradient(to bottom, #525179 0%, 32.37822353839874%, #E39396 64.75644707679749%, 82.37822353839874%, #FFA187 100%)";
 const dark: string =
     "linear-gradient(to top, #25232E 0%, 15.919812023639679%, #383641 31.839624047279358%, 42.21698194742203%, #353341 52.5943398475647%, 60.96698045730591%, #33313C 69.33962106704712%, 76.29716992378235%, #212026 83.25471878051758%, 91.62735939025879%, #090A04 100%)";
-const periodOfDay2Atmosphere = new Map<PeriodsOfDay, Map<WeatherType, string>>([
+const periodOfDay2Atmosphere = new Map<PeriodOfDay, Map<WeatherType, string>>([
     [
-        PeriodsOfDay.DAY,
+        PeriodOfDay.DAY,
         new Map<WeatherType, string>([
             [WeatherType.CLEAR_SKY, clear],
             [WeatherType.FEW_CLOUDS, clear],
@@ -29,7 +29,7 @@ const periodOfDay2Atmosphere = new Map<PeriodsOfDay, Map<WeatherType, string>>([
         ]),
     ],
     [
-        PeriodsOfDay.EVENING,
+        PeriodOfDay.EVENING,
         new Map<WeatherType, string>([
             [WeatherType.CLEAR_SKY, evening],
             [WeatherType.FEW_CLOUDS, evening],
@@ -45,7 +45,7 @@ const periodOfDay2Atmosphere = new Map<PeriodsOfDay, Map<WeatherType, string>>([
         ]),
     ],
     [
-        PeriodsOfDay.NIGHT,
+        PeriodOfDay.NIGHT,
         new Map<WeatherType, string>([
             [WeatherType.CLEAR_SKY, dark],
             [WeatherType.FEW_CLOUDS, dark],
@@ -61,7 +61,7 @@ const periodOfDay2Atmosphere = new Map<PeriodsOfDay, Map<WeatherType, string>>([
         ]),
     ],
     [
-        PeriodsOfDay.MORNING,
+        PeriodOfDay.MORNING,
         new Map<WeatherType, string>([
             [WeatherType.CLEAR_SKY, morning],
             [WeatherType.FEW_CLOUDS, morning],
@@ -78,9 +78,9 @@ const periodOfDay2Atmosphere = new Map<PeriodsOfDay, Map<WeatherType, string>>([
     ],
 ]);
 
-const periodOfDay2Brightness = new Map<PeriodsOfDay, Map<WeatherType, number>>([
+const periodOfDay2Brightness = new Map<PeriodOfDay, Map<WeatherType, number>>([
     [
-        PeriodsOfDay.DAY,
+        PeriodOfDay.DAY,
         new Map<WeatherType, number>([
             [WeatherType.CLEAR_SKY, 0],
             [WeatherType.FEW_CLOUDS, 0.1],
@@ -96,7 +96,7 @@ const periodOfDay2Brightness = new Map<PeriodsOfDay, Map<WeatherType, number>>([
         ]),
     ],
     [
-        PeriodsOfDay.EVENING,
+        PeriodOfDay.EVENING,
         new Map<WeatherType, number>([
             [WeatherType.CLEAR_SKY, 0],
             [WeatherType.FEW_CLOUDS, 0.1],
@@ -112,7 +112,7 @@ const periodOfDay2Brightness = new Map<PeriodsOfDay, Map<WeatherType, number>>([
         ]),
     ],
     [
-        PeriodsOfDay.NIGHT,
+        PeriodOfDay.NIGHT,
         new Map<WeatherType, number>([
             [WeatherType.CLEAR_SKY, 0],
             [WeatherType.FEW_CLOUDS, 0.1],
@@ -128,7 +128,7 @@ const periodOfDay2Brightness = new Map<PeriodsOfDay, Map<WeatherType, number>>([
         ]),
     ],
     [
-        PeriodsOfDay.MORNING,
+        PeriodOfDay.MORNING,
         new Map<WeatherType, number>([
             [WeatherType.CLEAR_SKY, 0],
             [WeatherType.FEW_CLOUDS, 0.1],
@@ -144,7 +144,7 @@ const periodOfDay2Brightness = new Map<PeriodsOfDay, Map<WeatherType, number>>([
 ]);
 
 interface AtmosphereProps {
-    periodOfDay: PeriodsOfDay;
+    periodOfDay: PeriodOfDay;
     currentWeather: ICurrentWeather;
 }
 

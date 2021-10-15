@@ -2,26 +2,25 @@ import {
     TIME_INTERVAL_SUNRISE_SUNSET_HOURS,
     TIME_IN_ONE_HOUR_MS,
 } from "../const";
-import PeriodsOfDay from "../enums/periodsOfDay";
+import PeriodOfDay from "../enums/periodOfDay";
 
-export const getPeriodsOfDay = (sunrise: Date, sunset: Date): PeriodsOfDay => {
-    const localeTime = new Date();
-    if (
-        getTimeDifference(localeTime, sunrise) <
-        TIME_INTERVAL_SUNRISE_SUNSET_HOURS
-    )
-        return PeriodsOfDay.MORNING;
+export const getPeriodsOfDay = (
+    sunrise: Date,
+    sunset: Date,
+    time: Date = new Date()
+): PeriodOfDay => {
+    if (getTimeDifference(time, sunrise) < TIME_INTERVAL_SUNRISE_SUNSET_HOURS)
+        return PeriodOfDay.MORNING;
     else if (
-        getTimeDifference(localeTime, sunset) <
-        TIME_INTERVAL_SUNRISE_SUNSET_HOURS
+        getTimeDifference(time, sunset) < TIME_INTERVAL_SUNRISE_SUNSET_HOURS
     )
-        return PeriodsOfDay.EVENING;
+        return PeriodOfDay.EVENING;
     else if (
-        localeTime.getTime() > sunrise.getTime() &&
-        localeTime.getTime() < sunset.getTime()
+        time.getTime() > sunrise.getTime() &&
+        time.getTime() < sunset.getTime()
     )
-        return PeriodsOfDay.DAY;
-    else return PeriodsOfDay.NIGHT;
+        return PeriodOfDay.DAY;
+    else return PeriodOfDay.NIGHT;
 };
 
 const getTimeDifference = (localeTime: Date, otherTime: Date) =>

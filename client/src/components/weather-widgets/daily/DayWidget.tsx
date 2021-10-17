@@ -4,6 +4,7 @@ import device from "../../../assets/styles/breakpoints";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
 import PeriodOfDay from "../../../enums/periodOfDay";
+import WeatherType from "../../../enums/weatherType";
 import { IDailyWeather } from "../../../interfaces/weather";
 import { k2unit } from "../../../utils/weather-utils";
 import WeatherIcon from "../../icons/WeatherIcon";
@@ -33,12 +34,33 @@ function DayWidget(dayProps: DayProps) {
                     ? "today"
                     : time2DayName.get(dayProps.day.date.getDay())}
             </Time>
-            <WeatherIcon
-                width={3}
-                height={3}
-                weatherType={dayProps.day.dailyWeather.weatherType}
-                periodOfDay={PeriodOfDay.DAY}
-            />
+            <Weather>
+                <WeatherIcon
+                    width={3}
+                    height={3}
+                    weatherType={dayProps.day.dailyWeather.weatherType}
+                    periodOfDay={PeriodOfDay.DAY}
+                />
+                {dayProps.day.dailyWeather.weatherType !==
+                    WeatherType.CLEAR_SKY &&
+                    dayProps.day.dailyWeather.weatherType !==
+                        WeatherType.SCATTERED_CLOUDS &&
+                    dayProps.day.dailyWeather.weatherType !==
+                        WeatherType.BROKEN_CLOUDS &&
+                    dayProps.day.dailyWeather.weatherType !==
+                        WeatherType.FEW_CLOUDS &&
+                    dayProps.day.dailyWeather.weatherType !==
+                        WeatherType.OVERCAST_CLOUDS && (
+                        <POP>
+                            {Math.round(
+                                (dayProps.day.dailyWeather
+                                    .probabilityOfPrecipitation ?? 0) * 100
+                            )}
+                            %
+                        </POP>
+                    )}
+            </Weather>
+
             <LowHigh>
                 <Temperature>
                     {k2unit(
@@ -98,4 +120,20 @@ const Temperature = styled.div`
     font-size: 1em;
     padding: 0 ${BIG_MARGIN};
     align-self: center;
+`;
+const Weather = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    align-items: center;
+`;
+
+const POP = styled.div`
+    position: relative;
+    font-size: 0.6em;
+    font-weight: bold;
+    opacity: 0.8;
+    top: -3.3em;
+    text-shadow: 0 0 1em rgba(58, 57, 57, 0.9);
+    color: #0095ff;
 `;

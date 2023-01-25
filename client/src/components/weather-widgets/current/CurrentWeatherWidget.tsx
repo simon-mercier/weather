@@ -148,9 +148,10 @@ const Info = styled.div`
 `;
 
 const Title = styled.div`
-    font-size: 2em;
+    font-size: 4em;
     font-weight: bold;
     margin-left: 8px;
+    font-family: "Walbaum Display SemiBold";
 `;
 
 const Temperature = styled.div`

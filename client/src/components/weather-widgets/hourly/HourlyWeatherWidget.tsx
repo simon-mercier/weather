@@ -64,7 +64,8 @@ const Container = styled.div`
 const Title = styled.div`
     margin-left: 8px;
     margin-bottom: ${BIG_MARGIN};
-    font-size: 2em;
+    font-family: "Walbaum Display SemiBold";
+    font-size: 4em;
     font-weight: bold;
 `;
 /* ${Morph(MorphDirection.BOTTOM, 100)} */

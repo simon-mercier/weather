@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.12ff5d98.css",
-    "main.js": "/static/js/main.38c7bc18.js",
+    "main.css": "/static/css/main.8aaeacd8.css",
+    "main.js": "/static/js/main.7b390fc9.js",
     "static/js/496.88ab795b.chunk.js": "/static/js/496.88ab795b.chunk.js",
+    "static/media/snow.gif": "/static/media/snow.12872e68830132890b90.gif",
     "static/media/cloud4.png": "/static/media/cloud4.d6d2482cad00d1249394.png",
     "static/media/cloud5.png": "/static/media/cloud5.2b00aa33f09440ccb96b.png",
     "static/media/cloud3.png": "/static/media/cloud3.9328a85b3cf03bf84ee6.png",
@@ -22,12 +23,12 @@
     "static/media/Gotham-Light.otf": "/static/media/Gotham-Light.b77a9af66480bf011f32.otf",
     "index.html": "/index.html",
     "static/media/Gotham-Medium.otf": "/static/media/Gotham-Medium.6b347ac1359a86fc96d6.otf",
-    "main.12ff5d98.css.map": "/static/css/main.12ff5d98.css.map",
-    "main.38c7bc18.js.map": "/static/js/main.38c7bc18.js.map",
+    "main.8aaeacd8.css.map": "/static/css/main.8aaeacd8.css.map",
+    "main.7b390fc9.js.map": "/static/js/main.7b390fc9.js.map",
     "496.88ab795b.chunk.js.map": "/static/js/496.88ab795b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.12ff5d98.css",
-    "static/js/main.38c7bc18.js"
+    "static/css/main.8aaeacd8.css",
+    "static/js/main.7b390fc9.js"
   ]
 }

@@ -5,7 +5,7 @@ import CurrentWeatherInfo from "../../contexts/CurrentWeatherInfo";
 
 import LocationContext from "../../contexts/Location";
 import styled from "styled-components";
-import device from "../../assets/styles/breakpoints";
+import { device } from "../../assets/styles/breakpoints";
 import { coordinates2Weather } from "../../utils/weather-utils";
 import HourlyWeatherInfo from "../../contexts/HourlyWeatherInfo";
 import DailyWeatherInfo from "../../contexts/DailyWeatherInfo";
@@ -54,14 +54,14 @@ const WeatherManager = () => {
                                 <Container>
                                     <NavBar />
                                     <Widgets>
-                                        <WidgetContainer>
+                                        <WidgetContainer id="current-weather">
                                             <CurrentWeatherWidget />
                                         </WidgetContainer>
-                                        <WidgetContainer>
-                                            <DailyWeatherWidget />
-                                        </WidgetContainer>
-                                        <WidgetContainer>
+                                        <WidgetContainer id="hourly-weather">
                                             <HourlyWeatherWidget />
+                                        </WidgetContainer>
+                                        <WidgetContainer id="daily-weather">
+                                            <DailyWeatherWidget />
                                         </WidgetContainer>
                                     </Widgets>
                                 </Container>
@@ -93,7 +93,7 @@ const WidgetContainer = styled.div`
     flex-direction: column;
     align-items: center;
     @media ${device.tablet} {
-        height: 90vh;
+        height: 100vh;
     }
     @media ${device.mobileS} {
         margin-top: 10vh;

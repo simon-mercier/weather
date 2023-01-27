@@ -1,17 +1,31 @@
 import styled from "styled-components";
-import { Morph, MorphDirection } from "../../assets/styles/animations";
 import Search from "../search/Search";
 import NavItems from "../navitems/NavItems";
 import UnitToggle from "../unit/UnitToggle";
 import UserLocation from "../location/UserLocation";
-import device from "../../assets/styles/breakpoints";
+import { device } from "../../assets/styles/breakpoints";
 import { BIG_MARGIN, MARGIN } from "../../assets/styles/constants";
-
+import { useEffect, useState } from "react";
 export default function NavBar() {
+    const [dimensions, setDimensions] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
+    console.log(dimensions);
+    const handleResize = () => {
+        setDimensions({
+            width: window.innerWidth,
+            height: window.innerHeight,
+        });
+    };
+    useEffect(() => {
+        window.addEventListener("resize", handleResize, false);
+    }, []);
+
     return (
         <Container>
             <Title>beautiful weather🍂</Title>
-            <NavItems />
+            {dimensions.width >= 1024 && <NavItems />}
             <Settings>
                 <SearchContainer>
                     <Search />
@@ -56,7 +70,6 @@ const Title = styled.div`
     margin: ${MARGIN} ${MARGIN} ${MARGIN} ${BIG_MARGIN};
     height: fit-content;
     font-family: "Walbaum Display SemiBold";
-    ${Morph(MorphDirection.LEFT, 100)}
 `;
 
 const Settings = styled.div`
@@ -68,21 +81,12 @@ const Settings = styled.div`
 
 const SearchContainer = styled.div`
     margin: 8px;
-    @media ${device.tablet} {
-        ${Morph(MorphDirection.RIGHT, 100)}
-    }
 `;
 
 const UserLocationContainer = styled.div`
     margin: 8px;
-    @media ${device.tablet} {
-        ${Morph(MorphDirection.RIGHT, 200)}
-    }
 `;
 
 const UnitToggleContainer = styled.div`
     margin: 8px;
-    @media ${device.tablet} {
-        ${Morph(MorphDirection.RIGHT, 300)}
-    }
 `;

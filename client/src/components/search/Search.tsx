@@ -14,7 +14,7 @@ import {
 import styled from "styled-components";
 import { Frosted, FrostedOpaque } from "../../assets/styles/styles";
 import { SMALL_MARGIN } from "../../assets/styles/constants";
-import device from "../../assets/styles/breakpoints";
+import { device } from "../../assets/styles/breakpoints";
 
 const Search = () => {
     const [predictions, setPredictions] = useState({} as [ILocation]);

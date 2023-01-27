@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import device from "../../../assets/styles/breakpoints";
+import { device } from "../../../assets/styles/breakpoints";
 import { BIG_MARGIN, MARGIN } from "../../../assets/styles/constants";
 import { TIME_IN_ONE_HOUR_MS } from "../../../const";
 import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";

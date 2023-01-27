@@ -6,8 +6,9 @@ const Gif = styled.img`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    z-index: 0;
+    object-fit: cover;
+    height: 100%;
+    min-width: 100%;
 `;
 
 export const RainGif = styled(Gif).attrs({

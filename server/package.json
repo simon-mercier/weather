@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "cd ../client && react-scripts build"
+    "build": "cd ../client && npm run build && cd ../server && cp -r ../client/build ./public"
   },
   "dependencies": {
     "cookie-parser": "~1.4.6",

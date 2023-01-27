@@ -5,7 +5,6 @@ import { IHourlyWeather } from "../../../interfaces/weather";
 import HourWidget from "./HourWidget";
 import { Frosted } from "../../../assets/styles/styles";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
-import { Morph, MorphDirection } from "../../../assets/styles/animations";
 
 const time2clock = new Map<number, string>([
     [0, "🕛"],
@@ -34,10 +33,11 @@ function HourlyWeatherWidget() {
                     hourlyWeather[0].date.getHours() % NB_HOURS_IMPERIAL
                 )}
             </Title>
-
-            {hourlyWeather.slice(0, 23).map((hour, i) => (
-                <HourWidget key={i} hour={hour} time={i}></HourWidget>
-            ))}
+            <HourWidgetsContainer>
+                {hourlyWeather.slice(0, 23).map((hour, i) => (
+                    <HourWidget key={i} hour={hour} time={i}></HourWidget>
+                ))}
+            </HourWidgetsContainer>
         </Container>
     );
 }
@@ -49,23 +49,30 @@ const Container = styled.div`
 
     display: flex;
     flex-direction: column;
-    margin-bottom: 32px;
+    max-height: min-content;
 
     z-index: 1;
 
     padding: ${BIG_MARGIN};
+
     border-radius: ${BIG_MARGIN};
 
-    ${Morph(MorphDirection.BOTTOM, 100, 1)}
-
     ${Frosted}
+
+    max-width: min-content;
 `;
 
 const Title = styled.div`
     margin-left: 8px;
     margin-bottom: ${BIG_MARGIN};
     font-family: "Walbaum Display SemiBold";
-    font-size: 4em;
+    font-size: 2em;
     font-weight: bold;
 `;
-/* ${Morph(MorphDirection.BOTTOM, 100)} */
+
+const HourWidgetsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+`;

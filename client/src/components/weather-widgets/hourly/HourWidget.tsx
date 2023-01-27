@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import device from "../../../assets/styles/breakpoints";
-import { BIG_MARGIN } from "../../../assets/styles/constants";
+import { BIG_MARGIN, MARGIN } from "../../../assets/styles/constants";
 import { TIME_IN_ONE_HOUR_MS } from "../../../const";
 import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
 import UnitContext from "../../../contexts/Unit";
@@ -80,11 +80,21 @@ const Container = styled.div`
     @media ${device.tablet} {
         font-size: 2em;
     }
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 300px;
+    max-height: 300px;
+    width: 150px;
+
     z-index: 1;
-    padding: 0 ${BIG_MARGIN};
+    margin: ${MARGIN};
+    padding: ${MARGIN};
+
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
 `;
 
 const Time = styled.div`
@@ -112,7 +122,6 @@ const POP = styled.div`
     font-size: 0.6em;
     font-weight: bold;
     opacity: 0.8;
-    top: -3.3em;
     text-shadow: 0 0 1em rgba(58, 57, 57, 0.9);
-    color: #0095ff;
+    color: white;
 `;

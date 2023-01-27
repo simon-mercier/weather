@@ -3,7 +3,7 @@
 An awesome looking weather application to access current, hourly, and daily weather forecasts of your current location or anywhere in the world. 🌎
 ## Demo
 
-I encourage you to take a look at the [website](https://simonmercierweather.herokuapp.com/) ⚛️ 
+I encourage you to take a look at the [website](https://weather-ealx.onrender.com/) ⚛️ 
 
 ## Features
 This weather application has everything you need to stay up to date with the current forecast:
@@ -53,7 +53,7 @@ You should now be able to visit ```localhost:3001/weather``` and see the weather
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To access the APIs in this project, you will need to add the following environment variables to an .env file located in the root of the /server folder:
 
 `GOOGLE_API_KEY`
 

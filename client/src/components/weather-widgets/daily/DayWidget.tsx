@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import device from "../../../assets/styles/breakpoints";
-import { BIG_MARGIN } from "../../../assets/styles/constants";
+import { BIG_MARGIN, MARGIN } from "../../../assets/styles/constants";
 import UnitContext from "../../../contexts/Unit";
 import PeriodOfDay from "../../../enums/periodOfDay";
 import WeatherType from "../../../enums/weatherType";
@@ -85,13 +84,7 @@ function DayWidget(dayProps: DayProps) {
 export default DayWidget;
 
 const Container = styled.div`
-    @media ${device.mobileS} {
-        font-size: 1.2em;
-    }
-
-    @media ${device.tablet} {
-        font-size: 2em;
-    }
+    font-size: 2em;
 
     display: flex;
     flex-direction: column;
@@ -99,14 +92,19 @@ const Container = styled.div`
     justify-content: space-between;
     height: 300px;
     max-height: 300px;
+    width: 150px;
 
     z-index: 1;
-    padding: 0 ${BIG_MARGIN};
-    max-width: 100%;
+    margin: ${MARGIN};
+    padding: ${MARGIN};
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
 `;
 
 const Time = styled.div`
-    font-size: 1em;
+    font-size: 0.7em;
     font-weight: bold;
     place-self: start;
     align-self: center;

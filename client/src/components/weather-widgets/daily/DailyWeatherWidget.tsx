@@ -28,7 +28,7 @@ const Container = styled.div`
 
     display: flex;
     flex-direction: column;
-    margin-bottom: 32px;
+    max-height: min-content;
 
     z-index: 1;
 
@@ -37,17 +37,20 @@ const Container = styled.div`
     border-radius: ${BIG_MARGIN};
 
     ${Frosted}
+
+    max-width: min-content;
 `;
 
 const Title = styled.div`
     margin-left: 8px;
     margin-bottom: ${BIG_MARGIN};
     font-family: "Walbaum Display SemiBold";
-    font-size: 4em;
+    font-size: 2em;
     font-weight: bold;
 `;
 const ColumnDescription = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 0 ${BIG_MARGIN};
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
 `;

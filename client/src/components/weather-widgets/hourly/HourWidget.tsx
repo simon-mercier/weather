@@ -88,6 +88,7 @@ const Container = styled.div`
     height: 300px;
     max-height: 300px;
     width: 150px;
+    backdrop-filter: blur(10px);
 
     z-index: 1;
     margin: ${MARGIN};

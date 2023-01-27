@@ -11,7 +11,6 @@ export default function NavBar() {
         width: window.innerWidth,
         height: window.innerHeight,
     });
-    console.log(dimensions);
     const handleResize = () => {
         setDimensions({
             width: window.innerWidth,
@@ -47,6 +46,7 @@ const Container = styled.nav`
     flex-wrap: wrap;
     flex-direction: row;
     background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
     z-index: 99;
 
     min-width: 100vw;

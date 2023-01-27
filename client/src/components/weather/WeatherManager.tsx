@@ -92,8 +92,9 @@ const WidgetContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     @media ${device.tablet} {
-        height: 100vh;
+        height: 90vh;
     }
     @media ${device.mobileS} {
         margin-top: 10vh;
@@ -106,10 +107,5 @@ const Widgets = styled.section`
     align-items: center;
     min-height: fit-content;
 
-    margin-top: 10%;
     width: 90vw;
-
-    @media ${device.mobileS} {
-        max-width: 90vw;
-    }
 `;

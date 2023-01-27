@@ -1,46 +1,24 @@
 import styled from "styled-components";
 
 export default function NavItems() {
-    const yOffset = -window.innerHeight / 2;
-    const scrollToCurrentWeather = () => {
-        const currentWeather = document.getElementById("current-weather");
-        if (currentWeather) {
-            const y =
-                currentWeather.getBoundingClientRect().top +
-                window.scrollY +
-                yOffset;
-
-            window.scrollTo({ top: y, behavior: "smooth" });
-        }
-    };
-
-    const scrollToHourlyWeather = () => {
-        const hourlyWeather = document.getElementById("hourly-weather");
-        if (hourlyWeather) {
-            const y =
-                hourlyWeather.getBoundingClientRect().top +
-                window.scrollY +
-                yOffset;
-            window.scrollTo({ top: y, behavior: "smooth" });
-        }
-    };
-
-    const scrollToDailyWeather = () => {
-        const dailyWeather = document.getElementById("daily-weather");
-        if (dailyWeather) {
-            const y =
-                dailyWeather.getBoundingClientRect().top +
-                window.scrollY +
-                yOffset;
-            window.scrollTo({ top: y, behavior: "smooth" });
+    const scrollTo = (id: string) => {
+        const location = document.getElementById(id);
+        if (location) {
+            location.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
 
     return (
         <Container>
-            <NavButton onClick={scrollToCurrentWeather}>current</NavButton>
-            <NavButton onClick={scrollToHourlyWeather}>hourly</NavButton>
-            <NavButton onClick={scrollToDailyWeather}>daily</NavButton>
+            <NavButton onClick={() => scrollTo("current-weather")}>
+                🌡️current
+            </NavButton>
+            <NavButton onClick={() => scrollTo("hourly-weather")}>
+                🕑hourly
+            </NavButton>
+            <NavButton onClick={() => scrollTo("daily-weather")}>
+                📆daily
+            </NavButton>
         </Container>
     );
 }

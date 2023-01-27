@@ -2,7 +2,6 @@ import { useContext } from "react";
 import CurrentWeatherInfo from "../../../contexts/CurrentWeatherInfo";
 import { ICurrentWeather } from "../../../interfaces/weather";
 import styled from "styled-components";
-import { Frosted } from "../../../assets/styles/styles";
 import { Morph, MorphDirection } from "../../../assets/styles/animations";
 import WeatherIcon from "../../icons/WeatherIcon";
 import { k2unit } from "../../../utils/weather-utils";
@@ -20,7 +19,7 @@ const CurrentWeatherWidget = () => {
                 currentWeather.temperature &&
                 currentWeather.condition.weatherDescription && (
                     <Container>
-                        <Title>weather🌡️</Title>
+                        <Title>current weather🌡️</Title>
                         <Info>
                             <Temperature>
                                 <Degrees>
@@ -123,13 +122,15 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     max-height: min-content;
-
     max-width: 670px;
     padding: ${BIG_MARGIN};
     border-radius: ${BIG_MARGIN};
     z-index: 1;
     ${Morph(MorphDirection.BOTTOM, 100)}
-    ${Frosted}
+
+    @media ${device.mobileS} {
+        margin-top: 10%;
+    }
 `;
 
 const Info = styled.div`
@@ -145,6 +146,10 @@ const Info = styled.div`
     @media ${device.tablet} {
         width: max-content;
     }
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
 `;
 
 const Title = styled.div`
@@ -152,6 +157,7 @@ const Title = styled.div`
     font-weight: bold;
     margin-left: 8px;
     font-family: "Walbaum Display SemiBold";
+    margin-bottom: ${BIG_MARGIN};
 `;
 
 const Temperature = styled.div`
@@ -197,6 +203,12 @@ const FeelsLike = styled.div`
     opacity: 0.9;
 
     ${Morph(MorphDirection.BOTTOM, 200)}
+    @media ${device.mobileS} {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-text: center;
+    }
 `;
 
 const HighLow = styled.div`
@@ -205,6 +217,12 @@ const HighLow = styled.div`
     width: 100%;
 
     ${Morph(MorphDirection.BOTTOM, 300)}
+    @media ${device.mobileS} {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-text: center;
+    }
 `;
 
 const Weather = styled.div`
@@ -229,6 +247,13 @@ const WeatherDescription = styled.div`
     overflow-wrap: break-word;
 
     ${Morph(MorphDirection.BOTTOM, 200, 0.5)}
+
+    @media ${device.mobileS} {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-text: center;
+    }
 `;
 
 const HumidityPressure = styled.div`
@@ -236,4 +261,11 @@ const HumidityPressure = styled.div`
     opacity: 0.8;
 
     ${Morph(MorphDirection.BOTTOM, 300, 0.5)}
+
+    @media ${device.mobileS} {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-text: center;
+    }
 `;

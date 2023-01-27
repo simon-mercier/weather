@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { IDailyWeather } from "../../../interfaces/weather";
 import HourWidget from "./DayWidget";
-import { Frosted } from "../../../assets/styles/styles";
 import { BIG_MARGIN } from "../../../assets/styles/constants";
 import DailyWeatherInfo from "../../../contexts/DailyWeatherInfo";
 
@@ -11,7 +10,7 @@ function DailyWeatherWidget() {
 
     return (
         <Container>
-            <Title>daily📆</Title>
+            <Title>daily weather📆</Title>
             <ColumnDescription>
                 {dailyWeather.map((day, i) => (
                     <HourWidget key={i} day={day} isNow={i === 0}></HourWidget>
@@ -24,21 +23,13 @@ function DailyWeatherWidget() {
 export default DailyWeatherWidget;
 
 const Container = styled.div`
-    width: 100%;
-
     display: flex;
     flex-direction: column;
     max-height: min-content;
-
-    z-index: 1;
-
     padding: ${BIG_MARGIN};
-
     border-radius: ${BIG_MARGIN};
-
-    ${Frosted}
-
-    max-width: min-content;
+    z-index: 1;
+    max-width: 100%;
 `;
 
 const Title = styled.div`

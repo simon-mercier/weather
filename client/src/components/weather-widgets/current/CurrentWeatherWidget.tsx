@@ -209,6 +209,10 @@ const FeelsLike = styled.div`
         align-items: center;
         align-text: center;
     }
+    @media ${device.tablet} {
+        display: flex;
+        justify-content: left;
+    }
 `;
 
 const HighLow = styled.div`
@@ -216,13 +220,19 @@ const HighLow = styled.div`
     opacity: 0.8;
     width: 100%;
 
-    ${Morph(MorphDirection.BOTTOM, 300)}
     @media ${device.mobileS} {
         display: flex;
         justify-content: center;
         align-items: center;
         align-text: center;
     }
+
+    @media ${device.tablet} {
+        display: flex;
+        justify-content: left;
+    }
+
+    ${Morph(MorphDirection.BOTTOM, 300)}
 `;
 
 const Weather = styled.div`

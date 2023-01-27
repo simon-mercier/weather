@@ -63,12 +63,15 @@ function DayWidget(dayProps: DayProps) {
 
             <LowHigh>
                 <Temperature>
+                    <LowHighText>low</LowHighText>
                     {k2unit(
                         dayProps.day.dailyTemperature.tempMin as number,
                         unit
                     ) + "°"}
                 </Temperature>
                 <Temperature>
+                    <LowHighText>high</LowHighText>
+
                     {k2unit(
                         dayProps.day.dailyTemperature.tempMax as number,
                         unit
@@ -90,10 +93,12 @@ const Container = styled.div`
         font-size: 2em;
     }
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    height: 300px;
+    max-height: 300px;
 
     z-index: 1;
     padding: 0 ${BIG_MARGIN};
@@ -116,10 +121,19 @@ const LowHigh = styled.div`
     align-self: center;
 `;
 
+const LowHighText = styled.div`
+    font-size: 0.5em;
+    align-self: center;
+    opacity: 0.8;
+`;
+
 const Temperature = styled.div`
     font-size: 1em;
     padding: 0 ${BIG_MARGIN};
     align-self: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 `;
 const Weather = styled.div`
     display: flex;
@@ -133,7 +147,6 @@ const POP = styled.div`
     font-size: 0.6em;
     font-weight: bold;
     opacity: 0.8;
-    top: -3.3em;
     text-shadow: 0 0 1em rgba(58, 57, 57, 0.9);
-    color: #0095ff;
+    color: white;
 `;

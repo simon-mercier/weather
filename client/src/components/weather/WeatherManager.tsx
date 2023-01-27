@@ -55,10 +55,9 @@ const WeatherManager = () => {
                                     <NavBar />
                                     <Widgets>
                                         <CurrentWeatherWidget />
+                                        <DailyWeatherWidget />
 
                                         <HourlyWeatherWidget />
-
-                                        <DailyWeatherWidget />
                                     </Widgets>
                                 </Container>
                             </DailyWeatherInfo.Provider>
@@ -95,6 +94,6 @@ const Widgets = styled.section`
 
     @media ${device.tablet} {
         margin-top: 10%;
-        width: min-content;
+        width: 50vw;
     }
 `;

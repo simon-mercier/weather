@@ -54,10 +54,15 @@ const WeatherManager = () => {
                                 <Container>
                                     <NavBar />
                                     <Widgets>
-                                        <CurrentWeatherWidget />
-                                        <DailyWeatherWidget />
-
-                                        <HourlyWeatherWidget />
+                                        <WidgetContainer>
+                                            <CurrentWeatherWidget />
+                                        </WidgetContainer>
+                                        <WidgetContainer>
+                                            <DailyWeatherWidget />
+                                        </WidgetContainer>
+                                        <WidgetContainer>
+                                            <HourlyWeatherWidget />
+                                        </WidgetContainer>
                                     </Widgets>
                                 </Container>
                             </DailyWeatherInfo.Provider>
@@ -79,6 +84,20 @@ const Container = styled.div`
     width: 100%;
     min-width: 100%;
     max-width: 100%;
+    overflow-y: scroll;
+`;
+
+const WidgetContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media ${device.tablet} {
+        height: 90vh;
+    }
+    @media ${device.mobileS} {
+        margin-top: 10vh;
+    }
 `;
 
 const Widgets = styled.section`
@@ -87,13 +106,10 @@ const Widgets = styled.section`
     align-items: center;
     min-height: fit-content;
 
-    @media ${device.mobileS} {
-        margin-top: 35%;
-        max-width: 90vw;
-    }
+    margin-top: 10%;
+    width: 90vw;
 
-    @media ${device.tablet} {
-        margin-top: 10%;
-        width: 50vw;
+    @media ${device.mobileS} {
+        max-width: 90vw;
     }
 `;

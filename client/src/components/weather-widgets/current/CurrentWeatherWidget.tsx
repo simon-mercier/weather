@@ -122,9 +122,9 @@ const WeatherIconContainer = styled.div`
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    max-height: min-content;
 
-    margin-bottom: 32px;
-    width: 100%;
+    max-width: 670px;
     padding: ${BIG_MARGIN};
     border-radius: ${BIG_MARGIN};
     z-index: 1;
@@ -148,7 +148,7 @@ const Info = styled.div`
 `;
 
 const Title = styled.div`
-    font-size: 4em;
+    font-size: 2em;
     font-weight: bold;
     margin-left: 8px;
     font-family: "Walbaum Display SemiBold";

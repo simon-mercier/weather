@@ -139,13 +139,16 @@ const Input = styled.input`
 const PredictionList = styled.ul`
     @media ${device.mobileS} {
         ${FrostedOpaque}
+        top: 7em;
     }
 
     @media ${device.tablet} {
         ${Frosted}
+        top: 3em;
     }
 
     padding: ${SMALL_MARGIN};
+    position: absolute;
 `;
 
 const Prediction = styled.li`

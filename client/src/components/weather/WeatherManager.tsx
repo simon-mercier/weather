@@ -93,11 +93,12 @@ const WidgetContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    @media ${device.tablet} {
-        height: 90vh;
-    }
     @media ${device.mobileS} {
         margin-top: 10vh;
+    }
+    @media ${device.tablet} {
+        height: 90vh;
+        margin-top: 0vh;
     }
 `;
 

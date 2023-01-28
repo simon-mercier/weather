@@ -25,7 +25,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "deploy": "cp -i -r build/* ../server/build"
+        "deploy": "xcopy /E /I /Y build ..\\server\\build"
     },
     "eslintConfig": {
         "extends": [

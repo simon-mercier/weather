@@ -8,6 +8,12 @@ export const size = {
     desktop: "2560px",
 };
 
+export const devices = {
+    mobile: `(min-width: ${size.mobileS}) and (max-width: ${size.tablet})`,
+    tablet: `(min-width: ${size.tablet}) and (max-width: ${size.laptop})`,
+    laptop: `(min-width: ${size.laptop}) and (max-width: ${size.laptopL})`,
+};
+
 export const device = {
     mobileS: `(min-width: ${size.mobileS})`,
     mobileM: `(min-width: ${size.mobileM})`,
